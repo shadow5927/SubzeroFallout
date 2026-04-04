@@ -8,7 +8,7 @@ name: "subzerofallout"
 author: "Fractured"
 
 #the fully qualified main class of the mod
-main: "main.SubzeroFallout"
+main: "src.main.SubzeroFallout"
 
 #the mod description as seen in the mod dialog
 description: "A signal appears on a distant planet. It's atmosphere plagued with the frozen aftermath of a disastrous war. Will you take the plunge into the abyss ahead, and discover something truly unforgettable? ."
