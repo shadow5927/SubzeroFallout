@@ -7,7 +7,7 @@ import mindustry.type.*;
 public class SubzeroFalloutItems {
     public static Item
     //TYR
-    iron, obsidian, arsenic, steel, ignisGlass,
+    magnetiteFragment, iron, obsidian, arsenic, heavyPlating, ignisGlass,
     //ALTECORIS
     nickel, bauxite, coltan, quartz, aluminum, nitride, sodium, tantalum, niobium, uranium
     //LEGION
@@ -15,6 +15,11 @@ public class SubzeroFalloutItems {
     ;
 
     public static void load(){
+        magnetiteFragment = new Item("magnetite-fragment", Color.valueOf("F2F285")){{
+            cost = 1f;
+            healthScaling = 0.7f;
+            buildable = false;
+        }};
         iron = new Item("iron", Color.valueOf("F2F285")){{
             cost = 1f;
             healthScaling = 0.7f;
@@ -23,7 +28,7 @@ public class SubzeroFalloutItems {
             cost = 1f;
             healthScaling = 0.6f;
         }};
-        steel = new Item("steel", Color.valueOf("F2F285")){{
+        heavyPlating = new Item("heavy-plating", Color.valueOf("F2F285")){{
             cost = 1.2f;
             healthScaling = 0.9f;
         }};

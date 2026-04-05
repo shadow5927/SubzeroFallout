@@ -17,11 +17,9 @@ import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
-import mindustry.type.ammo.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
-
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
 import static arc.math.Angles.*;
@@ -34,13 +32,13 @@ public class SubzeroFalloutUnits {
     //Rapid
     flare, delta, sickle,
     //Support
-    nerve
+    nerve,
     //Specialist
 
     //ALTECORIS
 
     //LEGION
-
+    proxy
     ;
 
     public static void load(){
@@ -132,7 +130,6 @@ public class SubzeroFalloutUnits {
         hitSize = 8f;
         health = 120f;
         armor = 1f;
-
     }};
 
     sickle = new UnitType("sickle"){{
@@ -155,12 +152,16 @@ public class SubzeroFalloutUnits {
     }};
 
     nerve = new UnitType("nerve"){{
+        defaultCommand = UnitCommand.repairCommand;
         flying = true;
+        lowAltitude = true;
+        isEnemy = false;
         speed = 2.7f;
         accel = 0.08f;
         drag = 0.04f;
         health = 70;
         engineOffset = 5.75f;
+        payloadCapacity = (2 * 2) * tilePayload;
         targetFlags = new BlockFlag[]{BlockFlag.generator, null};
         hitSize = 9;
         itemCapacity = 10;
@@ -174,6 +175,13 @@ public class SubzeroFalloutUnits {
         moveSound = Sounds.loopThruster;
         moveSoundPitchMin = 0.6f;
         moveSoundVolume = 0.2f;
+    }};
+
+    proxy = new UnitType("proxy"){{
+        speed = 0.55f;
+        hitSize = 8f;
+        health = 120f;
+        armor = 1f;
     }};
     }
 }

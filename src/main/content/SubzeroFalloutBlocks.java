@@ -103,7 +103,6 @@ public class SubzeroFalloutBlocks {
             itemCapacity = 25;
             heatRequirement = 5f;
             craftTime = 60f * 2f;
-            liquidCapacity = 80f * 5;
             consumeItem(Items.silicon, 3);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 1);
             ambientSound = Sounds.loopSmelter;
