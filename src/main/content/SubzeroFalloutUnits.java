@@ -43,6 +43,7 @@ public class SubzeroFalloutUnits {
 
     public static void load(){
     enkindle = new TankUnitType("enkindle"){{
+        constructor = UnitEntity::create;
         coreUnitDock = true;
         isEnemy = false;
         envDisabled = 0;
