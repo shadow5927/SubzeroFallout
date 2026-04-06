@@ -49,6 +49,7 @@ public class SubzeroFalloutUnits {
         coreUnitDock = true;
         isEnemy = false;
         envDisabled = 0;
+        outlineColor = Pal.darkOutline;
 
         range = 60f;
         faceTarget = true;
