@@ -17,9 +17,11 @@ import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import mindustry.type.ammo.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
+
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
 import static arc.math.Angles.*;
@@ -42,7 +44,7 @@ public class SubzeroFalloutUnits {
     ;
 
     public static void load(){
-    enkindle = new TankUnitType("enkindle"){{
+    enkindle = new UnitType("enkindle"){{
         constructor = UnitEntity::create;
         coreUnitDock = true;
         isEnemy = false;
@@ -77,8 +79,7 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(21 / 4f, 19 / 4f, 2.2f, 45f),
-                new UnitEngine(23 / 4f, -22 / 4f, 2.2f, 315f)
+                new UnitEngine(20 / 4f, -20 / 4f, 2.2f, 315f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
