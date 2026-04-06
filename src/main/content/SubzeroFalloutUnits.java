@@ -79,7 +79,7 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(20 / 4f, -20 / 4f, 2.2f, 315f)
+                new UnitEngine(17 / 4f, -16 / 4f, 2.2f, 305f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
