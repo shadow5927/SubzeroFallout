@@ -1,15 +1,18 @@
 package main;
 
+import main.content.*;
 import arc.*;
 import arc.util.*;
+import mindustry.*;
+import mindustry.content.*;
 import mindustry.game.EventType.*;
+import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
 public class SubzeroFallout extends Mod{
 
     public SubzeroFallout(){
-        Log.info("Loaded SubzeroFallout constructor.");
 
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
@@ -25,9 +28,11 @@ public class SubzeroFallout extends Mod{
         });
     }
 
-    @Override
     public void loadContent(){
-        Log.info("Loading some example content.");
+        SubzeroFalloutBlocks.load();
+        SubzeroFalloutItems.load();
+        SubzeroFalloutLiquids.load();
+        SubzeroFalloutUnits.load();
     }
 
 }
