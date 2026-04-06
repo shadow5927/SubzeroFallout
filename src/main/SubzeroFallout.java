@@ -29,10 +29,10 @@ public class SubzeroFallout extends Mod{
     }
 
     public void loadContent(){
-        SubzeroFalloutBlocks.load();
         SubzeroFalloutItems.load();
         SubzeroFalloutLiquids.load();
         SubzeroFalloutUnits.load();
+        SubzeroFalloutBlocks.load();
     }
 
 }
