@@ -28,17 +28,17 @@ import static mindustry.Vars.*;
 public class SubzeroFalloutUnits {
     public static UnitType
     //TYR
-    enkindle,
+    enkindle
     //Rapid
-    flare, delta, sickle,
+    //flare, delta, sickle,
     //Support
-    nerve,
+    //nerve,
     //Specialist
 
     //ALTECORIS
 
     //LEGION
-    proxy
+    //proxy
     ;
 
     public static void load(){
@@ -107,82 +107,82 @@ public class SubzeroFalloutUnits {
         }});
     }};
 
-    flare = new TankUnitType("flare"){{
-        hitSize = 12f;
-        treadPullOffset = 3;
-        speed = 0.75f;
-        rotateSpeed = 3.5f;
-        health = 850;
-        armor = 6f;
-        itemCapacity = 0;
-        floorMultiplier = 0.95f;
-        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
-        researchCostMultiplier = 0f;
+    //flare = new TankUnitType("flare"){{
+    //    hitSize = 12f;
+    //   treadPullOffset = 3;
+    //    speed = 0.75f;
+    //    rotateSpeed = 3.5f;
+    //    health = 850;
+    //    armor = 6f;
+    //    itemCapacity = 0;
+    //    floorMultiplier = 0.95f;
+    //    treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
+    //    researchCostMultiplier = 0f;
 
-        tankMoveVolume *= 0.32f;
-        tankMoveSound = Sounds.tankMoveSmall;
-    }};
+    //    tankMoveVolume *= 0.32f;
+    //    tankMoveSound = Sounds.tankMoveSmall;
+    //}};
 
-    delta = new UnitType("delta"){{
-        canBoost = true;
-        boostMultiplier = 1.5f;
-        speed = 0.55f;
-        hitSize = 8f;
-        health = 120f;
-        armor = 1f;
-    }};
+    //delta = new UnitType("delta"){{
+    //    canBoost = true;
+    //    boostMultiplier = 1.5f;
+    //    speed = 0.55f;
+    //    hitSize = 8f;
+    //    health = 120f;
+    //    armor = 1f;
+    //}};
 
-    sickle = new UnitType("sickle"){{
-        naval = true;
-        speed = 1.1f;
-        drag = 0.13f;
-        hitSize = 10f;
-        health = 280;
-        armor = 2f;
-        accel = 0.4f;
-        rotateSpeed = 3.3f;
-        faceTarget = false;
+    //sickle = new UnitType("sickle"){{
+    //    naval = true;
+    //    speed = 1.1f;
+    //    drag = 0.13f;
+    //    hitSize = 10f;
+    //    health = 280;
+    //    armor = 2f;
+    //    accel = 0.4f;
+    //    rotateSpeed = 3.3f;
+    //    faceTarget = false;
 
-        trailLength = 20;
-        waveTrailX = 4f;
-        trailScl = 1.3f;
+    //    trailLength = 20;
+    //    waveTrailX = 4f;
+    //    trailScl = 1.3f;
 
-        moveSoundVolume = 0.4f;
-        moveSound = Sounds.shipMove;
-    }};
+    //    moveSoundVolume = 0.4f;
+    //    moveSound = Sounds.shipMove;
+    //}};
 
-    nerve = new UnitType("nerve"){{
-        defaultCommand = UnitCommand.repairCommand;
-        flying = true;
-        lowAltitude = true;
-        isEnemy = false;
-        speed = 2.7f;
-        accel = 0.08f;
-        drag = 0.04f;
-        health = 70;
-        engineOffset = 5.75f;
-        payloadCapacity = (2 * 2) * tilePayload;
-        targetFlags = new BlockFlag[]{BlockFlag.generator, null};
-        hitSize = 9;
-        itemCapacity = 10;
-        targetPriority = -2;
-        circleTarget = false;
-        omniMovement = false;
-        rotateSpeed = 5f;
-        circleTargetRadius = 60f;
-        wreckSoundVolume = 0.7f;
+    //nerve = new UnitType("nerve"){{
+    //    defaultCommand = UnitCommand.repairCommand;
+    //    flying = true;
+    //    lowAltitude = true;
+    //    isEnemy = false;
+    //    speed = 2.7f;
+    //    accel = 0.08f;
+    //    drag = 0.04f;
+    //    health = 70;
+    //    engineOffset = 5.75f;
+    //    payloadCapacity = (2 * 2) * tilePayload;
+    //    targetFlags = new BlockFlag[]{BlockFlag.generator, null};
+    //    hitSize = 9;
+    //    itemCapacity = 10;
+    //    targetPriority = -2;
+    //    circleTarget = false;
+    //    omniMovement = false;
+    //    rotateSpeed = 5f;
+    //    circleTargetRadius = 60f;
+    //    wreckSoundVolume = 0.7f;
 
-        moveSound = Sounds.loopThruster;
-        moveSoundPitchMin = 0.6f;
-        moveSoundVolume = 0.2f;
-    }};
+    //    moveSound = Sounds.loopThruster;
+    //    moveSoundPitchMin = 0.6f;
+    //    moveSoundVolume = 0.2f;
+    //}};
 
-    proxy = new UnitType("proxy"){{
-        speed = 0.55f;
-        hitSize = 8f;
-        health = 120f;
-        armor = 1f;
-    }};
+    //proxy = new UnitType("proxy"){{
+    //    speed = 0.55f;
+    //    hitSize = 8f;
+    //    health = 120f;
+    //    armor = 1f;
+    //}};
     }
 }
 
