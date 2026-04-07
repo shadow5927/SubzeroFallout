@@ -30,9 +30,9 @@ import static mindustry.Vars.*;
 public class SubzeroFalloutUnits {
     public static UnitType
     //TYR
-    enkindle
+    enkindle,
     //Rapid
-    //flare, delta, sickle,
+    flare //delta, sickle,
     //Support
     //nerve,
     //Specialist
@@ -61,13 +61,13 @@ public class SubzeroFalloutUnits {
         flying = true;
         mineSpeed = 6f;
         mineTier = 3;
-        buildSpeed = 1.2f;
+        buildSpeed = 1f;
         drag = 0.08f;
-        speed = 5.6f;
+        speed = 4.3f;
         rotateSpeed = 7f;
-        accel = 0.09f;
+        accel = 0.07f;
         itemCapacity = 60;
-        health = 300f;
+        health = 250f;
         armor = 1f;
         hitSize = 9f;
         engineSize = 0;
@@ -80,18 +80,18 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(17 / 4f, -16 / 4f, 2.2f, 305f)
+                new UnitEngine(17 / 4f, -16 / 4f, 2.2f, 285f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
             widthSinMag = 0.11f;
             reload = 20f;
             x = 0f;
-            y = 6.5f;
+            y = 5.5f;
             rotate = false;
             shootY = 0f;
             beamWidth = 0.7f;
-            repairSpeed = 3.1f;
+            repairSpeed = 2.9f;
             fractionRepairSpeed = 0.06f;
             aimDst = 0f;
             shootCone = 15f;
@@ -107,24 +107,61 @@ public class SubzeroFalloutUnits {
             bullet = new BulletType(){{
                 maxRange = 60f;
             }};
+
+            drawBuildBeam = false;
+
+            weapons.add(new BuildWeapon("enkindle-weap"){{
+                rotate = true;
+                rotateSpeed = 7f;
+                x = 10/4f;
+                y = 10/4f;
+                layerOffset = -0.001f;
+                shootY = 3f;
+            }});
+
         }});
     }};
 
-    //flare = new TankUnitType("flare"){{
-    //    hitSize = 12f;
-    //   treadPullOffset = 3;
-    //    speed = 0.75f;
-    //    rotateSpeed = 3.5f;
-    //    health = 850;
-    //    armor = 6f;
-    //    itemCapacity = 0;
-    //    floorMultiplier = 0.95f;
-    //    treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
-    //    researchCostMultiplier = 0f;
+    flare = new TankUnitType("flare"){{
+        hitSize = 12f;
+       treadPullOffset = 3;
+        speed = 0.75f;
+        rotateSpeed = 3.5f;
+        health = 850;
+        armor = 6f;
+        itemCapacity = 0;
+        floorMultiplier = 0.95f;
+        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
+        researchCostMultiplier = 0f;
 
-    //    tankMoveVolume *= 0.32f;
-    //    tankMoveSound = Sounds.tankMoveSmall;
-    //}};
+        tankMoveVolume *= 0.32f;
+        tankMoveSound = Sounds.tankMoveSmall;
+        float r = range = 60f;
+
+        weapons.add(new Weapon("flare-weap"){{
+            layerOffset = 0.0001f;
+            reload = 00f;
+            shootY = 4.5f;
+            recoil = 1f;
+            rotate = true;
+            rotateSpeed = 2.2f;
+            mirror = false;
+            cooldownTime = 30f;
+            heatColor = Color.valueOf("f9350f");
+            x = 0f;
+            y = -0.75f;
+            bullet = new ContinuousFlameBulletType(){{
+                damage = 50f;
+                length = r;
+                knockback = 1f;
+                pierceCap = 2;
+                buildingDamageMultiplier = 0.3f;
+                timescaleDamage = true;
+
+                colors = new Color[]{Color.valueOf("eb7abe").a(0.55f), Color.valueOf("e189f5").a(0.7f), Color.valueOf("907ef7").a(0.8f), Color.valueOf("91a4ff"), Color.white};
+            }};
+        }});
+    }};
 
     //delta = new UnitType("delta"){{
     //    canBoost = true;
