@@ -143,9 +143,9 @@ public class SubzeroFalloutUnits {
             layerOffset = 0.0001f;
             reload = 60f;
             shootY = 4.5f;
-            recoil = 1f;
+            recoil = 0.5f;
             rotate = true;
-            rotateSpeed = 2.2f;
+            rotateSpeed = 2.5f;
             mirror = false;
             cooldownTime = 30f;
             heatColor = Color.valueOf("f9350f");
