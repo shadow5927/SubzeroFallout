@@ -45,7 +45,6 @@ public class SubzeroFalloutUnits {
 
     public static void load(){
     enkindle = new UnitType("enkindle"){{
-        constructor = UnitEntity::create;
         coreUnitDock = true;
         isEnemy = false;
         envDisabled = 0;
@@ -120,10 +119,10 @@ public class SubzeroFalloutUnits {
             }});
 
         }});
+        constructor = UnitEntity::create;
     }};
 
     flare = new TankUnitType("flare"){{
-        constructor = UnitEntity::create;
         hitSize = 12f;
         treadPullOffset = 3;
         speed = 0.75f;
@@ -137,11 +136,12 @@ public class SubzeroFalloutUnits {
 
         tankMoveVolume *= 0.32f;
         tankMoveSound = Sounds.tankMoveSmall;
+
         float r = range = 60f;
 
         weapons.add(new Weapon("flare-weap"){{
             layerOffset = 0.0001f;
-            reload = 00f;
+            reload = 60f;
             shootY = 4.5f;
             recoil = 1f;
             rotate = true;
@@ -151,6 +151,8 @@ public class SubzeroFalloutUnits {
             heatColor = Color.valueOf("f9350f");
             x = 0f;
             y = -0.75f;
+            continuous = alwaysContinuous = true;
+            shootSound = Sounds.shootSublimate;
             bullet = new ContinuousFlameBulletType(){{
                 damage = 50f;
                 length = r;
@@ -162,6 +164,7 @@ public class SubzeroFalloutUnits {
                 colors = new Color[]{Color.valueOf("eb7abe").a(0.55f), Color.valueOf("e189f5").a(0.7f), Color.valueOf("907ef7").a(0.8f), Color.valueOf("91a4ff"), Color.white};
             }};
         }});
+        constructor = UnitEntity::create;
     }};
 
     //delta = new UnitType("delta"){{
