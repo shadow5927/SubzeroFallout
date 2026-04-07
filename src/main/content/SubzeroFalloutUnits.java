@@ -79,14 +79,14 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(17 / 4f, -16 / 4f, 2.2f, 285f)
+                new UnitEngine(15 / 4f, -16 / 4f, 2.2f, 285f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
             widthSinMag = 0.11f;
             reload = 20f;
             x = 0f;
-            y = 5.5f;
+            y = 5f;
             rotate = false;
             shootY = 0f;
             beamWidth = 0.7f;
@@ -109,7 +109,7 @@ public class SubzeroFalloutUnits {
 
             drawBuildBeam = false;
 
-            weapons.add(new BuildWeapon("enkindle-weap"){{
+            weapons.add(new BuildWeapon("enkindle-weapon"){{
                 rotate = true;
                 rotateSpeed = 7f;
                 x = 10/4f;
@@ -125,10 +125,10 @@ public class SubzeroFalloutUnits {
     flare = new TankUnitType("flare"){{
         hitSize = 12f;
         treadPullOffset = 3;
-        speed = 0.75f;
+        speed = 1.2f;
         rotateSpeed = 3.5f;
-        health = 850;
-        armor = 6f;
+        health = 550;
+        armor = 5f;
         itemCapacity = 0;
         floorMultiplier = 0.95f;
         treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
@@ -139,7 +139,7 @@ public class SubzeroFalloutUnits {
 
         float r = range = 60f;
 
-        weapons.add(new Weapon("flare-weap"){{
+        weapons.add(new Weapon("flare-weapon"){{
             layerOffset = 0.0001f;
             reload = 60f;
             shootY = 4.5f;
@@ -154,11 +154,10 @@ public class SubzeroFalloutUnits {
             continuous = alwaysContinuous = true;
             shootSound = Sounds.shootSublimate;
             bullet = new ContinuousFlameBulletType(){{
-                damage = 50f;
+                damage = 25f;
                 length = r;
                 knockback = 1f;
                 pierceCap = 2;
-                buildingDamageMultiplier = 0.3f;
                 timescaleDamage = true;
 
                 colors = new Color[]{Color.valueOf("eb7abe").a(0.55f), Color.valueOf("e189f5").a(0.7f), Color.valueOf("907ef7").a(0.8f), Color.valueOf("91a4ff"), Color.white};
