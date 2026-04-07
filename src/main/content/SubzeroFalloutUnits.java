@@ -123,8 +123,9 @@ public class SubzeroFalloutUnits {
     }};
 
     flare = new TankUnitType("flare"){{
+        constructor = UnitEntity::create;
         hitSize = 12f;
-       treadPullOffset = 3;
+        treadPullOffset = 3;
         speed = 0.75f;
         rotateSpeed = 3.5f;
         health = 850;
