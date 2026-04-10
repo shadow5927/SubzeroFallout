@@ -219,14 +219,15 @@ public class SubzeroFalloutUnits {
         moveSoundVolume = 0.2f;
         range = 40f;
 
-        float orbRad = 4f, partRad = 3f;
+        float orbRad = 3f, partRad = 2f;
         int parts = 10;
 
-        abilities.add(new EnergyFieldAbility(20f, 80f, 40f){{
-
+        abilities.add(new EnergyFieldAbility(20f, 100f, 40f){{
+            sectorRad = 0.1f;
+            sectors = 3;
             statusDuration = 60f * 6f;
             maxTargets = 6;
-            healPercent = 4f;
+            healPercent = 1.5f;
             sameTypeHealMult = 0.5f;
         }});
 
