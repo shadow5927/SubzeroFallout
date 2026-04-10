@@ -125,19 +125,18 @@ public class SubzeroFalloutUnits {
 
     flare = new TankUnitType("flare"){{
         hitSize = 12f;
-        treadPullOffset = 3;
-        speed = 1.2f;
-        rotateSpeed = 3.5f;
         range = 60f;
         health = 550;
         armor = 5f;
         itemCapacity = 0;
-        floorMultiplier = 0.95f;
+        rotateSpeed = 3.5f;
         rotateMoveFirst = true;
+        speed = 1.2f;
+        floorMultiplier = 0.95f;
         immunities.addAll(StatusEffects.burning, StatusEffects.melting);
         treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55)};
+        treadPullOffset = 3;
         researchCostMultiplier = 0f;
-
         tankMoveVolume *= 0.32f;
         tankMoveSound = Sounds.tankMoveSmall;
 
@@ -202,35 +201,47 @@ public class SubzeroFalloutUnits {
         flying = true;
         lowAltitude = true;
         isEnemy = false;
+        outlineColor = Pal.darkOutline;
         speed = 2.7f;
         accel = 0.08f;
         drag = 0.04f;
         health = 300f;
         armor = 3f;
-        engineOffset = 5.75f;
+        engineOffset = 6.5f;
         payloadCapacity = (2 * 2) * tilePayload;
-        targetFlags = new BlockFlag[]{BlockFlag.generator, null};
         hitSize = 9;
         itemCapacity = 10;
         targetPriority = -2;
-        circleTarget = false;
         omniMovement = false;
         rotateSpeed = 5f;
-        circleTargetRadius = 60f;
         wreckSoundVolume = 0.7f;
-
-        moveSound = Sounds.loopThruster;
+        moveSound = Sounds.loopHover;
         moveSoundPitchMin = 0.6f;
         moveSoundVolume = 0.2f;
+
+        float orbRad = 5f, partRad = 3f;
+        int parts = 10;
+
+        abilities.add(new SuppressionFieldAbility(){{
+            color = particleColor = effectColor = Pal.heal;
+            orbRadius = orbRad;
+            particleSize = partRad;
+            y = 0f;
+            particles = parts;
+            active = false;
+        }});
         constructor = UnitEntity::create;
     }};
 
     proxy = new UnitType("proxy"){{
+        outlineColor = Pal.darkOutline;
+        drawCell = false;
         speed = 0.55f;
         hitSize = 8f;
         health = 120f;
         armor = 1f;
-        constructor = UnitEntity::create;
+        stepSoundVolume = 0.4f;
+        constructor = MechUnit::create;
     }};
     }
 }
