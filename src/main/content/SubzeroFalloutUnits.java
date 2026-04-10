@@ -79,7 +79,7 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(15 / 4f, -16 / 4f, 2.2f, 285f)
+                new UnitEngine(15 / 4f, -18 / 4f, 2.2f, 285f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
@@ -163,7 +163,7 @@ public class SubzeroFalloutUnits {
                 colors = new Color[]{Color.valueOf("eb7abe").a(0.55f), Color.valueOf("e189f5").a(0.7f), Color.valueOf("907ef7").a(0.8f), Color.valueOf("91a4ff"), Color.white};
             }};
         }});
-        constructor = UnitEntity::create;
+        constructor = TankUnit::create;
     }};
 
     //delta = new UnitType("delta"){{

@@ -74,6 +74,7 @@ public class SubzeroFalloutBlocks {
             armor = 5f;
             incinerateNonBuildable = true;
             requiresCoreZone = true;
+            
             buildCostMultiplier = 0.7f;
             unitCapModifier = 10;
             researchCostMultiplier = 0.06f;
