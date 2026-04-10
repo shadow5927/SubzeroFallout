@@ -123,7 +123,7 @@ public class SubzeroFalloutUnits {
         constructor = UnitEntity::create;
     }};
 
-    flare = new TankUnitType("flare"){{
+    flare = new UnitType("flare"){{
         hitSize = 12f;
         treadPullOffset = 3;
         speed = 1.2f;
@@ -134,7 +134,7 @@ public class SubzeroFalloutUnits {
         itemCapacity = 0;
         floorMultiplier = 0.95f;
         rotateMoveFirst = true;
-        hoverable = hovering = false;
+        flying = false;
         immunities.addAll(StatusEffects.burning, StatusEffects.melting);
         treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
         researchCostMultiplier = 0f;
