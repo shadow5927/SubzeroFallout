@@ -80,7 +80,7 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(15 / 4f, -18 / 4f, 2.2f, 300f)
+                new UnitEngine(15 / 4f, -17 / 4f, 2.2f, 300f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
@@ -178,7 +178,6 @@ public class SubzeroFalloutUnits {
     //}};
 
     //sickle = new UnitType("sickle"){{
-    //    naval = true;
     //    speed = 1.1f;
     //    drag = 0.13f;
     //    hitSize = 10f;
@@ -199,12 +198,12 @@ public class SubzeroFalloutUnits {
     nerve = new UnitType("nerve"){{
         defaultCommand = UnitCommand.repairCommand;
         flying = true;
-        lowAltitude = true;
+        lowAltitude = false;
         isEnemy = false;
         outlineColor = Pal.darkOutline;
         speed = 2.7f;
         accel = 0.08f;
-        drag = 0.04f;
+        drag = 0.06f;
         health = 300f;
         armor = 3f;
         engineOffset = 6.5f;
@@ -212,15 +211,24 @@ public class SubzeroFalloutUnits {
         hitSize = 9;
         itemCapacity = 10;
         targetPriority = -2;
-        omniMovement = false;
+        faceTarget = false;
         rotateSpeed = 5f;
         wreckSoundVolume = 0.7f;
         moveSound = Sounds.loopHover;
         moveSoundPitchMin = 0.6f;
         moveSoundVolume = 0.2f;
+        range = 40f;
 
-        float orbRad = 5f, partRad = 3f;
+        float orbRad = 4f, partRad = 3f;
         int parts = 10;
+
+        abilities.add(new EnergyFieldAbility(20f, 80f, 40f){{
+
+            statusDuration = 60f * 6f;
+            maxTargets = 6;
+            healPercent = 4f;
+            sameTypeHealMult = 0.5f;
+        }});
 
         abilities.add(new SuppressionFieldAbility(){{
             color = particleColor = effectColor = Pal.heal;
