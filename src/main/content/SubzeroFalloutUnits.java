@@ -144,6 +144,7 @@ public class SubzeroFalloutUnits {
 
         weapons.add(new Weapon("flare-weapon"){{
             layerOffset = 0.01f;
+            showStatSprite = true;
             reload = 60f;
             shootY = 4.5f;
             recoil = 0.5f;
@@ -222,7 +223,7 @@ public class SubzeroFalloutUnits {
 
         engineOffset = 7f;
         setEnginesMirror(
-                new UnitEngine(15 / 4f, -5 / 4f, 2.2f, 300f)
+                new UnitEngine(19 / 4f, -4 / 4f, 2.2f, 300f)
         );
 
         float orbRad = 3f, partRad = 2f;
