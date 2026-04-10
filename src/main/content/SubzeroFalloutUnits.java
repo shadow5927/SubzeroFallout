@@ -223,10 +223,10 @@ public class SubzeroFalloutUnits {
 
         engineOffset = 7f;
         setEnginesMirror(
-                new UnitEngine(19 / 4f, -4 / 4f, 2.2f, 300f)
+                new UnitEngine(23 / 4f, -6 / 4f, 2.2f, 300f)
         );
 
-        float orbRad = 3f, partRad = 2f;
+        float orbRad = 2f, partRad = 3f;
         int parts = 10;
 
         abilities.add(new EnergyFieldAbility(20f, 100f, 40f){{
