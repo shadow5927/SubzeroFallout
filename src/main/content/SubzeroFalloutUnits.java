@@ -111,6 +111,7 @@ public class SubzeroFalloutUnits {
             drawBuildBeam = false;
 
             weapons.add(new BuildWeapon("enkindle-weapon"){{
+                name = "enkindle-weapon";
                 rotate = true;
                 rotateSpeed = 7f;
                 x = 10/4f;
@@ -134,11 +135,12 @@ public class SubzeroFalloutUnits {
         speed = 1.2f;
         floorMultiplier = 0.95f;
         immunities.addAll(StatusEffects.burning, StatusEffects.melting);
-        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55)};
+        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55), new Rect(0, 14 - 32f, 14, 25)};
         treadPullOffset = 3;
         researchCostMultiplier = 0f;
         tankMoveVolume *= 0.32f;
         tankMoveSound = Sounds.tankMoveSmall;
+
 
         weapons.add(new Weapon("flare-weapon"){{
             layerOffset = 0.01f;
@@ -206,7 +208,6 @@ public class SubzeroFalloutUnits {
         drag = 0.06f;
         health = 300f;
         armor = 3f;
-        engineOffset = 6.5f;
         payloadCapacity = (2 * 2) * tilePayload;
         hitSize = 9;
         itemCapacity = 10;
@@ -218,6 +219,11 @@ public class SubzeroFalloutUnits {
         moveSoundPitchMin = 0.6f;
         moveSoundVolume = 0.2f;
         range = 40f;
+
+        engineOffset = 7f;
+        setEnginesMirror(
+                new UnitEngine(15 / 4f, -5 / 4f, 2.2f, 300f)
+        );
 
         float orbRad = 3f, partRad = 2f;
         int parts = 10;
@@ -236,7 +242,7 @@ public class SubzeroFalloutUnits {
             color = particleColor = effectColor = Pal.heal;
             orbRadius = orbRad;
             particleSize = partRad;
-            y = 0f;
+            y = -1f;
             particles = parts;
             active = false;
         }});
