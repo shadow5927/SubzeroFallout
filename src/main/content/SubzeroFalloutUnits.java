@@ -142,8 +142,6 @@ public class SubzeroFalloutUnits {
         tankMoveSound = Sounds.tankMoveSmall;
 
         weapons.add(new Weapon("flare-weapon"){{
-            top = true;
-            layerOffset = 0.01f;
             reload = 60f;
             shootY = 4.5f;
             recoil = 0.5f;
