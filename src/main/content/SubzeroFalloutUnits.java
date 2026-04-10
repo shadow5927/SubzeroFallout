@@ -33,15 +33,15 @@ public class SubzeroFalloutUnits {
     //TYR
     enkindle,
     //Rapid
-    flare //delta, sickle,
+    flare, //delta, sickle,
     //Support
-    //nerve,
+    nerve,
     //Specialist
 
     //ALTECORIS
 
     //LEGION
-    //proxy
+    proxy
     ;
 
     public static void load(){
@@ -80,7 +80,7 @@ public class SubzeroFalloutUnits {
         hittable = false;
 
         setEnginesMirror(
-                new UnitEngine(15 / 4f, -18 / 4f, 2.2f, 285f)
+                new UnitEngine(15 / 4f, -18 / 4f, 2.2f, 300f)
         );
 
         weapons.add(new RepairBeamWeapon(){{
@@ -142,6 +142,7 @@ public class SubzeroFalloutUnits {
         tankMoveSound = Sounds.tankMoveSmall;
 
         weapons.add(new Weapon("flare-weapon"){{
+            layerOffset = 0.01f;
             reload = 60f;
             shootY = 4.5f;
             recoil = 0.5f;
@@ -196,38 +197,41 @@ public class SubzeroFalloutUnits {
     //    moveSound = Sounds.shipMove;
     //}};
 
-    //nerve = new UnitType("nerve"){{
-    //    defaultCommand = UnitCommand.repairCommand;
-    //    flying = true;
-    //    lowAltitude = true;
-    //    isEnemy = false;
-    //    speed = 2.7f;
-    //    accel = 0.08f;
-    //    drag = 0.04f;
-    //    health = 70;
-    //    engineOffset = 5.75f;
-    //    payloadCapacity = (2 * 2) * tilePayload;
-    //    targetFlags = new BlockFlag[]{BlockFlag.generator, null};
-    //    hitSize = 9;
-    //    itemCapacity = 10;
-    //    targetPriority = -2;
-    //    circleTarget = false;
-    //    omniMovement = false;
-    //    rotateSpeed = 5f;
-    //    circleTargetRadius = 60f;
-    //    wreckSoundVolume = 0.7f;
+    nerve = new UnitType("nerve"){{
+        defaultCommand = UnitCommand.repairCommand;
+        flying = true;
+        lowAltitude = true;
+        isEnemy = false;
+        speed = 2.7f;
+        accel = 0.08f;
+        drag = 0.04f;
+        health = 300f;
+        armor = 3f;
+        engineOffset = 5.75f;
+        payloadCapacity = (2 * 2) * tilePayload;
+        targetFlags = new BlockFlag[]{BlockFlag.generator, null};
+        hitSize = 9;
+        itemCapacity = 10;
+        targetPriority = -2;
+        circleTarget = false;
+        omniMovement = false;
+        rotateSpeed = 5f;
+        circleTargetRadius = 60f;
+        wreckSoundVolume = 0.7f;
 
-    //    moveSound = Sounds.loopThruster;
-    //    moveSoundPitchMin = 0.6f;
-    //    moveSoundVolume = 0.2f;
-    //}};
+        moveSound = Sounds.loopThruster;
+        moveSoundPitchMin = 0.6f;
+        moveSoundVolume = 0.2f;
+        constructor = UnitEntity::create;
+    }};
 
-    //proxy = new UnitType("proxy"){{
-    //    speed = 0.55f;
-    //    hitSize = 8f;
-    //    health = 120f;
-    //    armor = 1f;
-    //}};
+    proxy = new UnitType("proxy"){{
+        speed = 0.55f;
+        hitSize = 8f;
+        health = 120f;
+        armor = 1f;
+        constructor = UnitEntity::create;
+    }};
     }
 }
 
