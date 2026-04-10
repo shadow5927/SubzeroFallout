@@ -8,6 +8,7 @@ import arc.struct.*;
 import arc.util.*;
 import mindustry.ai.*;
 import mindustry.ai.types.*;
+import mindustry.content.StatusEffects;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
@@ -127,17 +128,19 @@ public class SubzeroFalloutUnits {
         treadPullOffset = 3;
         speed = 1.2f;
         rotateSpeed = 3.5f;
+        range = 60f;
         health = 550;
         armor = 5f;
         itemCapacity = 0;
         floorMultiplier = 0.95f;
+        rotateMoveFirst = true;
+        hoverable = hovering = false;
+        immunities.addAll(StatusEffects.burning, StatusEffects.melting);
         treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
         researchCostMultiplier = 0f;
 
         tankMoveVolume *= 0.32f;
         tankMoveSound = Sounds.tankMoveSmall;
-
-        float r = range = 60f;
 
         weapons.add(new Weapon("flare-weapon"){{
             layerOffset = 0.0001f;
@@ -155,7 +158,8 @@ public class SubzeroFalloutUnits {
             shootSound = Sounds.shootSublimate;
             bullet = new ContinuousFlameBulletType(){{
                 damage = 25f;
-                length = r;
+                length = 60f;
+                width = 10f;
                 knockback = 1f;
                 pierceCap = 2;
                 timescaleDamage = true;
