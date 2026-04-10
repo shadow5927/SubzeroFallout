@@ -123,7 +123,7 @@ public class SubzeroFalloutUnits {
         constructor = UnitEntity::create;
     }};
 
-    flare = new UnitType("flare"){{
+    flare = new TankUnitType("flare"){{
         hitSize = 12f;
         treadPullOffset = 3;
         speed = 1.2f;
@@ -134,7 +134,6 @@ public class SubzeroFalloutUnits {
         itemCapacity = 0;
         floorMultiplier = 0.95f;
         rotateMoveFirst = true;
-        flying = false;
         immunities.addAll(StatusEffects.burning, StatusEffects.melting);
         treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
         researchCostMultiplier = 0f;
@@ -159,7 +158,7 @@ public class SubzeroFalloutUnits {
             bullet = new ContinuousFlameBulletType(){{
                 damage = 25f;
                 length = 60f;
-                width = 10f;
+                width = 4f;
                 knockback = 1f;
                 pierceCap = 2;
                 timescaleDamage = true;
