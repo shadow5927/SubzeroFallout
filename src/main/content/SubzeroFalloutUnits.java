@@ -225,6 +225,7 @@ public class SubzeroFalloutUnits {
         abilities.add(new EnergyFieldAbility(20f, 100f, 40f){{
             sectorRad = 0.1f;
             sectors = 3;
+            effectRadius = 0f;
             statusDuration = 60f * 6f;
             maxTargets = 6;
             healPercent = 1.5f;
