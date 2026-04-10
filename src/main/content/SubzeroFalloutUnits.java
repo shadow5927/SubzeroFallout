@@ -135,13 +135,14 @@ public class SubzeroFalloutUnits {
         floorMultiplier = 0.95f;
         rotateMoveFirst = true;
         immunities.addAll(StatusEffects.burning, StatusEffects.melting);
-        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 51)};
+        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55)};
         researchCostMultiplier = 0f;
 
         tankMoveVolume *= 0.32f;
         tankMoveSound = Sounds.tankMoveSmall;
 
         weapons.add(new Weapon("flare-weapon"){{
+            top = true;
             layerOffset = 0.01f;
             reload = 60f;
             shootY = 4.5f;
