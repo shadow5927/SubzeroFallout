@@ -33,6 +33,7 @@ public class SubzeroFallout extends Mod{
         SubzeroFalloutLiquids.load();
         SubzeroFalloutUnits.load();
         SubzeroFalloutBlocks.load();
+        SubzeroFalloutEnvironment.load();
     }
 
 }
