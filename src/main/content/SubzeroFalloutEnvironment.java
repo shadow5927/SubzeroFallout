@@ -70,7 +70,7 @@ public class SubzeroFalloutEnvironment {
         greenschist = new Floor("greenschist"){{
             variants = 3;
         }};
-        dolomite = new Floor("dolomite"){{
+        dolomite = new Floor("dolomite-stone"){{
             variants = 4;
         }};
         smoothDolomite = new Floor("smooth-dolomite"){{
@@ -104,7 +104,7 @@ public class SubzeroFalloutEnvironment {
             variants = 3;
             greenschist.asFloor().wall = this;
         }};
-        dolomiteWall = new StaticWall("dolomite-wall"){{
+        dolomiteWall = new StaticWall("dolomite-stone-wall"){{
             variants = 4;
             dolomite.asFloor().wall = smoothDolomite.asFloor().wall = this;
         }};
