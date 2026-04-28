@@ -257,6 +257,7 @@ public class SubzeroFalloutUnits {
         speed = 0.55f;
         hitSize = 8f;
         health = 120f;
+        range = 75f;
         armor = 1f;
         stepSoundVolume = 0.4f;
         constructor = MechUnit::create;
@@ -264,17 +265,17 @@ public class SubzeroFalloutUnits {
         weapons.add(new Weapon("proxy-cannon"){{
             top = false;
             y = 1f;
-            x = 9f;
+            x = 5f;
             reload = 60f;
             recoil = 4f;
             shake = 2f;
             ejectEffect = Fx.casing2;
-            shootSound = Sounds.shootArtillery;
+            shootSound = Sounds.shootSalvo;
             bullet = new ArtilleryBulletType(2f, 20, "shell"){{
                 hitEffect = Fx.blastExplosion;
                 knockback = 0.8f;
-                lifetime = 120f;
-                width = height = 14f;
+                lifetime = 80f;
+                width = height = 9f;
                 collides = true;
                 collidesTiles = true;
                 splashDamageRadius = 35f;

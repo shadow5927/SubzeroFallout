@@ -180,10 +180,26 @@ public class SubzeroFalloutBlocks {
         //}};
 
         spear = new PowerTurret("spear"){{
-            requirements(Category.turret, with(Items.graphite, 50));
+            requirements(Category.turret, with(Items.graphite, 85, Items.silicon, 170, SubzeroFalloutItems.iron, 90));
             size = 3;
+            recoil = 2f;
+            reload = 80f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            scaledHealth = 230;
+            targetAir = false;
+            moveWhileCharging = true;
+            accurateDelay = false;
+            shootSound = Sounds.shootLancer;
+            coolant = consumeCoolant(0.2f);
+            chargeSound = Sounds.chargeLancer;
+
+            consumePower(6f);
+
             shootType = new LaserBulletType(140){{
-                colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.black};
+                colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
 
                 buildingDamageMultiplier = 0.25f;
