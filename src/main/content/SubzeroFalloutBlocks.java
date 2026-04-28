@@ -247,14 +247,14 @@ public class SubzeroFalloutBlocks {
                 }};
 
                 despawnSound = Sounds.explosionAfflict;
-                shootSound = Sounds.shootAfflict;
+                shootSound = Sounds.shootLancer;
 
                 fragBullet = intervalBullet = new LaserBulletType(35f){{
-                    width = 9f;
+                    width = 6f;
                     hitSize = 5f;
                     height = 5f;
                     pierceCap = 3;
-                    lifetime = 28f;
+                    lifetime = 8f;
                     pierceBuilding = true;
                     hitColor = backColor = trailColor = Color.valueOf("8aa3f4");
                     frontColor = Color.white;
@@ -273,13 +273,10 @@ public class SubzeroFalloutBlocks {
                 bulletInterval = 3f;
                 intervalRandomSpread = 20f;
                 intervalBullets = 2;
-                intervalAngle = 180f;
+                intervalAngle = 90f;
                 intervalSpread = 300f;
 
-                fragBullets = 20;
-                fragVelocityMin = 0.5f;
-                fragVelocityMax = 1.2f;
-                fragLifeMin = 0.5f;
+                fragBullets = 4;
             }};
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
