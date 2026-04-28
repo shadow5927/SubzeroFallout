@@ -22,7 +22,7 @@ import static arc.math.Angles.*;
 import static mindustry.Vars.*;
 
 public class SubzeroFalloutFx {
-    public static final Effect
+    public static Effect
 
     spearLaserShoot = new Effect(21f, e -> {
         color(Color.valueOf("8aa3f4"));
