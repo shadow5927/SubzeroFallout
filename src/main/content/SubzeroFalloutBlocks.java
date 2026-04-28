@@ -255,6 +255,7 @@ public class SubzeroFalloutBlocks {
                     height = 5f;
                     pierceCap = 3;
                     lifetime = 8f;
+                    drawSize = 300f;
                     pierceBuilding = true;
                     hitColor = backColor = trailColor = Color.valueOf("8aa3f4");
                     frontColor = Color.white;
@@ -273,7 +274,7 @@ public class SubzeroFalloutBlocks {
                 bulletInterval = 3f;
                 intervalRandomSpread = 20f;
                 intervalBullets = 2;
-                intervalAngle = 90f;
+                intervalAngle = 0f;
                 intervalSpread = 300f;
 
                 fragBullets = 4;
