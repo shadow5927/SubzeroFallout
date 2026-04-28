@@ -90,7 +90,7 @@ public class SubzeroFalloutEnvironment {
         obsidianWall = new StaticWall("obsidian-wall"){{
             variants = 3;
             obsidian.asFloor().wall = denseObsidian.asFloor().wall = this;
-            itemDrop = SubzeroFalloutItems.obsidian;
+            itemDrop = SubzeroFalloutItems.obsidianShard;
         }};
         irradiatedIceWall = new StaticWall("irradiated-ice-wall"){{
             variants = 4;
