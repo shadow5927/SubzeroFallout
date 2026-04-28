@@ -217,14 +217,9 @@ public class SubzeroFalloutBlocks {
                 pierceCap = 4;
             }};
             shootType = new BasicBulletType(){{
-                shootEffect = new MultiEffect(Fx.shootTitan, new WaveEffect(){{
-                    colorTo = Pal.surge;
-                    sizeTo = 26f;
-                    lifetime = 14f;
-                    strokeFrom = 4f;
-                }});
-                smokeEffect = Fx.shootSmokeTitan;
-                hitColor = Pal.surge;
+                shootEffect = SubzeroFalloutFx.spearLaserShoot;
+                smokeEffect = Fx.none;
+                hitColor = Color.valueOf("8aa3f4");
 
                 sprite = "large-orb";
                 trailEffect = Fx.missileTrail;
@@ -237,16 +232,16 @@ public class SubzeroFalloutBlocks {
                 damage = 180f;
                 lifetime = 80f;
                 width = height = 16f;
-                backColor = Pal.surge;
+                backColor = Color.valueOf("8aa3f4");
                 frontColor = Color.white;
                 shrinkX = shrinkY = 0f;
-                trailColor = Pal.surge;
+                trailColor = Color.valueOf("8aa3f4");
                 trailLength = 12;
                 trailWidth = 2.2f;
                 despawnEffect = hitEffect = new ExplosionEffect(){{
-                    waveColor = Pal.surge;
+                    waveColor = Color.valueOf("8aa3f4");
                     smokeColor = Color.gray;
-                    sparkColor = Pal.sap;
+                    sparkColor = Color.valueOf("8aa3f4");
                     waveStroke = 4f;
                     waveRad = 40f;
                 }};
@@ -254,19 +249,19 @@ public class SubzeroFalloutBlocks {
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootAfflict;
 
-                fragBullet = intervalBullet = new BasicBulletType(3f, 35){{
+                fragBullet = intervalBullet = new LaserBulletType(35f){{
                     width = 9f;
                     hitSize = 5f;
                     height = 15f;
                     pierceCap = 3;
                     lifetime = 28f;
                     pierceBuilding = true;
-                    hitColor = backColor = trailColor = Pal.surge;
+                    hitColor = backColor = trailColor = Color.valueOf("8aa3f4");
                     frontColor = Color.white;
                     trailWidth = 2.1f;
                     trailLength = 5;
                     hitEffect = despawnEffect = new WaveEffect(){{
-                        colorFrom = colorTo = Pal.surge;
+                        colorFrom = colorTo = Color.valueOf("8aa3f4");
                         sizeTo = 4f;
                         strokeFrom = 4f;
                         lifetime = 10f;
@@ -299,7 +294,7 @@ public class SubzeroFalloutBlocks {
                         new RegionPart("-blade-glow"){{
                             progress = PartProgress.recoil;
                             heatProgress = PartProgress.warmup;
-                            heatColor = Color.valueOf("ff6214");
+                            heatColor = Color.sky.cpy().a(0.9f);
                             drawRegion = false;
                             mirror = true;
                             under = true;
