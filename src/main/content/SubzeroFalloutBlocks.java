@@ -185,7 +185,8 @@ public class SubzeroFalloutBlocks {
             recoil = 2f;
             reload = 80f;
             shake = 2f;
-            shootEffect = Fx.lancerLaserShoot;
+            shootY = -1.5f;
+            shootEffect = SubzeroFalloutFx.spearLaserShoot;
             smokeEffect = Fx.none;
             heatColor = Color.red;
             scaledHealth = 230;
@@ -193,12 +194,13 @@ public class SubzeroFalloutBlocks {
             moveWhileCharging = true;
             accurateDelay = false;
             shootSound = Sounds.shootLancer;
-            coolant = consumeCoolant(0.2f);
+            coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             chargeSound = Sounds.chargeLancer;
 
             consumePower(6f);
 
-            shootType = new LaserBulletType(140){{
+            shootType = new LaserBulletType(83){{
+                trailColor = hitColor = lightColor = Color.valueOf("8aa3f4");
                 colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
 
@@ -206,9 +208,9 @@ public class SubzeroFalloutBlocks {
                 hitEffect = Fx.hitLancer;
                 hitSize = 4;
                 lifetime = 16f;
-               drawSize = 400f;
+                drawSize = 400f;
                 pierceBuilding = true;
-                length = 173f;
+                length = 152f;
                 ammoMultiplier = 1f;
                 pierceCap = 4;
             }};
