@@ -22,6 +22,8 @@ import static arc.math.Angles.*;
 import static mindustry.Vars.*;
 
 public class SubzeroFalloutFx {
+    public static final Rand rand = new Rand();
+    public static final Vec2 vec = new Vec2(), vec2 = new Vec2();
     public static Effect
 
     spearLaserShoot = new Effect(21f, e -> {
