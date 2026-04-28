@@ -230,7 +230,7 @@ public class SubzeroFalloutBlocks {
                 fragOnHit = false;
                 speed = 5f;
                 damage = 180f;
-                lifetime = 16f;
+                lifetime = 30f;
                 width = height = 16f;
                 backColor = Color.valueOf("8aa3f4");
                 frontColor = Color.white;
