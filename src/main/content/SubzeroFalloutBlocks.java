@@ -228,7 +228,7 @@ public class SubzeroFalloutBlocks {
                 trailParam = 4f;
                 pierceCap = 2;
                 buildingDamageMultiplier = 0.5f;
-                fragOnHit = false;
+                fragOnHit = true;
                 speed = 5f;
                 damage = 180f;
                 lifetime = 30f;
@@ -266,6 +266,7 @@ public class SubzeroFalloutBlocks {
                 }};
 
                 fragBullets = 4;
+                fragAngle = 90f;
             }};
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
