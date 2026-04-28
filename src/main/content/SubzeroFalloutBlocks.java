@@ -43,7 +43,7 @@ public class SubzeroFalloutBlocks {
     public static Block
     //TYR
         //Tyr Cores
-    coreRampart
+    coreRampart,
         //Tyr Crafting
     //carbonicExtractor, ferrumSmelter,
         //Tyr Production
@@ -59,7 +59,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Defense
         //Tyr Walls
         //Tyr Turrets
-    //spear, sc1
+    spear //sc1
     //ALTECORIS
     ;
     public static void load(){
@@ -179,35 +179,57 @@ public class SubzeroFalloutBlocks {
         //    size = 4;
         //}};
 
-        //spear = new PowerTurret("spear"){{
-        //    requirements(Category.turret, with(Items.graphite, 50));
-        //    size = 3;
-        //    shootType = new LaserBulletType(140){{
-        //        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.black};
-        //        chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+        spear = new PowerTurret("spear"){{
+            requirements(Category.turret, with(Items.graphite, 50));
+            size = 3;
+            shootType = new LaserBulletType(140){{
+                colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.black};
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
 
-        //        buildingDamageMultiplier = 0.25f;
-        //        hitEffect = Fx.hitLancer;
-        //        hitSize = 4;
-        //        lifetime = 16f;
-        //       drawSize = 400f;
-        //        pierceBuilding = true;
-        //        length = 173f;
-        //        ammoMultiplier = 1f;
-        //        pierceCap = 4;
-        //    }};
-        //    shootWarmupSpeed = 0.08f;
-        //    range = 165f;
-        //    scaledHealth = 420;
-        //    recoil = 3f;
-        //    reload = 80f;
-        //    shake = 2f;
-        //    shootEffect = Fx.lancerLaserShoot;
-        //    smokeEffect = Fx.none;
-        //    heatColor = Color.red;
-        //    chargeSound = Sounds.chargeLancer;
-        //    shootSound = Sounds.shootLancer;
-        //}};
+                buildingDamageMultiplier = 0.25f;
+                hitEffect = Fx.hitLancer;
+                hitSize = 4;
+                lifetime = 16f;
+               drawSize = 400f;
+                pierceBuilding = true;
+                length = 173f;
+                ammoMultiplier = 1f;
+                pierceCap = 4;
+            }};
+            drawer = new DrawTurret("reinforced-"){{
+                parts.add(new RegionPart("-blade"){{
+                              progress = PartProgress.recoil;
+                              heatColor = Color.valueOf("ff6214");
+                              mirror = true;
+                              under = true;
+                              moveX = 2f;
+                              moveY = -1f;
+                              moveRot = -7f;
+                          }},
+                        new RegionPart("-blade-glow"){{
+                            progress = PartProgress.recoil;
+                            heatProgress = PartProgress.warmup;
+                            heatColor = Color.valueOf("ff6214");
+                            drawRegion = false;
+                            mirror = true;
+                            under = true;
+                            moveX = 2f;
+                            moveY = -1f;
+                            moveRot = -7f;
+                        }});
+            }};
+            shootWarmupSpeed = 0.08f;
+            range = 165f;
+            scaledHealth = 420;
+            recoil = 3f;
+            reload = 80f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            chargeSound = Sounds.chargeLancer;
+            shootSound = Sounds.shootLancer;
+        }};
 
         //sc1 = new ItemTurret("sc-1"){{
         //    requirements(Category.turret, with(Items.graphite, 50));

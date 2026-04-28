@@ -8,6 +8,7 @@ import arc.struct.*;
 import arc.util.*;
 import mindustry.ai.*;
 import mindustry.ai.types.*;
+import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
@@ -135,7 +136,7 @@ public class SubzeroFalloutUnits {
         speed = 1.2f;
         floorMultiplier = 0.95f;
         immunities.addAll(StatusEffects.burning, StatusEffects.melting);
-        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55), new Rect(0, 14 - 32f, 14, 25)};
+        treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55), new Rect(0, 16 - 32f, 14, 25)};
         treadPullOffset = 3;
         researchCostMultiplier = 0f;
         tankMoveVolume *= 0.32f;
@@ -223,7 +224,7 @@ public class SubzeroFalloutUnits {
 
         engineOffset = 7f;
         setEnginesMirror(
-                new UnitEngine(23 / 4f, -8 / 4f, 2.2f, 300f)
+                new UnitEngine(23 / 4f, -10 / 4f, 2.2f, 300f)
         );
 
         float orbRad = 4f, partRad = 2f;
@@ -259,6 +260,38 @@ public class SubzeroFalloutUnits {
         armor = 1f;
         stepSoundVolume = 0.4f;
         constructor = MechUnit::create;
+
+        weapons.add(new Weapon("proxy-cannon"){{
+            top = false;
+            y = 1f;
+            x = 9f;
+            reload = 60f;
+            recoil = 4f;
+            shake = 2f;
+            ejectEffect = Fx.casing2;
+            shootSound = Sounds.shootArtillery;
+            bullet = new ArtilleryBulletType(2f, 20, "shell"){{
+                hitEffect = Fx.blastExplosion;
+                knockback = 0.8f;
+                lifetime = 120f;
+                width = height = 14f;
+                collides = true;
+                collidesTiles = true;
+                splashDamageRadius = 35f;
+                splashDamage = 80f;
+                backColor = Pal.bulletYellowBack;
+                frontColor = Pal.bulletYellow;
+                trailEffect = Fx.missileTrail;
+                trailInterval = 3f;
+                trailParam = 4f;
+                speed = 3f;
+                damage = 75f;
+                shrinkX = shrinkY = 0f;
+                trailColor = Pal.bulletYellowBack;
+                trailLength = 12;
+                trailWidth = 2.2f;
+            }};
+        }});
     }};
     }
 }
