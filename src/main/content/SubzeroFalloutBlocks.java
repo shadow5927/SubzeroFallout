@@ -211,14 +211,85 @@ public class SubzeroFalloutBlocks {
                 lifetime = 16f;
                 drawSize = 400f;
                 pierceBuilding = true;
+                outlineColor = Pal.darkOutline;
                 length = 152f;
                 ammoMultiplier = 1f;
                 pierceCap = 4;
             }};
+            shootType = new BasicBulletType(){{
+                shootEffect = new MultiEffect(Fx.shootTitan, new WaveEffect(){{
+                    colorTo = Pal.surge;
+                    sizeTo = 26f;
+                    lifetime = 14f;
+                    strokeFrom = 4f;
+                }});
+                smokeEffect = Fx.shootSmokeTitan;
+                hitColor = Pal.surge;
+
+                sprite = "large-orb";
+                trailEffect = Fx.missileTrail;
+                trailInterval = 3f;
+                trailParam = 4f;
+                pierceCap = 2;
+                buildingDamageMultiplier = 0.5f;
+                fragOnHit = false;
+                speed = 5f;
+                damage = 180f;
+                lifetime = 80f;
+                width = height = 16f;
+                backColor = Pal.surge;
+                frontColor = Color.white;
+                shrinkX = shrinkY = 0f;
+                trailColor = Pal.surge;
+                trailLength = 12;
+                trailWidth = 2.2f;
+                despawnEffect = hitEffect = new ExplosionEffect(){{
+                    waveColor = Pal.surge;
+                    smokeColor = Color.gray;
+                    sparkColor = Pal.sap;
+                    waveStroke = 4f;
+                    waveRad = 40f;
+                }};
+
+                despawnSound = Sounds.explosionAfflict;
+                shootSound = Sounds.shootAfflict;
+
+                fragBullet = intervalBullet = new BasicBulletType(3f, 35){{
+                    width = 9f;
+                    hitSize = 5f;
+                    height = 15f;
+                    pierceCap = 3;
+                    lifetime = 28f;
+                    pierceBuilding = true;
+                    hitColor = backColor = trailColor = Pal.surge;
+                    frontColor = Color.white;
+                    trailWidth = 2.1f;
+                    trailLength = 5;
+                    hitEffect = despawnEffect = new WaveEffect(){{
+                        colorFrom = colorTo = Pal.surge;
+                        sizeTo = 4f;
+                        strokeFrom = 4f;
+                        lifetime = 10f;
+                    }};
+                    buildingDamageMultiplier = 0.3f;
+                    homingPower = 0.1f;
+                }};
+
+                bulletInterval = 3f;
+                intervalRandomSpread = 20f;
+                intervalBullets = 2;
+                intervalAngle = 180f;
+                intervalSpread = 300f;
+
+                fragBullets = 20;
+                fragVelocityMin = 0.5f;
+                fragVelocityMax = 1.2f;
+                fragLifeMin = 0.5f;
+            }};
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
                               progress = PartProgress.recoil;
-                              heatColor = Color.valueOf("ff6214");
+                              heatColor = Color.sky.cpy().a(0.9f);
                               mirror = true;
                               under = true;
                               moveX = 2f;
