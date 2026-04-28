@@ -218,7 +218,8 @@ public class SubzeroFalloutBlocks {
             }};
             shootType = new BasicBulletType(){{
                 shootEffect = SubzeroFalloutFx.spearLaserShoot;
-                smokeEffect = Fx.none;
+                smokeEffect = Fx.shootSmokeTitan;
+
                 hitColor = Color.valueOf("8aa3f4");
 
                 sprite = "large-orb";
@@ -249,33 +250,20 @@ public class SubzeroFalloutBlocks {
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
 
-                fragBullet = intervalBullet = new LaserBulletType(35f){{
-                    width = 6f;
-                    hitSize = 5f;
-                    height = 5f;
-                    pierceCap = 3;
-                    lifetime = 8f;
-                    drawSize = 300f;
-                    pierceBuilding = true;
-                    hitColor = backColor = trailColor = Color.valueOf("8aa3f4");
-                    frontColor = Color.white;
-                    trailWidth = 2.1f;
-                    trailLength = 5;
-                    hitEffect = despawnEffect = new WaveEffect(){{
-                        colorFrom = colorTo = Color.valueOf("8aa3f4");
-                        sizeTo = 4f;
-                        strokeFrom = 4f;
-                        lifetime = 10f;
-                    }};
-                    buildingDamageMultiplier = 0.3f;
-                    homingPower = 0.1f;
-                }};
+                fragBullet = new LaserBulletType(35f){{
+                    colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
+                    chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
 
-                bulletInterval = 3f;
-                intervalRandomSpread = 20f;
-                intervalBullets = 2;
-                intervalAngle = 0f;
-                intervalSpread = 300f;
+                    buildingDamageMultiplier = 0.25f;
+                    hitEffect = Fx.hitLancer;
+                    hitSize = 4;
+                    lifetime = 16f;
+                    drawSize = 400f;
+                    pierceBuilding = true;
+                    length = 152f;
+                    ammoMultiplier = 1f;
+                    pierceCap = 4;
+                }};
 
                 fragBullets = 4;
             }};
