@@ -45,13 +45,13 @@ public class SubzeroFalloutEnvironment {
         }};
         obsidian = new Floor("obsidian"){{
             variants = 4;
-            itemDrop = SubzeroFalloutItems.obsidian;
+            itemDrop = SubzeroFalloutItems.obsidianShard;
             playerUnmineable = true;
             attributes.set(Attribute.water, -1f);
         }};
         denseObsidian = new Floor("dense-obsidian"){{
             variants = 4;
-            itemDrop = SubzeroFalloutItems.obsidian;
+            itemDrop = SubzeroFalloutItems.obsidianShard;
             playerUnmineable = true;
             attributes.set(Attribute.water, -1f);
         }};
