@@ -230,7 +230,7 @@ public class SubzeroFalloutBlocks {
                 fragOnHit = false;
                 speed = 5f;
                 damage = 180f;
-                lifetime = 80f;
+                lifetime = 16f;
                 width = height = 16f;
                 backColor = Color.valueOf("8aa3f4");
                 frontColor = Color.white;
@@ -252,7 +252,7 @@ public class SubzeroFalloutBlocks {
                 fragBullet = intervalBullet = new LaserBulletType(35f){{
                     width = 9f;
                     hitSize = 5f;
-                    height = 15f;
+                    height = 5f;
                     pierceCap = 3;
                     lifetime = 28f;
                     pierceBuilding = true;
