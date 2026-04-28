@@ -22,11 +22,9 @@ import static arc.math.Angles.*;
 import static mindustry.Vars.*;
 
 public class SubzeroFalloutFx {
-    public static final Rand rand = new Rand();
-    public static final Vec2 vec = new Vec2(), vec2 = new Vec2();
     public static Effect
 
-    spearLaserShoot = new Effect(21f, e -> {
+            spearLaserShoot = new Effect(21f, e -> {
         color(Color.valueOf("8aa3f4"));
         for(int i : Mathf.signs){
             Drawf.tri(e.x, e.y, 4f * e.fout(), 29f, e.rotation + 90f * i);
