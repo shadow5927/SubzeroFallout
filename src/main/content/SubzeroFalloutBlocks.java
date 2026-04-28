@@ -186,7 +186,7 @@ public class SubzeroFalloutBlocks {
             reload = 100f;
             shake = 1f;
             shootY = -1.3f;
-            range = 128f;
+            range = 138f;
             shootEffect = SubzeroFalloutFx.spearLaserShoot;
             smokeEffect = Fx.none;
             heatColor = Color.blue;
@@ -237,14 +237,6 @@ public class SubzeroFalloutBlocks {
                             moveRot = -7f;
                         }});
             }};
-            shootWarmupSpeed = 0.08f;
-            reload = 80f;
-            shake = 1f;
-            shootEffect = Fx.lancerLaserShoot;
-            smokeEffect = Fx.none;
-            heatColor = Color.blue;
-            chargeSound = Sounds.chargeLancer;
-            shootSound = Sounds.shootLancer;
         }};
 
         //sc1 = new ItemTurret("sc-1"){{
