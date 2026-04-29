@@ -200,7 +200,7 @@ public class SubzeroFalloutBlocks {
             warmupMaintainTime = 120f;
 
             consumePower(6f);
-            
+
             shootType = new BasicBulletType(){{
                 shootEffect = SubzeroFalloutFx.spearLaserShoot;
                 smokeEffect = Fx.shootSmokeTitan;
@@ -214,7 +214,7 @@ public class SubzeroFalloutBlocks {
                 pierceCap = 2;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
-                speed = 5-(float)Math.exp(2);
+                speed = 5;
                 damage = 180f;
                 lifetime = 30f;
                 width = height = 16f;
@@ -253,7 +253,7 @@ public class SubzeroFalloutBlocks {
 
                 fragBullets = 4;
                 fragRandomSpread = 0f;
-                fragAngle = 90f;
+                fragAngle = 600 * (float)Math.toRadians(Math.sin(1)/3) - 4 * 90;
             }};
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
