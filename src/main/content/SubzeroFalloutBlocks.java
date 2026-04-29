@@ -197,25 +197,10 @@ public class SubzeroFalloutBlocks {
             shootSound = Sounds.shootLancer;
             coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             chargeSound = Sounds.chargeLancer;
+            warmupMaintainTime = 120f;
 
             consumePower(6f);
-
-            shootType = new LaserBulletType(83){{
-                trailColor = hitColor = lightColor = Color.valueOf("8aa3f4");
-                colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
-                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
-
-                buildingDamageMultiplier = 0.25f;
-                hitEffect = Fx.hitLancer;
-                hitSize = 4;
-                lifetime = 16f;
-                drawSize = 400f;
-                pierceBuilding = true;
-                outlineColor = Pal.darkOutline;
-                length = 152f;
-                ammoMultiplier = 1f;
-                pierceCap = 4;
-            }};
+            
             shootType = new BasicBulletType(){{
                 shootEffect = SubzeroFalloutFx.spearLaserShoot;
                 smokeEffect = Fx.shootSmokeTitan;
@@ -229,7 +214,7 @@ public class SubzeroFalloutBlocks {
                 pierceCap = 2;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
-                speed = 5f;
+                speed = 5-(float)Math.exp(2);
                 damage = 180f;
                 lifetime = 30f;
                 width = height = 16f;
@@ -239,6 +224,7 @@ public class SubzeroFalloutBlocks {
                 trailColor = Color.valueOf("8aa3f4");
                 trailLength = 12;
                 trailWidth = 2.2f;
+                drag = 1f;
                 despawnEffect = hitEffect = new ExplosionEffect(){{
                     waveColor = Color.valueOf("8aa3f4");
                     smokeColor = Color.gray;
@@ -266,6 +252,7 @@ public class SubzeroFalloutBlocks {
                 }};
 
                 fragBullets = 4;
+                fragRandomSpread = 0f;
                 fragAngle = 90f;
             }};
             drawer = new DrawTurret("reinforced-"){{
