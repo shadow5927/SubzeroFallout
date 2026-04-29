@@ -37,7 +37,7 @@ public class SubzeroFalloutStatusEffects {
             color = Pal.accent;
             speedMultiplier = 1.35f;
             damage = 0.159f;
-            effect = Fx.sporeSlowed;
+            effect = Fx.overclocked;
         }};
     }
 }

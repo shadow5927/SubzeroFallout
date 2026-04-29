@@ -185,7 +185,7 @@ public class SubzeroFalloutBlocks {
             recoil = 2f;
             reload = 100f;
             shake = 1f;
-            shootY = -1.3f;
+            shootY = -1.2f;
             range = 138f;
             shootEffect = SubzeroFalloutFx.spearLaserShoot;
             smokeEffect = Fx.none;
@@ -210,7 +210,6 @@ public class SubzeroFalloutBlocks {
                 hitColor = Color.valueOf("8aa3f4");
 
                 sprite = "large-orb";
-                backSprite = "spear-orb-back";
                 trailEffect = Fx.missileTrail;
                 trailInterval = 3f;
                 trailParam = 4f;
