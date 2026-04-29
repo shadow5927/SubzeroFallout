@@ -225,7 +225,7 @@ public class SubzeroFalloutBlocks {
                 trailColor = Color.valueOf("8aa3f4");
                 trailLength = 12;
                 trailWidth = 2.2f;
-                drag = 1f;
+                drag = 0.1f;
                 fragBullets = 4;
                 fragRandomSpread = 0f;
                 fragSpread = 90f;
