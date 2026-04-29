@@ -225,6 +225,10 @@ public class SubzeroFalloutBlocks {
                 trailLength = 12;
                 trailWidth = 2.2f;
                 drag = 1f;
+                fragBullets = 4;
+                fragRandomSpread = 0f;
+                fragSpread = 90f;
+
                 despawnEffect = hitEffect = new ExplosionEffect(){{
                     waveColor = Color.valueOf("8aa3f4");
                     smokeColor = Color.gray;
@@ -232,10 +236,8 @@ public class SubzeroFalloutBlocks {
                     waveStroke = 4f;
                     waveRad = 40f;
                 }};
-
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
-
                 fragBullet = new LaserBulletType(35f){{
                     colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
                     chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
@@ -250,9 +252,6 @@ public class SubzeroFalloutBlocks {
                     ammoMultiplier = 1f;
                     pierceCap = 4;
                 }};
-
-                fragBullets = 4;
-                fragSpread = 90f;
             }};
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
