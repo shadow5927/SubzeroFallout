@@ -217,7 +217,7 @@ public class SubzeroFalloutBlocks {
                 pierceCap = 2;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
-                speed = 5.4f;
+                speed = 5.6f;
                 damage = 60f;
                 lifetime = 50f;
                 width = height = 16f;
@@ -227,7 +227,7 @@ public class SubzeroFalloutBlocks {
                 trailColor = Color.valueOf("8aa3f4");
                 trailLength = 12;
                 trailWidth = 2.2f;
-                drag = 0.05f;
+                drag = 0.03f;
                 fragBullets = 4;
                 fragRandomSpread = 0f;
                 fragSpread = 90f;
