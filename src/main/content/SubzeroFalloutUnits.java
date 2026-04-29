@@ -128,8 +128,8 @@ public class SubzeroFalloutUnits {
     flare = new TankUnitType("flare"){{
         hitSize = 12f;
         range = 60f;
-        health = 550;
-        armor = 5f;
+        health = 650;
+        armor = 4f;
         itemCapacity = 0;
         rotateSpeed = 3.5f;
         rotateMoveFirst = true;
@@ -159,7 +159,7 @@ public class SubzeroFalloutUnits {
             continuous = alwaysContinuous = true;
             shootSound = Sounds.shootSublimate;
             bullet = new ContinuousFlameBulletType(){{
-                damage = 25f;
+                damage = 20f;
                 length = 60f;
                 width = 3f;
                 knockback = 1f;
