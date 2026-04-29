@@ -260,7 +260,6 @@ public class SubzeroFalloutUnits {
         range = 75f;
         armor = 1f;
         stepSoundVolume = 0.4f;
-        constructor = MechUnit::create;
 
         weapons.add(new Weapon("proxy-cannon"){{
             top = false;
@@ -279,20 +278,21 @@ public class SubzeroFalloutUnits {
                 collides = true;
                 collidesTiles = true;
                 splashDamageRadius = 35f;
-                splashDamage = 80f;
+                splashDamage = 15f;
                 backColor = Pal.bulletYellowBack;
                 frontColor = Pal.bulletYellow;
                 trailEffect = Fx.missileTrail;
                 trailInterval = 3f;
                 trailParam = 4f;
                 speed = 3f;
-                damage = 75f;
+                damage = 25f;
                 shrinkX = shrinkY = 0f;
                 trailColor = Pal.bulletYellowBack;
                 trailLength = 12;
-                trailWidth = 2.2f;
+                trailWidth = 1f;
             }};
         }});
+        constructor = MechUnit::create;
     }};
     }
 }
