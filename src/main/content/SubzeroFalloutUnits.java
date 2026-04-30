@@ -42,7 +42,7 @@ public class SubzeroFalloutUnits {
     //ALTECORIS
 
     //LEGION
-    proxy
+    proxy, unify
     ;
 
     public static void load(){
@@ -205,7 +205,6 @@ public class SubzeroFalloutUnits {
         //defaultCommand = ModUnitCommand.SupportAlly;
         flying = true;
         lowAltitude = false;
-        isEnemy = false;
         outlineColor = Pal.darkOutline;
         speed = 2.7f;
         accel = 0.08f;
@@ -292,6 +291,92 @@ public class SubzeroFalloutUnits {
 
         }});
         constructor = MechUnit::create;
+    }};
+
+    unify = new UnitType("unify"){{
+        speed = 0.72f;
+        drag = 0.11f;
+        hitSize = 9f;
+        rotateSpeed = 3f;
+        health = 680;
+        armor = 4f;
+        legStraightness = 0.3f;
+        stepShake = 0f;
+        stepSound = Sounds.walkerStepTiny;
+        stepSoundVolume = 0.4f;
+
+        legCount = 4;
+        legLength = 8f;
+        lockLegBase = true;
+        legContinuousMove = true;
+        legExtension = -2f;
+        legBaseOffset = 3f;
+        legMaxLength = 1.1f;
+        legMinLength = 0.2f;
+        legLengthScl = 0.96f;
+        legForwardScl = 1.1f;
+        legGroupSize = 3;
+        rippleScale = 0.2f;
+
+        legMoveSpace = 1f;
+        allowLegStep = true;
+        hovering = true;
+        legPhysicsLayer = false;
+
+        shadowElevation = 0.1f;
+        groundLayer = Layer.legUnit - 1f;
+        targetAir = false;
+        researchCostMultiplier = 0f;
+
+        weapons.add(new Weapon("unify-weapon"){{
+            shootSound = Sounds.shootMerui;
+            mirror = false;
+            showStatSprite = false;
+            x = 0f;
+            y = 1f;
+            shootY = 4f;
+            reload = 63f;
+            cooldownTime = 42f;
+            heatColor = Pal.turretHeat;
+
+            bullet = new ArtilleryBulletType(3f, 40){{
+                shootEffect = new MultiEffect(Fx.shootSmallColor, new Effect(9, e -> {
+                    color(Color.white, e.color, e.fin());
+                    stroke(0.7f + e.fout());
+                    Lines.square(e.x, e.y, e.fin() * 5f, e.rotation + 45f);
+
+                    Drawf.light(e.x, e.y, 23f, e.color, e.fout() * 0.7f);
+                }));
+
+                collidesTiles = true;
+                backColor = hitColor = Pal.techBlue;
+                frontColor = Color.white;
+
+                knockback = 0.8f;
+                lifetime = 46f;
+                width = height = 9f;
+                splashDamageRadius = 19f;
+                splashDamage = 30f;
+
+                trailLength = 27;
+                trailWidth = 2.5f;
+                trailEffect = Fx.none;
+                trailColor = backColor;
+
+                trailInterp = Interp.slope;
+
+                shrinkX = 0.6f;
+                shrinkY = 0.2f;
+
+                hitEffect = despawnEffect = new MultiEffect(Fx.hitSquaresColor, new WaveEffect(){{
+                    colorFrom = colorTo = Pal.techBlue;
+                    sizeTo = splashDamageRadius + 2f;
+                    lifetime = 9f;
+                    strokeFrom = 2f;
+                }});
+            }};
+        }});
+
     }};
     }
 }
