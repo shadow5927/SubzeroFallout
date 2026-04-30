@@ -156,7 +156,7 @@ public class SubzeroFalloutUnits {
             cooldownTime = 30f;
             heatColor = Color.valueOf("f9350f");
             x = 0f;
-            y = -0.75f;
+            y = 0f;
             continuous = alwaysContinuous = true;
             shootSound = Sounds.shootSublimate;
             bullet = new ContinuousFlameBulletType(){{
@@ -257,7 +257,7 @@ public class SubzeroFalloutUnits {
         outlineColor = Pal.darkOutline;
         drawCell = false;
         speed = 0.55f;
-        hitSize = 8f;
+        hitSize = 8.3f;
         health = 740f;
         armor = 2f;
         stepSoundVolume = 0.4f;
@@ -266,7 +266,7 @@ public class SubzeroFalloutUnits {
             top = false;
             y = 0f;
             x = 4.8f;
-            reload = 60f;
+            reload = 75f;
             recoil = 1f;
             shake = 1f;
             ejectEffect = Fx.casing2;
