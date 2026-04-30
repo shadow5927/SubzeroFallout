@@ -126,7 +126,7 @@ public class SubzeroFalloutUnits {
     }};
 
     flare = new TankUnitType("flare"){{
-        hitSize = 13f;
+        hitSize = 14f;
         range = 60f;
         health = 650;
         armor = 4f;
@@ -212,7 +212,7 @@ public class SubzeroFalloutUnits {
         health = 300f;
         armor = 3f;
         payloadCapacity = (2f * 2f) * tilePayload;
-        hitSize = 12f;
+        hitSize = 12.5f;
         itemCapacity = 10;
         targetPriority = -2f;
         faceTarget = false;
@@ -298,7 +298,7 @@ public class SubzeroFalloutUnits {
         drawCell = false;
         speed = 0f;
         drag = 0.11f;
-        hitSize = 11f;
+        hitSize = 12f;
         rotateSpeed = 3f;
         health = 1040;
         armor = 7f;
@@ -309,17 +309,15 @@ public class SubzeroFalloutUnits {
 
         legCount = 4;
         legLength = 12f;
-        lockLegBase = true;
-        legContinuousMove = true;
         legExtension = -2f;
-        legBaseOffset = 3f;
+        legBaseOffset = 2f;
         legMaxLength = 1.1f;
         legMinLength = 0.2f;
         legLengthScl = 0.96f;
-        legForwardScl = 1.1f;
+        legForwardScl = 0.8f;
         legGroupSize = 3;
         rippleScale = 0.2f;
-        legMoveSpace = 1f;
+        legMoveSpace = 1.4f;
         allowLegStep = true;
         hovering = true;
         legPhysicsLayer = false;
@@ -328,6 +326,7 @@ public class SubzeroFalloutUnits {
         researchCostMultiplier = 0f;
 
         weapons.add(new Weapon("subzerofallout-unify-weapon"){{
+            top = false;
             shootSound = Sounds.shootMerui;
             mirror = false;
             showStatSprite = true;
