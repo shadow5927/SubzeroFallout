@@ -265,34 +265,31 @@ public class SubzeroFalloutUnits {
 
         weapons.add(new Weapon("subzerofallout-proxy-cannon"){{
             top = false;
-            y = 1f;
-            x = 5f;
+            y = 0f;
+            x = 4.9f;
             reload = 60f;
             recoil = 2f;
             shake = 2f;
             ejectEffect = Fx.casing2;
             shootSound = Sounds.shootSalvo;
-            bullet = new ArtilleryBulletType(2f, 20, "shell"){{
+            bullet = new BasicBulletType(4f, 20){{
+                sprite = "missile-large";
+                smokeEffect = Fx.shootBigSmoke;
+                shootEffect = Fx.shootBigColor;
                 hitEffect = Fx.blastExplosion;
-                knockback = 0.8f;
-                lifetime = 80f;
-                width = height = 9f;
-                collides = true;
-                collidesTiles = true;
                 splashDamageRadius = 35f;
                 splashDamage = 15f;
-                backColor = Color.valueOf("c8af57");
-                frontColor = Color.valueOf("fffd8b");
-                trailEffect = Fx.missileTrail;
-                trailInterval = 0f;
-                trailParam = 4f;
-                speed = 3f;
-                damage = 25f;
-                shrinkX = shrinkY = 0f;
-                trailColor = Color.valueOf("c8af57");
-                trailLength = 12;
+                width = 6f;
+                height = 9f;
+                lifetime = 40f;
+                hitSize = 4f;
+                hitColor = backColor = trailColor = Color.valueOf("fffd8b");
+                frontColor = Color.white;
                 trailWidth = 2f;
+                trailLength = 12;
+                despawnEffect = hitEffect = Fx.hitBulletColor;
             }};
+
         }});
         constructor = MechUnit::create;
     }};
