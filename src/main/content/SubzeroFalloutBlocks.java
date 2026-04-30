@@ -1,6 +1,7 @@
 package main.content;
 
 import arc.graphics.*;
+import arc.graphics.g2d.Lines;
 import arc.math.*;
 import arc.struct.*;
 import mindustry.*;
@@ -36,6 +37,9 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
+
+import static arc.graphics.g2d.Draw.color;
+import static arc.graphics.g2d.Lines.stroke;
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
@@ -250,13 +254,13 @@ public class SubzeroFalloutBlocks {
                 fragRandomSpread = 0f;
                 fragSpread = 90f;
 
-                despawnEffect = hitEffect = new ExplosionEffect(){{
-                    waveColor = Color.valueOf("8aa3f4");
-                    smokeColor = Color.gray;
-                    sparkColor = Color.valueOf("8aa3f4");
-                    waveStroke = 4f;
-                    waveRad = 40f;
-                }};
+                despawnEffect = hitEffect = new MultiEffect(Fx.shootSmallColor, new Effect(9, e -> {
+                    color(Color.white, e.color, e.fin());
+                    stroke(0.7f + e.fout());
+                    Lines.square(e.x, e.y, e.fin() * 7f, e.rotation + 45f);
+
+                    Drawf.light(e.x, e.y, 23f, e.color, e.fout() * 0.7f);
+                }));
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
                 fragBullet = new LaserBulletType(13f){{
