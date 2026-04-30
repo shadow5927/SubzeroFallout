@@ -52,7 +52,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Power
     //windmill, capacitor, thermalSiphon,
         //Tyr Heat
-    //carbonHeater,
+    carbonHeater,
         //Tyr Units
     //rapidAssembler, supportAssembler, specialistAssembler,
         //Tyr Payload
@@ -100,7 +100,7 @@ public class SubzeroFalloutBlocks {
 
         ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
             requirements(Category.crafting, with(Items.graphite, 50));
-            size = 3;
+            size = 4;
             itemCapacity = 25;
             heatRequirement = 5f;
             craftTime = 60f * 2f;
@@ -143,15 +143,15 @@ public class SubzeroFalloutBlocks {
         //    ambientSoundVolume = 0.04f;
         //}};
 
-        //carbonHeater = new HeatProducer("carbon-heater"){{
-        //    requirements(Category.crafting, with(Items.graphite, 50));
-        //    size = 2;
-        //    liquidCapacity = 10f;
-        //    heatOutput = 2.5f;
-        //    craftTime = 60f * 9f;
-        //    ambientSound = Sounds.loopHum;
-        //    consumeLiquid(SubzeroFalloutLiquids.carbon, 4f / 60f);
-        //}};
+        carbonHeater = new HeatProducer("carbon-heater"){{
+            requirements(Category.crafting, with(Items.graphite, 50));
+            size = 2;
+            liquidCapacity = 10f;
+            heatOutput = 2.5f;
+            craftTime = 60f * 9f;
+            ambientSound = Sounds.loopHum;
+            consumeLiquid(SubzeroFalloutLiquids.carbon, 4f / 60f);
+        }};
 
         //rapidAssembler = new UnitFactory("rapid-assembler"){{
         //    requirements(Category.units, with(Items.graphite, 50));
