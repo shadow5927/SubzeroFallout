@@ -189,7 +189,7 @@ public class SubzeroFalloutBlocks {
             researchCostMultiplier = 0.1f;
         }};
 
-        ironShieldingLarge = new Wall("iron-shielding"){{
+        ironShieldingLarge = new Wall("iron-shielding-large"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 32));
             health = 150 * 4 * 4;
             armor = 5f;
