@@ -146,6 +146,7 @@ public class SubzeroFalloutUnits {
         weapons.add(new Weapon("flare-weapon"){{
             layerOffset = 0.01f;
             showStatSprite = true;
+            top = true;
             reload = 60f;
             shootY = 4.5f;
             recoil = 0.5f;
@@ -162,6 +163,7 @@ public class SubzeroFalloutUnits {
                 damage = 20f;
                 length = 60f;
                 width = 3f;
+                flareWidth = 2f;
                 knockback = 1f;
                 pierceCap = 2;
                 timescaleDamage = true;
@@ -200,7 +202,7 @@ public class SubzeroFalloutUnits {
     //}};
 
     nerve = new UnitType("nerve"){{
-        defaultCommand = UnitCommand.repairCommand;
+        //defaultCommand = ModUnitCommand.SupportAlly;
         flying = true;
         lowAltitude = false;
         isEnemy = false;

@@ -58,7 +58,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Payload
         //Tyr Defense
         //Tyr Walls
-    ironShielding, ironShieldingLarge,
+    ironWall, ironWallLarge,
         //Tyr Turrets
     spear //sc1
     //ALTECORIS
@@ -182,17 +182,17 @@ public class SubzeroFalloutBlocks {
         //    size = 4;
         //}};
 
-        ironShielding = new Wall("iron-shielding"){{
+        ironWall = new Wall("iron-shielding"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 8));
             health = 150 * 4;
-            armor = 5f;
+            armor = 8f;
             researchCostMultiplier = 0.1f;
         }};
 
-        ironShieldingLarge = new Wall("iron-shielding-large"){{
+        ironWallLarge = new Wall("iron-shielding-large"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 32));
             health = 150 * 4 * 4;
-            armor = 5f;
+            armor = 8f;
             size = 2;
             researchCostMultiplier = 0.1f;
         }};
