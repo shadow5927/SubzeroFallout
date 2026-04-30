@@ -259,35 +259,35 @@ public class SubzeroFalloutUnits {
         speed = 0.55f;
         hitSize = 8f;
         health = 740f;
-        range = 75f;
         armor = 2f;
         stepSoundVolume = 0.4f;
 
         weapons.add(new Weapon("subzerofallout-proxy-cannon"){{
             top = false;
             y = 0f;
-            x = 4.9f;
+            x = 4.8f;
             reload = 60f;
-            recoil = 2f;
-            shake = 2f;
+            recoil = 1f;
+            shake = 1f;
             ejectEffect = Fx.casing2;
             shootSound = Sounds.shootSalvo;
+            shoot.shots = 2;
+            shoot.shotDelay = 6f;
             bullet = new BasicBulletType(4f, 20){{
                 sprite = "missile-large";
                 smokeEffect = Fx.shootBigSmoke;
                 shootEffect = Fx.shootBigColor;
-                hitEffect = Fx.blastExplosion;
                 splashDamageRadius = 35f;
                 splashDamage = 15f;
                 width = 6f;
                 height = 9f;
-                lifetime = 40f;
+                lifetime = 32f;
                 hitSize = 4f;
                 hitColor = backColor = trailColor = Color.valueOf("fffd8b");
                 frontColor = Color.white;
                 trailWidth = 2f;
                 trailLength = 12;
-                despawnEffect = hitEffect = Fx.hitBulletColor;
+                despawnEffect = hitEffect = Fx.blastExplosion;
             }};
 
         }});
