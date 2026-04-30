@@ -255,7 +255,7 @@ public class SubzeroFalloutUnits {
 
     proxy = new UnitType("proxy"){{
         outlineColor = Pal.darkOutline;
-        drawCell = false;
+        drawCell = false;c8af57
         speed = 0.55f;
         hitSize = 8f;
         health = 740f;
@@ -264,13 +264,13 @@ public class SubzeroFalloutUnits {
         stepSoundVolume = 0.4f;
 
         weapons.add(new Weapon("subzerofallout-proxy-cannon"){{
-            top = true;
+            top = false;
             y = 1f;
             x = 5f;
             reload = 60f;
-            recoil = 4f;
+            recoil = 2f;
             shake = 2f;
-            ejectEffect = Fx.casing1;
+            ejectEffect = Fx.casing2;
             shootSound = Sounds.shootSalvo;
             bullet = new ArtilleryBulletType(2f, 20, "shell"){{
                 hitEffect = Fx.blastExplosion;
@@ -281,15 +281,15 @@ public class SubzeroFalloutUnits {
                 collidesTiles = true;
                 splashDamageRadius = 35f;
                 splashDamage = 15f;
-                backColor = Pal.bulletYellowBack;
-                frontColor = Pal.bulletYellow;
+                backColor = Color.valueOf("c8af57");
+                frontColor = Color.valueOf("fffd8b");
                 trailEffect = Fx.missileTrail;
-                trailInterval = 3f;
+                trailInterval = 0f;
                 trailParam = 4f;
                 speed = 3f;
                 damage = 25f;
                 shrinkX = shrinkY = 0f;
-                trailColor = Pal.bulletYellowBack;
+                trailColor = Color.valueOf("c8af57");
                 trailLength = 12;
                 trailWidth = 2f;
             }};
