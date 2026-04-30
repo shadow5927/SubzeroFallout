@@ -45,7 +45,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Cores
     coreRampart,
         //Tyr Crafting
-    //carbonicExtractor, ferrumSmelter,
+    carbonicExtractor, ferrumSmelter,
         //Tyr Production
         //Tyr Transport
     //bulkDriver,
@@ -73,41 +73,43 @@ public class SubzeroFalloutBlocks {
             armor = 5f;
             incinerateNonBuildable = true;
             requiresCoreZone = true;
-            
+            solid = false;
+
             buildCostMultiplier = 0.7f;
             unitCapModifier = 10;
             researchCostMultiplier = 0.06f;
         }};
 
-        //carbonicExtractor = new AttributeCrafter("carbonic-extractor"){{
-        //   requirements(Category.crafting, with(Items.graphite, 50));
-        //   size = 3;
-        //   attribute = Attribute.steam;
-        //   minEfficiency = 9f - 0.0001f;
-        //   baseEfficiency = 0f;
-        //   displayEfficiency = false;
-        //   craftTime = 120f;
-        //   hasLiquids = true;
-        //   boostScale = 1f / 9f;
-        //   itemCapacity = 0;
-        //   outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 30f / 60f);
-        //   consumePower(2.5f);
-        //   liquidCapacity = 60f;
-        //   ambientSound = Sounds.loopHum;
-        //   ambientSoundVolume = 0.06f;
-        //}};
+        carbonicExtractor = new AttributeCrafter("carbonic-extractor"){{
+           requirements(Category.crafting, with(Items.graphite, 50));
+           size = 3;
+           attribute = Attribute.steam;
+           minEfficiency = 9f - 0.0001f;
+           baseEfficiency = 0f;
+           displayEfficiency = false;
+           craftTime = 120f;
+           hasLiquids = true;
+           boostScale = 1f / 9f;
+           itemCapacity = 0;
+           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 30f / 60f);
+           consumePower(2.5f);
+           liquidCapacity = 60f;
+           ambientSound = Sounds.loopHum;
+           ambientSoundVolume = 0.06f;
+        }};
 
-        //ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
-        //    requirements(Category.crafting, with(Items.graphite, 50));
-        //    size = 3;
-        //    itemCapacity = 25;
-        //    heatRequirement = 5f;
-        //    craftTime = 60f * 2f;
-        //    consumeItem(Items.silicon, 3);
-        //    outputItem = new ItemStack(SubzeroFalloutItems.iron, 1);
-        //    ambientSound = Sounds.loopSmelter;
-        //    ambientSoundVolume = 0.9f;
-        //}};
+        ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
+            requirements(Category.crafting, with(Items.graphite, 50));
+            size = 3;
+            itemCapacity = 25;
+            heatRequirement = 5f;
+            craftTime = 60f * 2f;
+            consumeItem(SubzeroFalloutItems.magnetiteFragment, 3);
+            consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
+            outputItem = new ItemStack(SubzeroFalloutItems.iron, 1);
+            ambientSound = Sounds.loopSmelter;
+            ambientSoundVolume = 0.9f;
+        }};
 
         //bulkDriver = new MassDriver("bulk-driver"){{
         //    requirements(Category.distribution, with(Items.graphite, 50));
@@ -208,7 +210,7 @@ public class SubzeroFalloutBlocks {
                 smokeEffect = Fx.shootSmokeTitan;
 
                 hitColor = Color.valueOf("8aa3f4");
-
+                hitSound = Sounds.explosionAfflict;
                 sprite = "large-orb";
                 trailEffect = Fx.missileTrail;
                 trailInterval = 3f;
@@ -250,7 +252,7 @@ public class SubzeroFalloutBlocks {
                     lifetime = 16f;
                     drawSize = 400f;
                     pierceBuilding = true;
-                    length = 152f;
+                    length = 96f;
                     ammoMultiplier = 1f;
                     pierceCap = 4;
                 }};

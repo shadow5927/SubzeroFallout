@@ -256,19 +256,19 @@ public class SubzeroFalloutUnits {
         drawCell = false;
         speed = 0.55f;
         hitSize = 8f;
-        health = 120f;
+        health = 740f;
         range = 75f;
-        armor = 1f;
+        armor = 2f;
         stepSoundVolume = 0.4f;
 
         weapons.add(new Weapon("proxy-cannon"){{
-            top = false;
+            top = true;
             y = 1f;
             x = 5f;
             reload = 60f;
             recoil = 4f;
             shake = 2f;
-            ejectEffect = Fx.casing2;
+            ejectEffect = Fx.casing1;
             shootSound = Sounds.shootSalvo;
             bullet = new ArtilleryBulletType(2f, 20, "shell"){{
                 hitEffect = Fx.blastExplosion;
@@ -289,7 +289,7 @@ public class SubzeroFalloutUnits {
                 shrinkX = shrinkY = 0f;
                 trailColor = Pal.bulletYellowBack;
                 trailLength = 12;
-                trailWidth = 1f;
+                trailWidth = 2f;
             }};
         }});
         constructor = MechUnit::create;

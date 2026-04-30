@@ -11,7 +11,7 @@ import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
 
 public class SubzeroFalloutEnvironment {
-    public static Floor
+        public static Floor
     //TYR
     //Volcanic Masses
     hearthStone, obsidian, denseObsidian, //primordialStone, carbonChar, ash,
@@ -32,29 +32,34 @@ public class SubzeroFalloutEnvironment {
     public static Block
     hearthStoneWall, obsidianWall, //primordialStoneWall, ashWall,
     irradiatedIceWall, dolomiteWall,
-    irradiatedSnowWall, greenschistWall //quicksilverStoneWall,
+    irradiatedSnowWall, greenschistWall, //quicksilverStoneWall,
     //tyrianStoneWall, onyxStoneWall,
     //opalStoneWall,
     //blackIceWall,
     //fortressWall, ruinedFortressWall, tyrianPanelWall, forceWall
+    //Ores
+    oreMagnetite, wallOreMagnetite, oreNickel
     ;
     public static void load(){
         hearthStone = new Floor("hearth-stone"){{
             variants = 4;
             attributes.set(Attribute.water, -1f);
         }};
+
         obsidian = new Floor("obsidian"){{
             variants = 4;
             itemDrop = SubzeroFalloutItems.obsidianShard;
             playerUnmineable = true;
             attributes.set(Attribute.water, -1f);
         }};
+
         denseObsidian = new Floor("dense-obsidian"){{
             variants = 4;
             itemDrop = SubzeroFalloutItems.obsidianShard;
             playerUnmineable = true;
             attributes.set(Attribute.water, -1f);
         }};
+
         irradiatedIce = new Floor("irradiated-ice"){{
             variants = 4;
             dragMultiplier = 0.35f;
@@ -62,21 +67,26 @@ public class SubzeroFalloutEnvironment {
             attributes.set(Attribute.water, 0.4f);
             albedo = 0.65f;
         }};
+
         irradiatedSnow = new Floor("irradiated-snow"){{
             variants = 4;
             attributes.set(Attribute.water, 0.2f);
             albedo = 0.7f;
         }};
+
         greenschist = new Floor("greenschist"){{
             variants = 3;
         }};
+
         dolomite = new Floor("dolomite-stone"){{
             variants = 4;
         }};
+
         smoothDolomite = new Floor("smooth-dolomite"){{
             variants = 4;
             dragMultiplier = 0.05f;
         }};
+
         ruinedCoreZone = new Floor("ruined-core-zone"){{
             variants = 3;
             allowCorePlacement = false;
@@ -87,26 +97,39 @@ public class SubzeroFalloutEnvironment {
             hearthStone.asFloor().wall = this;
             attributes.set(Attribute.sand, 1f);
         }};
+
         obsidianWall = new StaticWall("obsidian-wall"){{
             variants = 3;
             obsidian.asFloor().wall = denseObsidian.asFloor().wall = this;
             itemDrop = SubzeroFalloutItems.obsidianShard;
         }};
+
         irradiatedIceWall = new StaticWall("irradiated-ice-wall"){{
             variants = 4;
             irradiatedIce.asFloor().wall = this;
         }};
+
         irradiatedSnowWall = new StaticWall("irradiated-snow-wall"){{
             variants = 4;
             irradiatedSnow.asFloor().wall = this;
         }};
+
         greenschistWall = new StaticWall("greenschist-wall"){{
             variants = 3;
             greenschist.asFloor().wall = this;
         }};
+
         dolomiteWall = new StaticWall("dolomite-stone-wall"){{
             variants = 4;
             dolomite.asFloor().wall = smoothDolomite.asFloor().wall = this;
         }};
+
+        oreMagnetite = new OreBlock("ore-magnetite", SubzeroFalloutItems.magnetiteFragment);
+
+        wallOreMagnetite = new OreBlock("ore-wall-magnetite", SubzeroFalloutItems.magnetiteFragment){{
+            wallOre = true;
+        }};
+
+        oreNickel = new OreBlock("ore-nickel", SubzeroFalloutItems.nickel);
     }
 }

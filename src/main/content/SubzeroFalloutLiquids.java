@@ -8,7 +8,7 @@ import mindustry.type.Liquid;
 
 public class SubzeroFalloutLiquids {
     public static Liquid
-        carbon, helium
+        carbon, helium, argon
     ;
 
     public static void load(){
@@ -17,7 +17,10 @@ public class SubzeroFalloutLiquids {
             barColor = Color.valueOf("1D1D25");
             flammability = 3f;
         }};
-        helium = new Liquid("helium", Color.valueOf("DAF5DF")){{
+        helium = new Liquid("helium", Color.valueOf("a07856")){{
+            gas = true;
+        }};
+        argon = new Liquid("argon", Color.valueOf("af8ed8")){{
             gas = true;
         }};
     }
