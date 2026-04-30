@@ -58,6 +58,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Payload
         //Tyr Defense
         //Tyr Walls
+    ironShielding, ironShieldingLarge,
         //Tyr Turrets
     spear //sc1
     //ALTECORIS
@@ -91,7 +92,7 @@ public class SubzeroFalloutBlocks {
            hasLiquids = true;
            boostScale = 1f / 9f;
            itemCapacity = 0;
-           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 30f / 60f);
+           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 22f / 60f);
            consumePower(2.5f);
            liquidCapacity = 60f;
            ambientSound = Sounds.loopHum;
@@ -103,10 +104,10 @@ public class SubzeroFalloutBlocks {
             size = 4;
             itemCapacity = 25;
             heatRequirement = 5f;
-            craftTime = 60f * 2f;
-            consumeItem(SubzeroFalloutItems.magnetiteFragment, 3);
+            craftTime = 60f * 0.5f;
+            consumeItem(SubzeroFalloutItems.magnetiteFragment, 4);
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
-            outputItem = new ItemStack(SubzeroFalloutItems.iron, 1);
+            outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
             ambientSoundVolume = 0.9f;
         }};
@@ -180,6 +181,21 @@ public class SubzeroFalloutBlocks {
         //    consumePower(1.5f);
         //    size = 4;
         //}};
+
+        ironShielding = new Wall("iron-shielding"){{
+            requirements(Category.defense, with(SubzeroFalloutItems.iron, 8));
+            health = 150 * 4;
+            armor = 5f;
+            researchCostMultiplier = 0.1f;
+        }};
+
+        ironShieldingLarge = new Wall("iron-shielding"){{
+            requirements(Category.defense, with(SubzeroFalloutItems.iron, 32));
+            health = 150 * 4 * 4;
+            armor = 5f;
+            size = 2;
+            researchCostMultiplier = 0.1f;
+        }};
 
         spear = new PowerTurret("spear"){{
             requirements(Category.turret, with(Items.graphite, 85, Items.silicon, 170, SubzeroFalloutItems.iron, 90));
