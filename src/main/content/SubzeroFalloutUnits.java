@@ -111,7 +111,7 @@ public class SubzeroFalloutUnits {
 
             drawBuildBeam = false;
 
-            weapons.add(new BuildWeapon("enkindle-weapon"){{
+            weapons.add(new BuildWeapon("SubzeroFallout-enkindle-weapon"){{
                 name = "enkindle-weapon";
                 rotate = true;
                 rotateSpeed = 7f;
@@ -143,7 +143,7 @@ public class SubzeroFalloutUnits {
         tankMoveSound = Sounds.tankMoveSmall;
 
 
-        weapons.add(new Weapon("flare-weapon"){{
+        weapons.add(new Weapon("SubzeroFallout-flare-weapon"){{
             layerOffset = 0.01f;
             showStatSprite = true;
             top = true;
@@ -163,7 +163,7 @@ public class SubzeroFalloutUnits {
                 damage = 20f;
                 length = 60f;
                 width = 3f;
-                flareWidth = 2f;
+                flareLength = 20f;
                 knockback = 1f;
                 pierceCap = 2;
                 timescaleDamage = true;
@@ -263,7 +263,7 @@ public class SubzeroFalloutUnits {
         armor = 2f;
         stepSoundVolume = 0.4f;
 
-        weapons.add(new Weapon("proxy-cannon"){{
+        weapons.add(new Weapon("SubzeroFallout-proxy-cannon"){{
             top = true;
             y = 1f;
             x = 5f;

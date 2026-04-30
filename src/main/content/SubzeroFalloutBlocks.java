@@ -104,12 +104,13 @@ public class SubzeroFalloutBlocks {
             size = 4;
             itemCapacity = 25;
             heatRequirement = 5f;
-            craftTime = 60f * 0.5f;
+            maxEfficiency = 1f;
+            craftTime = 60f * 0.75f;
             consumeItem(SubzeroFalloutItems.magnetiteFragment, 4);
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
-            ambientSoundVolume = 0.9f;
+            ambientSoundVolume = 0.7f;
         }};
 
         //bulkDriver = new MassDriver("bulk-driver"){{
