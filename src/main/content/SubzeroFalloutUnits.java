@@ -376,7 +376,7 @@ public class SubzeroFalloutUnits {
                 }});
             }};
         }});
-
+        constructor = LegsUnit::create;
     }};
     }
 }
