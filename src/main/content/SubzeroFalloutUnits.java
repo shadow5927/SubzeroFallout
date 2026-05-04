@@ -331,7 +331,7 @@ public class SubzeroFalloutUnits {
             mirror = true;
             alternate = true;
             showStatSprite = true;
-            x = 2f;
+            x = 3f;
             y = 0.5f;
             shootY = 4f;
             reload = 63f;
