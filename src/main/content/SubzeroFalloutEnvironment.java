@@ -38,7 +38,7 @@ public class SubzeroFalloutEnvironment {
     //blackIceWall,
     //fortressWall, ruinedFortressWall, tyrianPanelWall, forceWall
     //Ores
-    oreMagnetite, wallOreMagnetite, oreNickel
+    oreHaematite, wallOreHaematite, oreNickel
     ;
     public static void load(){
         hearthStone = new Floor("hearth-stone"){{
@@ -124,9 +124,9 @@ public class SubzeroFalloutEnvironment {
             dolomite.asFloor().wall = smoothDolomite.asFloor().wall = this;
         }};
 
-        oreMagnetite = new OreBlock("ore-magnetite", SubzeroFalloutItems.magnetiteFragment);
+        oreHaematite = new OreBlock("ore-haematite", SubzeroFalloutItems.haematite);
 
-        wallOreMagnetite = new OreBlock("ore-wall-magnetite", SubzeroFalloutItems.magnetiteFragment){{
+        wallOreHaematite = new OreBlock("ore-wall-haematite", SubzeroFalloutItems.haematite){{
             wallOre = true;
         }};
 

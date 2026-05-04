@@ -7,7 +7,7 @@ import mindustry.type.*;
 public class SubzeroFalloutItems {
     public static Item
     //TYR
-    magnetiteFragment, iron, obsidianShard, arsenic, heavyPlating, ignisGlass,
+    haematite, iron, obsidianShard, arsenic, heavyPlating, ignisGlass,
     //ALTECORIS
     nickel, bauxite, coltan, quartz, aluminum, nitride, sodium, tantalum, niobium, uranium
     //LEGION
@@ -15,12 +15,12 @@ public class SubzeroFalloutItems {
     ;
 
     public static void load(){
-        magnetiteFragment = new Item("magnetite-fragment", Color.valueOf("F2F285")){{
+        haematite = new Item("haematite", Color.valueOf("9c6552")){{
             cost = 1f;
             healthScaling = 0.7f;
             buildable = false;
         }};
-        iron = new Item("iron", Color.valueOf("F2F285")){{
+        iron = new Item("iron", Color.valueOf("ae9b89")){{
             cost = 1f;
             healthScaling = 0.7f;
         }};

@@ -327,13 +327,15 @@ public class SubzeroFalloutUnits {
 
         weapons.add(new Weapon("subzerofallout-unify-weapon"){{
             top = false;
-            shootSound = Sounds.shootMerui;
-            mirror = false;
+            shootSound = Sounds.shootCyclone;
+            mirror = true;
+            alternate = true;
             showStatSprite = true;
-            x = 0f;
-            y = 1f;
+            x = 2f;
+            y = 0.5f;
             shootY = 4f;
             reload = 63f;
+            layerOffset = -0.001f;
             cooldownTime = 42f;
 
             bullet = new BasicBulletType(4f, 20){{

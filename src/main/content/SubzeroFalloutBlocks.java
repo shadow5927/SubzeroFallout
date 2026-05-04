@@ -78,8 +78,7 @@ public class SubzeroFalloutBlocks {
             armor = 5f;
             incinerateNonBuildable = true;
             requiresCoreZone = true;
-            solid = false;
-
+            squareSprite = false;
             buildCostMultiplier = 0.7f;
             unitCapModifier = 10;
             researchCostMultiplier = 0.06f;
@@ -110,7 +109,7 @@ public class SubzeroFalloutBlocks {
             heatRequirement = 5f;
             maxEfficiency = 1f;
             craftTime = 60f * 0.75f;
-            consumeItem(SubzeroFalloutItems.magnetiteFragment, 4);
+            consumeItem(SubzeroFalloutItems.haematite, 4);
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
@@ -263,7 +262,7 @@ public class SubzeroFalloutBlocks {
                 }));
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
-                fragBullet = new LaserBulletType(13f){{
+                fragBullet = new LaserBulletType(25f){{
                     colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
                     chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
 
