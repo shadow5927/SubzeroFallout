@@ -24,7 +24,7 @@ public class SubzeroFalloutItems {
             cost = 1f;
             healthScaling = 0.7f;
         }};
-        obsidianShard = new Item("obsidian-shards", Color.valueOf("F2F285")){{
+        obsidianShard = new Item("obsidian-shards", Color.valueOf("3d3a45")){{
             cost = 1f;
             healthScaling = 0.6f;
         }};

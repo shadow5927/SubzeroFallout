@@ -85,7 +85,7 @@ public class SubzeroFalloutBlocks {
         }};
 
         carbonicExtractor = new AttributeCrafter("carbonic-extractor"){{
-           requirements(Category.crafting, with(Items.graphite, 50));
+           requirements(Category.crafting, with(Items.beryllium, 70, Items.graphite, 40, Items.silicon, 70));
            size = 3;
            attribute = Attribute.steam;
            minEfficiency = 9f - 0.0001f;
@@ -98,14 +98,14 @@ public class SubzeroFalloutBlocks {
            outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 22f / 60f);
            consumePower(2.5f);
            liquidCapacity = 60f;
-           ambientSound = Sounds.loopHum;
+           ambientSound = Sounds.loopExtract;
            ambientSoundVolume = 0.06f;
         }};
 
         ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
-            requirements(Category.crafting, with(Items.graphite, 50));
+            requirements(Category.crafting, with(Items.beryllium, 100, Items.graphite, 60));
             size = 4;
-            itemCapacity = 25;
+            itemCapacity = 10;
             heatRequirement = 5f;
             maxEfficiency = 1f;
             craftTime = 60f * 0.75f;

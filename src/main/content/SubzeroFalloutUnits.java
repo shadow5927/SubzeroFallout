@@ -264,7 +264,7 @@ public class SubzeroFalloutUnits {
         weapons.add(new Weapon("subzerofallout-proxy-cannon"){{
             top = false;
             y = 0f;
-            x = 4.8f;
+            x = 4.75f;
             reload = 75f;
             recoil = 1f;
             shake = 1f;
@@ -309,13 +309,11 @@ public class SubzeroFalloutUnits {
 
         legCount = 4;
         legLength = 12f;
-        legExtension = -2f;
+        legExtension = -3f;
         legBaseOffset = 2f;
-        legMaxLength = 1.1f;
-        legMinLength = 0.2f;
         legLengthScl = 0.96f;
         legForwardScl = 0.8f;
-        legGroupSize = 3;
+        legGroupSize = 2;
         rippleScale = 0.2f;
         legMoveSpace = 1.4f;
         allowLegStep = true;
@@ -332,13 +330,43 @@ public class SubzeroFalloutUnits {
             alternate = true;
             showStatSprite = true;
             x = 3f;
-            y = 0.5f;
+            y = 0.25f;
             shootY = 4f;
-            reload = 63f;
+            reload = 45f;
             layerOffset = -0.001f;
             cooldownTime = 42f;
 
-            bullet = new BasicBulletType(4f, 20){{
+            bullet = new BasicBulletType(6f, 20){{
+                sprite = "missile-large";
+                smokeEffect = Fx.shootBigSmoke;
+                shootEffect = Fx.shootBigColor;
+                splashDamageRadius = 35f;
+                splashDamage = 15f;
+                width = 6f;
+                height = 9f;
+                lifetime = 32f;
+                hitSize = 4f;
+                hitColor = backColor = trailColor = Color.valueOf("fffd8b");
+                frontColor = Color.white;
+                trailWidth = 2f;
+                trailLength = 12;
+                despawnEffect = hitEffect = Fx.blastExplosion;
+            }};
+        }});
+        weapons.add(new Weapon("subzerofallout-unify-weapon"){{
+            top = false;
+            shootSound = Sounds.shootCyclone;
+            mirror = false;
+            alternate = true;
+            showStatSprite = true;
+            x = 0f;
+            y = 1f;
+            shootY = 4f;
+            reload = 45f;
+            layerOffset = -0.001f;
+            cooldownTime = 42f;
+
+            bullet = new BasicBulletType(6f, 20){{
                 sprite = "missile-large";
                 smokeEffect = Fx.shootBigSmoke;
                 shootEffect = Fx.shootBigColor;
