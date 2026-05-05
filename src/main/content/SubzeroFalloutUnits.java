@@ -311,11 +311,13 @@ public class SubzeroFalloutUnits {
         legLength = 12f;
         legExtension = -3f;
         legBaseOffset = 2f;
-        legLengthScl = 0.96f;
+        legLengthScl = 1f;
         legForwardScl = 0.8f;
-        legGroupSize = 2;
+        legGroupSize = 4;
         rippleScale = 0.2f;
         legMoveSpace = 1.4f;
+        baseLegStraightness = 0f;
+        legStraightness = 0f;
         allowLegStep = true;
         hovering = true;
         legPhysicsLayer = false;
@@ -330,7 +332,7 @@ public class SubzeroFalloutUnits {
             alternate = true;
             showStatSprite = true;
             x = 3f;
-            y = 0.25f;
+            y = 0.5f;
             shootY = 4f;
             reload = 45f;
             layerOffset = -0.001f;
@@ -360,9 +362,9 @@ public class SubzeroFalloutUnits {
             alternate = true;
             showStatSprite = true;
             x = 0f;
-            y = 1f;
+            y = 1.5f;
             shootY = 4f;
-            reload = 45f;
+            reload = 90f;
             layerOffset = -0.001f;
             cooldownTime = 42f;
 

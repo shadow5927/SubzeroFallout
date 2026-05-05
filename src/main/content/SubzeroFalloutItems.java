@@ -20,6 +20,19 @@ public class SubzeroFalloutItems {
             healthScaling = 0.7f;
             buildable = false;
         }};
+        bauxite = new Item("bauxite", Color.valueOf("EBB481")){{
+            hardness = 4;
+            buildable = false;
+        }};
+        coltan = new Item("coltan", Color.valueOf("676B99")){{
+            hardness = 6;
+            buildable = false;
+        }};
+        quartz = new Item("quartz", Color.valueOf("FFEDF1")){{
+            cost = 0.5f;
+            hardness = 4;
+            healthScaling = 0.25f;
+        }};
         iron = new Item("iron", Color.valueOf("ae9b89")){{
             cost = 1f;
             healthScaling = 0.7f;
@@ -44,19 +57,6 @@ public class SubzeroFalloutItems {
             cost = 0.8f;
             hardness = 2;
             healthScaling = 0.4f;
-        }};
-        bauxite = new Item("bauxite", Color.valueOf("EBB481")){{
-            hardness = 4;
-            buildable = false;
-        }};
-        coltan = new Item("coltan", Color.valueOf("676B99")){{
-            hardness = 6;
-            buildable = false;
-        }};
-        quartz = new Item("quartz", Color.valueOf("FFEDF1")){{
-            cost = 0.5f;
-            hardness = 4;
-            healthScaling = 0.25f;
         }};
         aluminum = new Item("aluminum", Color.valueOf("A7AAC4")){{
             cost = 1.1f;

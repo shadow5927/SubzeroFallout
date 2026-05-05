@@ -85,7 +85,7 @@ public class SubzeroFalloutBlocks {
         }};
 
         carbonicExtractor = new AttributeCrafter("carbonic-extractor"){{
-           requirements(Category.crafting, with(Items.beryllium, 70, Items.graphite, 40, Items.silicon, 70));
+           requirements(Category.crafting, with(Items.beryllium, 70, SubzeroFalloutItems.obsidianShard, 40, Items.silicon, 70));
            size = 3;
            attribute = Attribute.steam;
            minEfficiency = 9f - 0.0001f;
@@ -108,7 +108,7 @@ public class SubzeroFalloutBlocks {
             itemCapacity = 10;
             heatRequirement = 5f;
             maxEfficiency = 1f;
-            craftTime = 60f * 0.75f;
+            craftTime = 60f * 1f;
             consumeItem(SubzeroFalloutItems.haematite, 4);
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
@@ -149,7 +149,7 @@ public class SubzeroFalloutBlocks {
         //}};
 
         carbonHeater = new HeatProducer("carbon-heater"){{
-            requirements(Category.crafting, with(Items.graphite, 50));
+            requirements(Category.crafting, with(Items.graphite, 30, Items.silicon, 30, Items.beryllium, 60));
             size = 2;
             liquidCapacity = 10f;
             heatOutput = 2.5f;
