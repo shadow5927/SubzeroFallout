@@ -210,31 +210,30 @@ public class SubzeroFalloutBlocks {
             shootY = -1.2f;
             range = 138f;
             shootEffect = SubzeroFalloutFx.spearLaserShoot;
-            smokeEffect = Fx.none;
+            smokeEffect = Fx.shootSmokeTitan;
             heatColor = Color.blue;
             scaledHealth = 230;
             targetAir = false;
             moveWhileCharging = true;
+            predictTarget = true;
             accurateDelay = false;
             shootSound = Sounds.shootLancer;
             coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             chargeSound = Sounds.chargeLancer;
+            minWarmup = 160f;
             shootWarmupSpeed = 0.04f;
-            warmupMaintainTime = 120f;
 
             consumePower(6f);
 
             shootType = new BasicBulletType(){{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
-                shootEffect = SubzeroFalloutFx.spearLaserShoot;
-                smokeEffect = Fx.shootSmokeTitan;
-
                 hitColor = Color.valueOf("8aa3f4");
                 hitSound = Sounds.explosionAfflict;
                 sprite = "large-orb";
                 trailEffect = Fx.missileTrail;
                 trailInterval = 3f;
-                trailParam = 4f;
+                trailParam = 3f;
+                angleOffset = 45f;
                 pierceCap = 2;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
@@ -264,7 +263,6 @@ public class SubzeroFalloutBlocks {
                 shootSound = Sounds.shootLancer;
                 fragBullet = new LaserBulletType(25f){{
                     colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
-                    chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
 
                     buildingDamageMultiplier = 0.25f;
                     hitEffect = Fx.hitLancer;
