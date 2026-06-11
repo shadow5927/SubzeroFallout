@@ -214,15 +214,14 @@ public class SubzeroFalloutBlocks {
             heatColor = Color.blue;
             scaledHealth = 230;
             targetAir = false;
-            moveWhileCharging = true;
             predictTarget = true;
+            moveWhileCharging = true;
             accurateDelay = false;
             shootSound = Sounds.shootLancer;
             coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             chargeSound = Sounds.chargeLancer;
-            linearWarmup = true;
-            minWarmup = 160f;
-            shootWarmupSpeed = 5f;
+            shootWarmupSpeed = 0.04f;
+            warmupMaintainTime = 120f;
 
             consumePower(6f);
 
@@ -234,8 +233,8 @@ public class SubzeroFalloutBlocks {
                 trailEffect = Fx.missileTrail;
                 trailInterval = 3f;
                 trailParam = 3f;
-                angleOffset = 45f;
                 pierceCap = 2;
+                angleOffset = 45f;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
                 speed = 5.6f;
