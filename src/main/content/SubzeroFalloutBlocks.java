@@ -267,6 +267,8 @@ public class SubzeroFalloutBlocks {
                     angleOffset = 45f;
                     hitEffect = Fx.hitLancer;
                     hitSize = 4;
+                    fragOffsetMax = 0f;
+                    fragOffsetMin = 0f;
                     lifetime = 16f;
                     drawSize = 400f;
                     pierceBuilding = true;
