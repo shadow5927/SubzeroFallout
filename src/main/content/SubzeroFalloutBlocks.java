@@ -220,8 +220,9 @@ public class SubzeroFalloutBlocks {
             shootSound = Sounds.shootLancer;
             coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             chargeSound = Sounds.chargeLancer;
+            linearWarmup = true;
             minWarmup = 160f;
-            shootWarmupSpeed = 0.04f;
+            shootWarmupSpeed = 5f;
 
             consumePower(6f);
 
