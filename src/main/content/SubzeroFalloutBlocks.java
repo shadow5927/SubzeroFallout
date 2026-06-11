@@ -234,7 +234,6 @@ public class SubzeroFalloutBlocks {
                 trailInterval = 3f;
                 trailParam = 3f;
                 pierceCap = 2;
-                angleOffset = 45f;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
                 speed = 5.6f;
@@ -265,6 +264,7 @@ public class SubzeroFalloutBlocks {
                     colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
 
                     buildingDamageMultiplier = 0.25f;
+                    angleOffset = 45f;
                     hitEffect = Fx.hitLancer;
                     hitSize = 4;
                     lifetime = 16f;
