@@ -302,13 +302,13 @@ public class SubzeroFalloutUnits {
         rotateSpeed = 3f;
         health = 1040;
         armor = 7f;
-        legStraightness = 0.3f;
+
         stepShake = 0f;
         stepSound = Sounds.walkerStepTiny;
         stepSoundVolume = 0.4f;
 
         legCount = 4;
-        legLength = 12f;
+        legLength = 20f;
         legExtension = -3f;
         legBaseOffset = 2f;
         legLengthScl = 1f;
@@ -359,8 +359,8 @@ public class SubzeroFalloutUnits {
             top = false;
             shootSound = Sounds.shootCyclone;
             mirror = false;
-            alternate = true;
             showStatSprite = true;
+
             x = 0f;
             y = 1.5f;
             shootY = 4f;

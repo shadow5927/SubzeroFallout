@@ -186,14 +186,14 @@ public class SubzeroFalloutBlocks {
         //    size = 4;
         //}};
 
-        ironWall = new Wall("iron-shielding"){{
+        ironWall = new Wall("iron-wall"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 8));
             health = 150 * 4;
             armor = 8f;
             researchCostMultiplier = 0.1f;
         }};
 
-        ironWallLarge = new Wall("iron-shielding-large"){{
+        ironWallLarge = new Wall("iron-wall-large"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 32));
             health = 150 * 4 * 4;
             armor = 8f;
@@ -220,8 +220,9 @@ public class SubzeroFalloutBlocks {
             shootSound = Sounds.shootLancer;
             coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             chargeSound = Sounds.chargeLancer;
-            shootWarmupSpeed = 0.04f;
-            warmupMaintainTime = 120f;
+            shootWarmupSpeed = 0.07f;
+            warmupMaintainTime = 60f;
+            minWarmup = 60f;
 
             consumePower(6f);
 
@@ -263,8 +264,8 @@ public class SubzeroFalloutBlocks {
                 fragBullet = new LaserBulletType(25f){{
                     colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
 
+                    pierceArmor = true;
                     buildingDamageMultiplier = 0.25f;
-                    angleOffset = 45f;
                     hitEffect = Fx.hitLancer;
                     hitSize = 4;
                     fragOffsetMax = 0f;
