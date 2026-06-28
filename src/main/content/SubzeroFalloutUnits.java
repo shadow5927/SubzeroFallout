@@ -354,12 +354,6 @@ public class SubzeroFalloutUnits {
                 despawnEffect = hitEffect = Fx.blastExplosion;
             }};
         }});
-        parts.addAll(
-          new RegionPart("-barrel"){{
-              float fin = fi  / 4f;
-              progress = PartProgress.reload.inv().mul(1.3f).add(0.1f).sustain(fin * 0.34f, 0.14f, 0.14f);
-          }}
-        );
         constructor = LegsUnit::create;
     }};
     }
