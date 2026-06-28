@@ -302,14 +302,13 @@ public class SubzeroFalloutUnits {
         rotateSpeed = 3f;
         health = 1040;
         armor = 7f;
-
         stepShake = 0f;
         stepSound = Sounds.walkerStepTiny;
         stepSoundVolume = 0.4f;
 
         legCount = 4;
-        legLength = 20f;
-        legExtension = -3f;
+        legLength = 16f;
+        legExtension = 0f;
         legBaseOffset = 2f;
         legLengthScl = 1f;
         legForwardScl = 0.8f;
@@ -328,11 +327,11 @@ public class SubzeroFalloutUnits {
         weapons.add(new Weapon("subzerofallout-unify-weapon"){{
             top = false;
             shootSound = Sounds.shootCyclone;
-            mirror = true;
-            alternate = true;
+            mirror = false;
             showStatSprite = true;
-            x = 3f;
-            y = 0.5f;
+
+            x = 0f;
+            y = 1.5f;
             shootY = 4f;
             reload = 45f;
             layerOffset = -0.001f;
@@ -355,36 +354,12 @@ public class SubzeroFalloutUnits {
                 despawnEffect = hitEffect = Fx.blastExplosion;
             }};
         }});
-        weapons.add(new Weapon("subzerofallout-unify-weapon"){{
-            top = false;
-            shootSound = Sounds.shootCyclone;
-            mirror = false;
-            showStatSprite = true;
-
-            x = 0f;
-            y = 1.5f;
-            shootY = 4f;
-            reload = 90f;
-            layerOffset = -0.001f;
-            cooldownTime = 42f;
-
-            bullet = new BasicBulletType(6f, 20){{
-                sprite = "missile-large";
-                smokeEffect = Fx.shootBigSmoke;
-                shootEffect = Fx.shootBigColor;
-                splashDamageRadius = 35f;
-                splashDamage = 15f;
-                width = 6f;
-                height = 9f;
-                lifetime = 32f;
-                hitSize = 4f;
-                hitColor = backColor = trailColor = Color.valueOf("fffd8b");
-                frontColor = Color.white;
-                trailWidth = 2f;
-                trailLength = 12;
-                despawnEffect = hitEffect = Fx.blastExplosion;
-            }};
-        }});
+        parts.addAll(
+          new RegionPart("-barrel"){{
+              float fin = fi  / 4f;
+              progress = PartProgress.reload.inv().mul(1.3f).add(0.1f).sustain(fin * 0.34f, 0.14f, 0.14f);
+          }}
+        );
         constructor = LegsUnit::create;
     }};
     }
