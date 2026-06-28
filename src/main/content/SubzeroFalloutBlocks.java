@@ -207,10 +207,10 @@ public class SubzeroFalloutBlocks {
             recoil = 2f;
             reload = 100f;
             shake = 1f;
-            shootY = -1.15f;
+            shootY = -1f;
             range = 138f;
             shootEffect = SubzeroFalloutFx.spearLaserShoot;
-            smokeEffect = Fx.shootSmokeTitan;
+            smokeEffect = Fx.colorSparkBig;
             heatColor = Color.blue;
             scaledHealth = 230;
             targetAir = false;
@@ -251,12 +251,13 @@ public class SubzeroFalloutBlocks {
                 fragRandomSpread = 0f;
                 fragSpread = 90f;
 
-                despawnEffect = hitEffect = new MultiEffect(Fx.shootSmallColor, new Effect(9, e -> {
+                despawnEffect = hitEffect = new MultiEffect(Fx.shootSmallColor, new Effect(11, e -> {
+                    e.color = Color.valueOf("8aa3f4");
                     color(Color.white, e.color, e.fin());
-                    stroke(0.7f + e.fout());
+                    stroke(0.9f + e.fout());
                     Lines.square(e.x, e.y, e.fin() * 7f, e.rotation + 45f);
 
-                    Drawf.light(e.x, e.y, 35f, e.color, e.fout() * 0.7f);
+                    Drawf.light(e.x, e.y, 50f, e.color, e.fout() * 0.7f);
                 }));
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
@@ -283,21 +284,21 @@ public class SubzeroFalloutBlocks {
                             heatColor = Color.sky.cpy().a(0.9f);
                             mirror = true;
                             under = true;
-                            moveX = 2f;
+                            moveX = 1.7f;
                             moveY = -1f;
                             moveRot = 5f;
-                            moves.add(new PartMove(PartProgress.recoil, 2f, -1f, -5f));
+                            moves.add(new PartMove(PartProgress.recoil, 1f, -0.5f, -5f));
                           }},
                         new RegionPart("-blade-glow"){{
                             heatProgress = PartProgress.warmup;
                             heatColor = Color.sky.cpy().a(0.9f);
-                            drawRegion = false;
                             mirror = true;
                             under = true;
-                            moveX = 2f;
+                            drawRegion = false;
+                            moveX = 1.7f;
                             moveY = -1f;
                             moveRot = 5f;
-                            moves.add(new PartMove(PartProgress.recoil, 2f, -1f, -5f));
+                            moves.add(new PartMove(PartProgress.recoil, 1f, -0.5f, -5f));
                         }},
                         new RegionPart("-mid"){{
                             under = true;
@@ -305,7 +306,13 @@ public class SubzeroFalloutBlocks {
                             progress = PartProgress.recoil;
                             heatProgress = PartProgress.recoil.add(0.25f).min(PartProgress.warmup);
                             heatColor = Color.sky.cpy().a(0.9f);
-                }});
+                        }},
+                        new RegionPart("-spine"){{
+                            progress = PartProgress.charge;
+                            under = true;
+                            mirror = true;
+                        }});
+                }};
             }};
         }};
 

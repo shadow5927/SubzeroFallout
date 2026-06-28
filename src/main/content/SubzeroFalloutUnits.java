@@ -331,7 +331,7 @@ public class SubzeroFalloutUnits {
             showStatSprite = true;
 
             x = 0f;
-            y = 1.7f;
+            y = 1.9f;
             shootY = 4f;
             reload = 45f;
             layerOffset = -0.001f;
