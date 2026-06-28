@@ -207,7 +207,7 @@ public class SubzeroFalloutBlocks {
             recoil = 2f;
             reload = 100f;
             shake = 1f;
-            shootY = -1.2f;
+            shootY = -1.15f;
             range = 138f;
             shootEffect = SubzeroFalloutFx.spearLaserShoot;
             smokeEffect = Fx.shootSmokeTitan;
@@ -256,7 +256,7 @@ public class SubzeroFalloutBlocks {
                     stroke(0.7f + e.fout());
                     Lines.square(e.x, e.y, e.fin() * 7f, e.rotation + 45f);
 
-                    Drawf.light(e.x, e.y, 23f, e.color, e.fout() * 0.7f);
+                    Drawf.light(e.x, e.y, 35f, e.color, e.fout() * 0.7f);
                 }));
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
@@ -279,16 +279,16 @@ public class SubzeroFalloutBlocks {
             }};
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
-                              progress = PartProgress.recoil;
-                              heatColor = Color.sky.cpy().a(0.9f);
-                              mirror = true;
-                              under = true;
-                              moveX = 2f;
-                              moveY = -1f;
-                              moveRot = -7f;
+                            progress = PartProgress.warmup;
+                            heatColor = Color.sky.cpy().a(0.9f);
+                            mirror = true;
+                            under = true;
+                            moveX = 2f;
+                            moveY = -1f;
+                            moveRot = 5f;
+                            moves.add(new PartMove(PartProgress.recoil, 2f, -1f, -5f));
                           }},
                         new RegionPart("-blade-glow"){{
-                            progress = PartProgress.recoil;
                             heatProgress = PartProgress.warmup;
                             heatColor = Color.sky.cpy().a(0.9f);
                             drawRegion = false;
@@ -296,8 +296,16 @@ public class SubzeroFalloutBlocks {
                             under = true;
                             moveX = 2f;
                             moveY = -1f;
-                            moveRot = -7f;
-                        }});
+                            moveRot = 5f;
+                            moves.add(new PartMove(PartProgress.recoil, 2f, -1f, -5f));
+                        }},
+                        new RegionPart("-mid"){{
+                            under = true;
+                            moveY = -1f;
+                            progress = PartProgress.recoil;
+                            heatProgress = PartProgress.recoil.add(0.25f).min(PartProgress.warmup);
+                            heatColor = Color.sky.cpy().a(0.9f);
+                }});
             }};
         }};
 

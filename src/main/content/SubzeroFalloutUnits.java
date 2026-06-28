@@ -308,7 +308,7 @@ public class SubzeroFalloutUnits {
 
         legCount = 4;
         legLength = 16f;
-        legExtension = 0f;
+        legExtension = -5f;
         legBaseOffset = 2f;
         legLengthScl = 1f;
         legForwardScl = 0.8f;
@@ -331,14 +331,15 @@ public class SubzeroFalloutUnits {
             showStatSprite = true;
 
             x = 0f;
-            y = 1.5f;
+            y = 1.7f;
             shootY = 4f;
             reload = 45f;
             layerOffset = -0.001f;
             cooldownTime = 42f;
 
             bullet = new BasicBulletType(6f, 20){{
-                sprite = "missile-large";
+                sprite = "shell";
+                backSprite = "shell-back";
                 smokeEffect = Fx.shootBigSmoke;
                 shootEffect = Fx.shootBigColor;
                 splashDamageRadius = 35f;
@@ -351,7 +352,13 @@ public class SubzeroFalloutUnits {
                 frontColor = Color.white;
                 trailWidth = 2f;
                 trailLength = 12;
-                despawnEffect = hitEffect = Fx.blastExplosion;
+                despawnEffect = hitEffect = trailEffect = new MultiEffect(Fx.shootSmallColor, new Effect(9, e -> {
+                    color(Color.white, e.color, e.fin());
+                    stroke(0.7f + e.fout());
+                    Lines.square(e.x, e.y, e.fin() * 7f, e.rotation + 45f);
+
+                    Drawf.light(e.x, e.y, 20f, e.color, e.fout() * 0.7f);
+                }));
             }};
         }});
         constructor = LegsUnit::create;
