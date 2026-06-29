@@ -255,9 +255,9 @@ public class SubzeroFalloutBlocks {
                     e.color = Color.valueOf("8aa3f4");
                     color(Color.white, e.color, e.fin());
                     stroke(0.9f + e.fout());
-                    Lines.square(e.x, e.y, e.fin() * 7f, e.rotation + 45f);
+                    Lines.square(e.x, e.y, e.fin() * 16f, e.rotation + 45f);
 
-                    Drawf.light(e.x, e.y, 50f, e.color, e.fout() * 0.7f);
+                    Drawf.light(e.x, e.y, 25f, e.color, e.fout() * 0.7f);
                 }));
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
@@ -282,9 +282,9 @@ public class SubzeroFalloutBlocks {
                 parts.add(new RegionPart("-blade"){{
                             progress = PartProgress.warmup;
                             heatProgress = PartProgress.warmup;
-                            heatColor = Color.sky.cpy().a(0.9f);
-                            mirror = true;
+                            heatColor = Color.valueOf("8aa3f4").cpy().a(0.9f);
                             under = true;
+                            mirror = true;
                             moveX = 1.7f;
                             moveY = -1f;
                             moveRot = 5f;
@@ -295,17 +295,18 @@ public class SubzeroFalloutBlocks {
                             moveY = -1f;
                             progress = PartProgress.recoil;
                             heatProgress = PartProgress.recoil.add(0.25f).min(PartProgress.warmup);
-                            heatColor = Color.sky.cpy().a(0.9f);
+                            heatColor = Color.valueOf("8aa3f4").cpy().a(0.9f);
                         }},
                         new RegionPart("-spine"){{
                             progress = PartProgress.warmup;
                             heatProgress = PartProgress.warmup;
-                            mirror = true;
                             under = true;
+                            mirror = true;
                             color = heatColor = Color.valueOf("6974c4");
-                            moveY = -3f;
+                            moveY = -6f;
+                            moveX = 1f;
                             moveRot = 9f;
-                            moves.add(new PartMove(PartProgress.recoil, .25f,-0.5f,1f));
+                            moves.add(new PartMove(PartProgress.recoil, 1f,-1.5f,3f));
                         }}
                 );
             }};
