@@ -302,11 +302,13 @@ public class SubzeroFalloutBlocks {
                             heatProgress = PartProgress.warmup;
                             under = true;
                             mirror = true;
+                            layerOffset = -0.3f;
+                            turretHeatLayer = Layer.turret - 0.2f;
                             color = heatColor = Color.valueOf("6974c4");
                             moveY = -6f;
-                            moveX = 1f;
+                            moveX = 2f;
                             moveRot = 9f;
-                            moves.add(new PartMove(PartProgress.recoil, 1f,-1.5f,3f));
+                            moves.add(new PartMove(PartProgress.recoil, 1f,-1.5f,-3f));
                         }}
                 );
             }};
