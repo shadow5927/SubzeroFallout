@@ -281,6 +281,7 @@ public class SubzeroFalloutBlocks {
             drawer = new DrawTurret("reinforced-"){{
                 parts.add(new RegionPart("-blade"){{
                             progress = PartProgress.warmup;
+                            heatProgress = PartProgress.warmup;
                             heatColor = Color.sky.cpy().a(0.9f);
                             mirror = true;
                             under = true;
@@ -289,17 +290,6 @@ public class SubzeroFalloutBlocks {
                             moveRot = 5f;
                             moves.add(new PartMove(PartProgress.recoil, 1f, -0.5f, -5f));
                           }},
-                        new RegionPart("-blade-glow"){{
-                            heatProgress = PartProgress.warmup;
-                            heatColor = Color.sky.cpy().a(0.9f);
-                            mirror = true;
-                            under = true;
-                            drawRegion = false;
-                            moveX = 1.7f;
-                            moveY = -1f;
-                            moveRot = 5f;
-                            moves.add(new PartMove(PartProgress.recoil, 1f, -0.5f, -5f));
-                        }},
                         new RegionPart("-mid"){{
                             under = true;
                             moveY = -1f;
@@ -308,11 +298,16 @@ public class SubzeroFalloutBlocks {
                             heatColor = Color.sky.cpy().a(0.9f);
                         }},
                         new RegionPart("-spine"){{
-                            progress = PartProgress.charge;
-                            under = true;
+                            progress = PartProgress.warmup;
+                            heatProgress = PartProgress.warmup;
                             mirror = true;
-                        }});
-                }};
+                            under = true;
+                            color = heatColor = Color.valueOf("6974c4");
+                            moveY = -3f;
+                            moveRot = 9f;
+                            moves.add(new PartMove(PartProgress.recoil, .25f,-0.5f,1f));
+                        }}
+                );
             }};
         }};
 
