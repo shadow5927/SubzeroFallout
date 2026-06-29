@@ -64,7 +64,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Walls
     ironWall, ironWallLarge,
         //Tyr Turrets
-    spear //sc1
+    spear, sc1
     //ALTECORIS
     ;
     public static void load(){
@@ -233,7 +233,6 @@ public class SubzeroFalloutBlocks {
                 trailEffect = Fx.missileTrail;
                 trailInterval = 3f;
                 trailParam = 3f;
-                pierceCap = 2;
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
                 speed = 5.6f;
@@ -255,7 +254,7 @@ public class SubzeroFalloutBlocks {
                     e.color = Color.valueOf("8aa3f4");
                     color(Color.white, e.color, e.fin());
                     stroke(0.9f + e.fout());
-                    Lines.square(e.x, e.y, e.fin() * 16f, e.rotation + 45f);
+                    Lines.square(e.x, e.y, e.fin() * 20f, e.rotation + 45f);
 
                     Drawf.light(e.x, e.y, 25f, e.color, e.fout() * 0.7f);
                 }));
@@ -302,71 +301,69 @@ public class SubzeroFalloutBlocks {
                             heatProgress = PartProgress.warmup;
                             under = true;
                             mirror = true;
+                            outline = false;
                             layerOffset = -0.3f;
                             turretHeatLayer = Layer.turret - 0.2f;
                             color = heatColor = Color.valueOf("6974c4");
-                            moveY = -6f;
+                            moveY = -4f;
                             moveX = 2f;
                             moveRot = 9f;
-                            moves.add(new PartMove(PartProgress.recoil, 1f,-1.5f,-3f));
+                            moves.add(new PartMove(PartProgress.recoil, 1f,-1f,-5f));
                         }}
                 );
             }};
         }};
 
-        //sc1 = new ItemTurret("sc-1"){{
-        //    requirements(Category.turret, with(Items.graphite, 50));
-        //    size = 3;
-        //    ammo(
-        //        Items.thorium, new ArtilleryBulletType(6f, 350, "shell"){{
-        //        hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
-        //        despawnEffect = Fx.none;
-        //        knockback = 2f;
-        //        lifetime = 140f;
-        //        height = 19f;
-        //        width = 17f;
-        //        splashDamageRadius = 20f;
-        //        splashDamage = 350f;
-        //        scaledSplashDamage = true;
-        //        backColor = hitColor = trailColor = Color.valueOf("fffd8b").lerp(Pal.redLight, 0.5f);
-        //        frontColor = Color.white;
-        //        ammoMultiplier = 1f;
-        //        hitSound = Sounds.explosionTitan;
-
-        //        status = StatusEffects.slow;
-        //        statusDuration = 100f;
-
-        //        trailLength = 32;
-        //        trailWidth = 3.35f;
-        //       trailSinScl = 2.5f;
-        //        trailSinMag = 0.5f;
-        //        trailEffect = Fx.none;
-        //        despawnShake = 7f;
-        //        shootEffect = Fx.shootTitan;
-        //        smokeEffect = Fx.shootSmokeTitan;
-        //        trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
-        //        shrinkX = 0.2f;
-        //        shrinkY = 0.1f;
-        //        buildingDamageMultiplier = 0.3f;
-        //    }});
-        //    shootSound = Sounds.shootTank;
-        //    ammoPerShot = 4;
-        //    maxAmmo = ammoPerShot * 3;
-        //    shake = 4f;
-        //    recoil = 1f;
-        //   reload = 60f * 2.3f;
-        //    shootY = 7f;
-        //    rotateSpeed = 1.4f;
-        //    minWarmup = 0.85f;
-        //    newTargetInterval = 40f;
-        //    warmupMaintainTime = 120f;
-        //    shootWarmupSpeed = 0.08f;
-        //    outlineColor = Pal.darkOutline;
-        //    consumeLiquid(Liquids.hydrogen, 5f / 60f);
-        //    scaledHealth = 250;
-        //    range = 390f;
-        //    size = 4;
-        //}};
+        sc1 = new ItemTurret("sc-1"){{
+            requirements(Category.turret, with(Items.graphite, 50));
+            size = 3;
+            ammo(
+                Items.thorium, new ArtilleryBulletType(6f, 350, "shell"){{
+                hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
+                despawnEffect = Fx.none;
+                knockback = 2f;
+                lifetime = 140f;
+                height = 19f;
+                width = 17f;
+                splashDamageRadius = 20f;
+                splashDamage = 350f;
+                scaledSplashDamage = true;
+                backColor = hitColor = trailColor = Color.valueOf("fffd8b").lerp(Pal.redLight, 0.5f);
+                frontColor = Color.white;
+                ammoMultiplier = 1f;
+                hitSound = Sounds.explosionTitan;
+                status = StatusEffects.slow;
+                statusDuration = 100f;
+                trailLength = 32;
+                trailWidth = 3.35f;
+                trailSinScl = 2.5f;
+                trailSinMag = 0.5f;
+                trailEffect = Fx.none;
+                despawnShake = 7f;
+                shootEffect = Fx.shootTitan;
+                smokeEffect = Fx.shootSmokeTitan;
+                trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                shrinkX = 0.2f;
+                shrinkY = 0.1f;
+                buildingDamageMultiplier = 0.3f;
+            }});
+            shootSound = Sounds.shootTank;
+            ammoPerShot = 4;
+            maxAmmo = ammoPerShot * 3;
+            shake = 4f;
+            recoil = 1f;
+            reload = 60f * 2.3f;
+            shootY = 7f;
+            rotateSpeed = 1.4f;
+            minWarmup = 0.85f;
+            newTargetInterval = 40f;
+            warmupMaintainTime = 120f;
+            shootWarmupSpeed = 0.08f;
+            outlineColor = Pal.darkOutline;
+            consumeLiquid(Liquids.hydrogen, 5f / 60f);
+            scaledHealth = 250;
+            range = 390f;
+        }};
     }
 
 }
