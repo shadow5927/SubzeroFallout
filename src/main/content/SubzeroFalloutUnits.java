@@ -342,8 +342,6 @@ public class SubzeroFalloutUnits {
                 backSprite = "shell-back";
                 smokeEffect = Fx.shootBigSmoke;
                 shootEffect = Fx.shootBigColor;
-                splashDamageRadius = 35f;
-                splashDamage = 15f;
                 width = 6f;
                 height = 9f;
                 lifetime = 32f;

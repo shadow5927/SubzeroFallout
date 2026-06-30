@@ -305,7 +305,7 @@ public class SubzeroFalloutBlocks {
                             layerOffset = -0.3f;
                             turretHeatLayer = Layer.turret - 0.2f;
                             color = heatColor = Color.valueOf("6974c4");
-                            moveY = -4f;
+                            moveY = -4.5f;
                             moveX = 2f;
                             moveRot = 9f;
                             moves.add(new PartMove(PartProgress.recoil, 1f,-1f,-5f));
@@ -318,40 +318,34 @@ public class SubzeroFalloutBlocks {
             requirements(Category.turret, with(Items.graphite, 50));
             size = 3;
             ammo(
-                Items.thorium, new ArtilleryBulletType(6f, 350, "shell"){{
-                hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
-                despawnEffect = Fx.none;
-                knockback = 2f;
-                lifetime = 140f;
-                height = 19f;
-                width = 17f;
-                splashDamageRadius = 20f;
-                splashDamage = 350f;
-                scaledSplashDamage = true;
-                backColor = hitColor = trailColor = Color.valueOf("fffd8b").lerp(Pal.redLight, 0.5f);
-                frontColor = Color.white;
-                ammoMultiplier = 1f;
-                hitSound = Sounds.explosionTitan;
-                status = StatusEffects.slow;
-                statusDuration = 100f;
-                trailLength = 32;
-                trailWidth = 3.35f;
-                trailSinScl = 2.5f;
-                trailSinMag = 0.5f;
-                trailEffect = Fx.none;
-                despawnShake = 7f;
-                shootEffect = Fx.shootTitan;
-                smokeEffect = Fx.shootSmokeTitan;
-                trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
-                shrinkX = 0.2f;
-                shrinkY = 0.1f;
-                buildingDamageMultiplier = 0.3f;
+                Items.graphite, new ArtilleryBulletType(8f, 50, "shell"){{
+                        hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
+                            lifetime = 8f;
+                            strokeFrom = 1f;
+                            sizeTo = 8f;
+                        }});
+
+                        despawnEffect = Fx.hitBulletColor;
+                        width = 8f;
+                        height = 12f;
+                        lifetime = 130f;
+                        knockback = 0.5f;
+                        splashDamageRadius = 22f;
+                        splashDamage = 50f;
+                        scaledSplashDamage = true;
+                        pierceArmor = true;
+                        status = StatusEffects.slow;
+                        statusDuration = 130f;
+                        backColor = frontColor = hitColor = Color.valueOf("ab8ec5");
+                        frontColor = Color.white;
+                        buildingDamageMultiplier = 0.25f;
+                        shrinkY = 0.3f;
             }});
             shootSound = Sounds.shootTank;
             ammoPerShot = 4;
             maxAmmo = ammoPerShot * 3;
             shake = 4f;
-            recoil = 1f;
+            recoil = 3f;
             reload = 60f * 2.3f;
             shootY = 7f;
             rotateSpeed = 1.4f;
@@ -361,9 +355,41 @@ public class SubzeroFalloutBlocks {
             shootWarmupSpeed = 0.08f;
             outlineColor = Pal.darkOutline;
             consumeLiquid(Liquids.hydrogen, 5f / 60f);
-            scaledHealth = 250;
+            scaledHealth = 250f;
             range = 390f;
-        }};
-    }
-
-}
+            drawer = new DrawTurret("reinforced-"){{
+                parts.addAll(
+                new RegionPart("-barrel"){{
+                progress = PartProgress.recoil.curve(Interp.pow2In);
+                moveY = -5f * 4f / 3f;
+                heatColor = Color.valueOf("f03b0e");
+                mirror = false;
+                }},
+                new RegionPart("-side"){{
+                    heatProgress = PartProgress.warmup;
+                    progress = PartProgress.warmup;
+                    mirror = true;
+                    moveX = 0.5f;
+                    under = true;
+                    heatColor = Color.yellow.cpy();
+                }},
+                new RegionPart("-front"){{
+                    heatProgress = PartProgress.warmup;
+                    progress = PartProgress.warmup;
+                    mirror = true;
+                    moveY = -1f;
+                    moveX = 0.5f;
+                    under = true;
+                    heatColor = Color.yellow.cpy();
+                }},
+                new RegionPart("-rings"){{
+                    heatProgress = PartProgress.warmup;
+                    progress = PartProgress.recoil.curve(Interp.pow2In);
+                    moveY = -5f * 4f / 3f;
+                    mirror = true;
+                    under = true;
+                    heatColor = Color.yellow.cpy();
+                }});
+            }};
+    }};
+}}
