@@ -236,7 +236,7 @@ public class SubzeroFalloutBlocks {
                 buildingDamageMultiplier = 0.5f;
                 fragOnHit = true;
                 speed = 5.6f;
-                damage = 60f;
+                damage = 50f;
                 lifetime = 50f;
                 width = height = 16f;
                 backColor = Color.valueOf("6974c4");
@@ -260,7 +260,7 @@ public class SubzeroFalloutBlocks {
                 }));
                 despawnSound = Sounds.explosionAfflict;
                 shootSound = Sounds.shootLancer;
-                fragBullet = new LaserBulletType(25f){{
+                fragBullet = new LaserBulletType(40f){{
                     colors = new Color[]{Color.valueOf("8aa3f4").cpy().a(0.4f), Color.valueOf("8aa3f4"), Color.white};
 
                     pierceArmor = true;
@@ -315,10 +315,26 @@ public class SubzeroFalloutBlocks {
         }};
 
         sc1 = new ItemTurret("sc-1"){{
-            requirements(Category.turret, with(Items.graphite, 50));
+            requirements(Category.turret, with(SubzeroFalloutItems.iron, 200, Items.silicon, 150, Items.oxide, 25));
             size = 3;
+            shootSound = Sounds.shootTank;
+            ammoPerShot = 4;
+            maxAmmo = ammoPerShot * 3;
+            shake = 4f;
+            recoil = 3f;
+            reload = 60f;
+            shootY = 7f;
+            rotateSpeed = 1.4f;
+            minWarmup = 0.85f;
+            newTargetInterval = 40f;
+            warmupMaintainTime = 120f;
+            shootWarmupSpeed = 0.08f;
+            outlineColor = Pal.darkOutline;
+            consumeLiquid(Liquids.hydrogen, 5f / 60f);
+            scaledHealth = 250f;
+            range = 390f;
             ammo(
-                Items.graphite, new BasicBulletType(10f, 50, "shell"){{
+                Items.graphite, new BasicBulletType(10f, 108, "shell"){{
                         hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
                             lifetime = 8f;
                             strokeFrom = 1f;
@@ -328,7 +344,7 @@ public class SubzeroFalloutBlocks {
                         despawnEffect = Fx.hitBulletColor;
                         width = 8f;
                         height = 12f;
-                        lifetime = 120f;
+                        lifetime = 40f;
                         knockback = 0.5f;
                         splashDamageRadius = 22f;
                         splashDamage = 50f;
@@ -341,32 +357,17 @@ public class SubzeroFalloutBlocks {
                         buildingDamageMultiplier = 0.25f;
                         shrinkY = 0.3f;
                         trailLength = 12;
-                        trailWidth = 3f;
+                        trailWidth = 2f;
                     }});
-            shootSound = Sounds.shootTank;
-            ammoPerShot = 4;
-            maxAmmo = ammoPerShot * 3;
-            shake = 4f;
-            recoil = 3f;
-            reload = 60f * 3.3f;
-            shootY = 7f;
-            rotateSpeed = 1.4f;
-            minWarmup = 0.85f;
-            newTargetInterval = 40f;
-            warmupMaintainTime = 120f;
-            shootWarmupSpeed = 0.08f;
-            outlineColor = Pal.darkOutline;
-            consumeLiquid(Liquids.hydrogen, 5f / 60f);
-            scaledHealth = 250f;
-            range = 390f;
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                 new RegionPart("-barrel"){{
-                progress = PartProgress.recoil.curve(Interp.pow2In);
-                moveY = -4f * 3f / 2f;
-                heatColor = Color.valueOf("f03b0e");
-                mirror = false;
-                under = true;
+                    progress = PartProgress.recoil.curve(Interp.pow2In);
+                    moveY = -3.85f * 3f / 2f;
+                    heatColor = Color.valueOf("f03b0e");
+                    mirror = false;
+                    under = true;
+                    layerOffset = -0.3f;
                 }},
                 new RegionPart("-side"){{
                     heatProgress = PartProgress.warmup;
@@ -375,18 +376,19 @@ public class SubzeroFalloutBlocks {
                     moveX = 0.5f;
                     under = true;
                     heatColor = Color.valueOf("f03b0e");
-                    moves.add(new PartMove(PartProgress.recoil, 0f,-1f,0f));
+                    moves.add(new PartMove(PartProgress.recoil, 0f,-1.5f,0f));
                 }},
                 new RegionPart("-front"){{
                     heatProgress = PartProgress.warmup;
                     progress = PartProgress.warmup;
                     mirror = true;
-                    moveY = -1f;
+                    moveY = -2f;
                     moveX = 0.5f;
                     heatColor = Color.valueOf("f03b0e");
                 }},
                 new RegionPart("-rings"){{
                     heatProgress = PartProgress.warmup;
+                    under = true;
                     heatColor = Color.valueOf("f03b0e");;
                 }});
             }};
