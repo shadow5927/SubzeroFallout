@@ -336,11 +336,13 @@ public class SubzeroFalloutBlocks {
                         pierceArmor = true;
                         status = StatusEffects.slow;
                         statusDuration = 130f;
-                        backColor = frontColor = hitColor = Color.valueOf("ab8ec5");
+                        backColor = frontColor = hitColor = Color.valueOf("fffd8b");
                         frontColor = Color.white;
                         buildingDamageMultiplier = 0.25f;
                         shrinkY = 0.3f;
-            }});
+                        trailLength = 32;
+                        trailWidth = 3.35f;
+                    }});
             shootSound = Sounds.shootTank;
             ammoPerShot = 4;
             maxAmmo = ammoPerShot * 3;
@@ -361,9 +363,10 @@ public class SubzeroFalloutBlocks {
                 parts.addAll(
                 new RegionPart("-barrel"){{
                 progress = PartProgress.recoil.curve(Interp.pow2In);
-                moveY = -5f * 4f / 3f;
+                moveY = -5f * 3f / 2f;
                 heatColor = Color.valueOf("f03b0e");
                 mirror = false;
+                under = true;
                 }},
                 new RegionPart("-side"){{
                     heatProgress = PartProgress.warmup;
@@ -371,7 +374,8 @@ public class SubzeroFalloutBlocks {
                     mirror = true;
                     moveX = 0.5f;
                     under = true;
-                    heatColor = Color.yellow.cpy();
+                    heatColor = Color.valueOf("f03b0e");
+                    moves.add(new PartMove(PartProgress.recoil, 0f,-1f,0f));
                 }},
                 new RegionPart("-front"){{
                     heatProgress = PartProgress.warmup;
@@ -379,16 +383,15 @@ public class SubzeroFalloutBlocks {
                     mirror = true;
                     moveY = -1f;
                     moveX = 0.5f;
-                    under = true;
-                    heatColor = Color.yellow.cpy();
+                    heatColor = Color.valueOf("f03b0e");
                 }},
                 new RegionPart("-rings"){{
                     heatProgress = PartProgress.warmup;
-                    progress = PartProgress.recoil.curve(Interp.pow2In);
-                    moveY = -5f * 4f / 3f;
+                    progress = PartProgress.warmup;
+                    moveY = -1f;
+                    moves.add(new PartMove(PartProgress.recoil, 0f,-1f,0f));
                     mirror = true;
-                    under = true;
-                    heatColor = Color.yellow.cpy();
+                    heatColor = Color.valueOf("f03b0e");;
                 }});
             }};
     }};
