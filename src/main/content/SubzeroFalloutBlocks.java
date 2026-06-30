@@ -318,7 +318,7 @@ public class SubzeroFalloutBlocks {
             requirements(Category.turret, with(Items.graphite, 50));
             size = 3;
             ammo(
-                Items.graphite, new ArtilleryBulletType(8f, 50, "shell"){{
+                Items.graphite, new BasicBulletType(10f, 50, "shell"){{
                         hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
                             lifetime = 8f;
                             strokeFrom = 1f;
@@ -328,7 +328,7 @@ public class SubzeroFalloutBlocks {
                         despawnEffect = Fx.hitBulletColor;
                         width = 8f;
                         height = 12f;
-                        lifetime = 130f;
+                        lifetime = 120f;
                         knockback = 0.5f;
                         splashDamageRadius = 22f;
                         splashDamage = 50f;
@@ -336,19 +336,19 @@ public class SubzeroFalloutBlocks {
                         pierceArmor = true;
                         status = StatusEffects.slow;
                         statusDuration = 130f;
-                        backColor = frontColor = hitColor = Color.valueOf("fffd8b");
+                        backColor = frontColor = hitColor = trailColor = Color.valueOf("fffd8b");
                         frontColor = Color.white;
                         buildingDamageMultiplier = 0.25f;
                         shrinkY = 0.3f;
-                        trailLength = 32;
-                        trailWidth = 3.35f;
+                        trailLength = 12;
+                        trailWidth = 3f;
                     }});
             shootSound = Sounds.shootTank;
             ammoPerShot = 4;
             maxAmmo = ammoPerShot * 3;
             shake = 4f;
             recoil = 3f;
-            reload = 60f * 2.3f;
+            reload = 60f * 3.3f;
             shootY = 7f;
             rotateSpeed = 1.4f;
             minWarmup = 0.85f;
@@ -363,7 +363,7 @@ public class SubzeroFalloutBlocks {
                 parts.addAll(
                 new RegionPart("-barrel"){{
                 progress = PartProgress.recoil.curve(Interp.pow2In);
-                moveY = -5f * 3f / 2f;
+                moveY = -4f * 3f / 2f;
                 heatColor = Color.valueOf("f03b0e");
                 mirror = false;
                 under = true;
@@ -387,10 +387,6 @@ public class SubzeroFalloutBlocks {
                 }},
                 new RegionPart("-rings"){{
                     heatProgress = PartProgress.warmup;
-                    progress = PartProgress.warmup;
-                    moveY = -1f;
-                    moves.add(new PartMove(PartProgress.recoil, 0f,-1f,0f));
-                    mirror = true;
                     heatColor = Color.valueOf("f03b0e");;
                 }});
             }};
