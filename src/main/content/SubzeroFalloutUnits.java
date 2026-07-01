@@ -338,7 +338,7 @@ public class SubzeroFalloutUnits {
             layerOffset = -0.001f;
             cooldownTime = 42f;
 
-            bullet = new BasicBulletType(6f, 20){{
+            bullet = new BasicBulletType(6f, 85){{
                 sprite = "shell";
                 backSprite = "shell-back";
                 smokeEffect = Fx.shootBigSmoke;

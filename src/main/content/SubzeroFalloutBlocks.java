@@ -115,7 +115,7 @@ public class SubzeroFalloutBlocks {
             ambientSound = Sounds.loopSmelter;
             ambientSoundVolume = 0.5f;
             craftTime = 60f;
-            craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 7f);
+            craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 9f);
             drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawCrucibleFlame(), new DrawDefault(), new DrawHeatInput());
         }};
 
@@ -328,7 +328,7 @@ public class SubzeroFalloutBlocks {
             recoil = 3f;
             reload = 240f;
             shootY = 7f;
-            rotateSpeed = 1.4f;
+            rotateSpeed = 1.6f;
             minWarmup = 0.85f;
             newTargetInterval = 40f;
             warmupMaintainTime = 120f;
@@ -338,63 +338,92 @@ public class SubzeroFalloutBlocks {
             scaledHealth = 250f;
             range = 390f;
             ammo(
-                Items.graphite, new BasicBulletType(10f, 160, "shell"){{
+                Items.graphite, new BasicBulletType(10f, 60, "shell"){{
                     hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect() {{
                         lifetime = 8f;
                         strokeFrom = 1f;
-                        sizeTo = 10f;
+                        sizeTo = 12f;
                     }});
                     despawnSound = hitSound = Sounds.explosionDull;
                     despawnEffect = Fx.hitBulletColor;
                     width = 8f;
                     height = 12f;
                     lifetime = 38f;
-                    knockback = 0.5f;
-                    splashDamageRadius = 24f;
-                    splashDamage = 50f;
+                    pierceCap = 2;
+                    knockback = 1.5f;
+                    splashDamageRadius = 26f;
+                    splashDamage = 150f;
                     scaledSplashDamage = true;
                     pierceArmor = true;
                     status = SubzeroFalloutStatusEffects.crippled;
                     statusDuration = 150f;
-                    backColor = frontColor = hitColor = trailColor = Color.valueOf("95abd9");
+                    backColor = hitColor = trailColor = Pal.graphiteAmmoBack;
                     frontColor = Color.white;
                     buildingDamageMultiplier = 0.25f;
                     shrinkY = 0.3f;
                     trailLength = 12;
                     trailWidth = 2f;
                 }},
-                Items.surgeAlloy, new BasicBulletType(10f, 80, "shell"){{
-                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
+                Items.silicon, new BasicBulletType(10f, 125, "shell"){{
+                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect() {{
                         lifetime = 8f;
                         strokeFrom = 1f;
-                        sizeTo = 6f;
+                        sizeTo = 4f;
                     }});
                     despawnSound = hitSound = Sounds.explosionDull;
                     despawnEffect = Fx.hitBulletColor;
                     width = 8f;
                     height = 12f;
                     lifetime = 38f;
-                    knockback = 0.5f;
-                    splashDamageRadius = 18f;
-                    splashDamage = 90f;
+                    knockback = 1.5f;
+                    splashDamageRadius = 8f;
+                    splashDamage = 50f;
+                    scaledSplashDamage = true;
+                    reloadMultiplier = 1.33f;
+                    pierceArmor = true;
+                    homingPower = 0.2f;
+                    backColor = hitColor = trailColor = Pal.siliconAmmoBack;
+                    frontColor = Color.white;
+                    buildingDamageMultiplier = 0.25f;
+                    shrinkY = 0.3f;
+                    trailEffect = Fx.artilleryTrail;
+                    trailInterval = 4f;
+                    trailLength = 12;
+                    trailWidth = 2f;
+                }},
+                Items.surgeAlloy, new BasicBulletType(10f, 160, "shell"){{
+                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
+                        lifetime = 8f;
+                        strokeFrom = 1f;
+                        sizeTo = 4f;
+                    }});
+                    despawnSound = hitSound = Sounds.explosionDull;
+                    despawnEffect = Fx.hitBulletColor;
+                    width = 8f;
+                    height = 12f;
+                    lifetime = 38f;
+                    splashDamageRadius = 16f;
+                    splashDamage = 60f;
                     scaledSplashDamage = true;
                     pierceArmor = true;
                     status = StatusEffects.shocked;
                     statusDuration = 150f;
-                    backColor = frontColor = hitColor = trailColor = Color.valueOf("fffd8b");
+                    backColor = hitColor = trailColor = Pal.surgeAmmoBack;
                     frontColor = Color.white;
                     buildingDamageMultiplier = 0.25f;
                     shrinkY = 0.3f;
+                    trailEffect = Fx.disperseTrail;
+                    trailInterval = 2f;
                     trailLength = 12;
                     trailWidth = 2f;
-                    fragBullets = 7;
+                    fragBullets = 12;
                     fragBullet = new LightningBulletType(){{
                         damage = 30;
                         collidesAir = false;
                         ammoMultiplier = 1f;
                         lightningColor = Pal.accent;
-                        lightningLength = 5;
-                        lightningLengthRand = 10;
+                        lightningLength = 4;
+                        lightningLengthRand = 7;
                     }};
                 }});
             drawer = new DrawTurret("reinforced-"){{
