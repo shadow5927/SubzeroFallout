@@ -375,7 +375,6 @@ public class SubzeroFalloutBlocks {
                     width = 8f;
                     height = 12f;
                     lifetime = 38f;
-                    knockback = 1.5f;
                     splashDamageRadius = 8f;
                     splashDamage = 50f;
                     scaledSplashDamage = true;
@@ -387,7 +386,7 @@ public class SubzeroFalloutBlocks {
                     buildingDamageMultiplier = 0.25f;
                     shrinkY = 0.3f;
                     trailEffect = Fx.artilleryTrail;
-                    trailInterval = 4f;
+                    trailInterval = 1f;
                     trailLength = 12;
                     trailWidth = 2f;
                 }},
@@ -412,6 +411,7 @@ public class SubzeroFalloutBlocks {
                     frontColor = Color.white;
                     buildingDamageMultiplier = 0.25f;
                     shrinkY = 0.3f;
+                    trailRotation = true;
                     trailEffect = Fx.disperseTrail;
                     trailInterval = 2f;
                     trailLength = 12;
