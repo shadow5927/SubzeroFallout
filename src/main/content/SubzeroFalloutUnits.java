@@ -255,6 +255,7 @@ public class SubzeroFalloutUnits {
     proxy = new UnitType("proxy"){{
         outlineColor = Pal.darkOutline;
         drawCell = false;
+        canBoost = true;
         speed = 0.55f;
         hitSize = 8.3f;
         health = 740f;

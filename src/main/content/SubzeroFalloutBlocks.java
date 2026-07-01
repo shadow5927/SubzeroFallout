@@ -99,7 +99,8 @@ public class SubzeroFalloutBlocks {
            consumePower(2.5f);
            liquidCapacity = 60f;
            ambientSound = Sounds.loopExtract;
-           ambientSoundVolume = 0.06f;
+           ambientSoundVolume = 0.2f;
+           drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(SubzeroFalloutLiquids.carbon, 4.1f), new DrawDefault());
         }};
 
         ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
@@ -108,12 +109,14 @@ public class SubzeroFalloutBlocks {
             itemCapacity = 10;
             heatRequirement = 5f;
             maxEfficiency = 1f;
-            craftTime = 60f * 1f;
             consumeItem(SubzeroFalloutItems.haematite, 4);
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
-            ambientSoundVolume = 0.7f;
+            ambientSoundVolume = 0.5f;
+            craftTime = 60f;
+            craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 7f);
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawCrucibleFlame(), new DrawDefault(), new DrawHeatInput());
         }};
 
         //bulkDriver = new MassDriver("bulk-driver"){{
@@ -318,11 +321,12 @@ public class SubzeroFalloutBlocks {
             requirements(Category.turret, with(SubzeroFalloutItems.iron, 200, Items.silicon, 150, Items.oxide, 25));
             size = 3;
             shootSound = Sounds.shootTank;
-            ammoPerShot = 4;
-            maxAmmo = ammoPerShot * 3;
+            shootEffect = Fx.shootBig;
+            ammoPerShot = 2;
+            maxAmmo = ammoPerShot * 5;
             shake = 4f;
             recoil = 3f;
-            reload = 60f;
+            reload = 240f;
             shootY = 7f;
             rotateSpeed = 1.4f;
             minWarmup = 0.85f;
@@ -334,31 +338,65 @@ public class SubzeroFalloutBlocks {
             scaledHealth = 250f;
             range = 390f;
             ammo(
-                Items.graphite, new BasicBulletType(10f, 108, "shell"){{
-                        hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
-                            lifetime = 8f;
-                            strokeFrom = 1f;
-                            sizeTo = 8f;
-                        }});
-
-                        despawnEffect = Fx.hitBulletColor;
-                        width = 8f;
-                        height = 12f;
-                        lifetime = 40f;
-                        knockback = 0.5f;
-                        splashDamageRadius = 22f;
-                        splashDamage = 50f;
-                        scaledSplashDamage = true;
-                        pierceArmor = true;
-                        status = StatusEffects.slow;
-                        statusDuration = 130f;
-                        backColor = frontColor = hitColor = trailColor = Color.valueOf("fffd8b");
-                        frontColor = Color.white;
-                        buildingDamageMultiplier = 0.25f;
-                        shrinkY = 0.3f;
-                        trailLength = 12;
-                        trailWidth = 2f;
+                Items.graphite, new BasicBulletType(10f, 160, "shell"){{
+                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect() {{
+                        lifetime = 8f;
+                        strokeFrom = 1f;
+                        sizeTo = 10f;
                     }});
+                    despawnSound = hitSound = Sounds.explosionDull;
+                    despawnEffect = Fx.hitBulletColor;
+                    width = 8f;
+                    height = 12f;
+                    lifetime = 38f;
+                    knockback = 0.5f;
+                    splashDamageRadius = 24f;
+                    splashDamage = 50f;
+                    scaledSplashDamage = true;
+                    pierceArmor = true;
+                    status = SubzeroFalloutStatusEffects.crippled;
+                    statusDuration = 150f;
+                    backColor = frontColor = hitColor = trailColor = Color.valueOf("95abd9");
+                    frontColor = Color.white;
+                    buildingDamageMultiplier = 0.25f;
+                    shrinkY = 0.3f;
+                    trailLength = 12;
+                    trailWidth = 2f;
+                }},
+                Items.surgeAlloy, new BasicBulletType(10f, 80, "shell"){{
+                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
+                        lifetime = 8f;
+                        strokeFrom = 1f;
+                        sizeTo = 6f;
+                    }});
+                    despawnSound = hitSound = Sounds.explosionDull;
+                    despawnEffect = Fx.hitBulletColor;
+                    width = 8f;
+                    height = 12f;
+                    lifetime = 38f;
+                    knockback = 0.5f;
+                    splashDamageRadius = 18f;
+                    splashDamage = 90f;
+                    scaledSplashDamage = true;
+                    pierceArmor = true;
+                    status = StatusEffects.shocked;
+                    statusDuration = 150f;
+                    backColor = frontColor = hitColor = trailColor = Color.valueOf("fffd8b");
+                    frontColor = Color.white;
+                    buildingDamageMultiplier = 0.25f;
+                    shrinkY = 0.3f;
+                    trailLength = 12;
+                    trailWidth = 2f;
+                    fragBullets = 7;
+                    fragBullet = new LightningBulletType(){{
+                        damage = 30;
+                        collidesAir = false;
+                        ammoMultiplier = 1f;
+                        lightningColor = Pal.accent;
+                        lightningLength = 5;
+                        lightningLengthRand = 10;
+                    }};
+                }});
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                 new RegionPart("-barrel"){{
@@ -367,7 +405,6 @@ public class SubzeroFalloutBlocks {
                     heatColor = Color.valueOf("f03b0e");
                     mirror = false;
                     under = true;
-                    layerOffset = -0.3f;
                 }},
                 new RegionPart("-side"){{
                     heatProgress = PartProgress.warmup;
@@ -376,7 +413,7 @@ public class SubzeroFalloutBlocks {
                     moveX = 0.5f;
                     under = true;
                     heatColor = Color.valueOf("f03b0e");
-                    moves.add(new PartMove(PartProgress.recoil, 0f,-1.5f,0f));
+                    moves.add(new PartMove(PartProgress.recoil, 0f,-1f,0f));
                 }},
                 new RegionPart("-front"){{
                     heatProgress = PartProgress.warmup;
