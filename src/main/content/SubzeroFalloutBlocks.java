@@ -323,7 +323,7 @@ public class SubzeroFalloutBlocks {
             shootSound = Sounds.shootTank;
             shootEffect = Fx.shootBig;
             ammoPerShot = 2;
-            maxAmmo = ammoPerShot * 5;
+            maxAmmo = 10;
             shake = 4f;
             recoil = 3f;
             reload = 240f;
@@ -351,7 +351,7 @@ public class SubzeroFalloutBlocks {
                     lifetime = 38f;
                     pierceCap = 2;
                     knockback = 1.5f;
-                    splashDamageRadius = 26f;
+                    splashDamageRadius = 32f;
                     splashDamage = 150f;
                     scaledSplashDamage = true;
                     pierceArmor = true;
@@ -401,7 +401,7 @@ public class SubzeroFalloutBlocks {
                     width = 8f;
                     height = 12f;
                     lifetime = 38f;
-                    splashDamageRadius = 16f;
+                    splashDamageRadius = 8f;
                     splashDamage = 60f;
                     scaledSplashDamage = true;
                     pierceArmor = true;

@@ -34,11 +34,11 @@ public class SubzeroFalloutUnits {
     //TYR
     enkindle,
     //Rapid
-    flare, //delta, sickle,
+    flare, delta, sickle,
     //Support
     nerve,
     //Specialist
-
+    haze,
     //ALTECORIS
 
     //LEGION
@@ -47,6 +47,7 @@ public class SubzeroFalloutUnits {
 
     public static void load(){
     enkindle = new UnitType("enkindle"){{
+        constructor = UnitEntity::create;
         coreUnitDock = true;
         isEnemy = false;
         envDisabled = 0;
@@ -120,12 +121,11 @@ public class SubzeroFalloutUnits {
                 layerOffset = -0.001f;
                 shootY = 3f;
             }});
-
         }});
-        constructor = UnitEntity::create;
     }};
 
     flare = new TankUnitType("flare"){{
+        constructor = TankUnit::create;
         hitSize = 14f;
         range = 60f;
         health = 650;
@@ -160,48 +160,49 @@ public class SubzeroFalloutUnits {
             continuous = alwaysContinuous = true;
             shootSound = Sounds.shootSublimate;
             bullet = new ContinuousFlameBulletType(){{
-                damage = 20f;
+                damage = 17f;
                 length = 60f;
                 width = 3f;
                 flareLength = 20f;
                 knockback = 1f;
                 pierceCap = 2;
                 timescaleDamage = true;
-
                 colors = new Color[]{Color.valueOf("eb7abe").a(0.55f), Color.valueOf("e189f5").a(0.7f), Color.valueOf("907ef7").a(0.8f), Color.valueOf("91a4ff"), Color.white};
             }};
         }});
-        constructor = TankUnit::create;
     }};
 
-    //delta = new UnitType("delta"){{
-    //    canBoost = true;
-    //    boostMultiplier = 1.5f;
-    //    speed = 0.55f;
-    //    hitSize = 8f;
-    //    health = 120f;
-    //    armor = 1f;
-    //}};
+    delta = new UnitType("delta"){{
+        constructor = MechUnit::create;
+        canBoost = true;
+        boostMultiplier = 1.5f;
+        speed = 0.55f;
+        hitSize = 8f;
+        health = 120f;
+        armor = 1f;
+    }};
 
-    //sickle = new UnitType("sickle"){{
-    //    speed = 1.1f;
-    //    drag = 0.13f;
-    //    hitSize = 10f;
-    //    health = 280;
-    //    armor = 2f;
-    //    accel = 0.4f;
-    //    rotateSpeed = 3.3f;
-    //    faceTarget = false;
+    sickle = new UnitType("sickle"){{
+        constructor = UnitWaterMove::create;
+        speed = 1.1f;
+        drag = 0.13f;
+        hitSize = 10f;
+        health = 280;
+        armor = 2f;
+        accel = 0.4f;
+        rotateSpeed = 3.3f;
+        faceTarget = false;
+        trailLength = 20;
+        waveTrailX = 4f;
+        trailScl = 1.3f;
+        moveSoundVolume = 0.4f;
+        moveSound = Sounds.shipMove;
 
-    //    trailLength = 20;
-    //    waveTrailX = 4f;
-    //    trailScl = 1.3f;
-
-    //    moveSoundVolume = 0.4f;
-    //    moveSound = Sounds.shipMove;
-    //}};
+        immunities = ObjectSet.with(StatusEffects.melting);
+    }};
 
     nerve = new UnitType("nerve"){{
+        constructor = UnitEntity::create;
         //defaultCommand = ModUnitCommand.SupportAlly;
         flying = true;
         lowAltitude = false;
@@ -209,7 +210,7 @@ public class SubzeroFalloutUnits {
         speed = 2.7f;
         accel = 0.08f;
         drag = 0.06f;
-        health = 300f;
+        health = 400f;
         armor = 3f;
         payloadCapacity = (2f * 2f) * tilePayload;
         hitSize = 12.5f;
@@ -249,13 +250,33 @@ public class SubzeroFalloutUnits {
             particles = parts;
             active = false;
         }});
-        constructor = UnitEntity::create;
+    }};
+
+    haze = new UnitType("haze"){{
+        constructor = UnitWaterMove::create;
+        outlineColor = Pal.darkOutline;
+        health = 960f;
+        armor = 7f;
+        accel = 0.5f;
+        speed = 0.85f;
+        rotateSpeed = 4f;
+        hitSize = 3.85f;
+        faceTarget = false;
+        trailLength = 20;
+        waveTrailX = 2f;
+        trailScl = 1.3f;
+        moveSoundVolume = 0.4f;
+        moveSound = Sounds.shipMove;
+
+        immunities = ObjectSet.with(StatusEffects.melting);
     }};
 
     proxy = new UnitType("proxy"){{
+        constructor = MechUnit::create;
         outlineColor = Pal.darkOutline;
         drawCell = false;
         canBoost = true;
+        boostMultiplier = 1.5f;
         speed = 0.55f;
         hitSize = 8.3f;
         health = 740f;
@@ -266,7 +287,7 @@ public class SubzeroFalloutUnits {
             top = false;
             y = 0f;
             x = 4.75f;
-            reload = 75f;
+            reload = 68f;
             recoil = 1f;
             shake = 1f;
             ejectEffect = Fx.casing2;
@@ -289,12 +310,11 @@ public class SubzeroFalloutUnits {
                 trailLength = 12;
                 despawnEffect = hitEffect = Fx.blastExplosion;
             }};
-
         }});
-        constructor = MechUnit::create;
     }};
 
     unify = new UnitType("unify"){{
+        constructor = LegsUnit::create;
         outlineColor = Pal.darkOutline;
         drawCell = false;
         speed = 0f;
@@ -302,7 +322,7 @@ public class SubzeroFalloutUnits {
         hitSize = 12f;
         rotateSpeed = 3f;
         health = 1040;
-        armor = 7f;
+        armor = 10f;
         stepShake = 0f;
         stepSound = Sounds.walkerStepTiny;
         stepSoundVolume = 0.4f;
@@ -360,8 +380,6 @@ public class SubzeroFalloutUnits {
                 }));
             }};
         }});
-        constructor = LegsUnit::create;
     }};
-    }
-}
+}}
 
