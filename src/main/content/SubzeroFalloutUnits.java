@@ -142,8 +142,7 @@ public class SubzeroFalloutUnits {
         tankMoveVolume *= 0.32f;
         tankMoveSound = Sounds.tankMoveSmall;
 
-
-        weapons.add(new Weapon("subzerofallout-flare-weapon"){{
+        weapons.add(new Weapon("subzerofallout-corona-weapon"){{
             layerOffset = 0.01f;
             showStatSprite = true;
             top = true;
