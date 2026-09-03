@@ -135,7 +135,7 @@ public class SubzeroFalloutUnits {
         rotateMoveFirst = true;
         speed = 1.2f;
         floorMultiplier = 0.95f;
-        immunities.addAll(StatusEffects.burning, StatusEffects.melting);
+        immunities.add(StatusEffects.melting);
         treadRects = new Rect[]{new Rect(12 - 32f, 7 - 32f, 14, 55), new Rect(0, 16 - 32f, 14, 25)};
         treadPullOffset = 3;
         researchCostMultiplier = 0f;
