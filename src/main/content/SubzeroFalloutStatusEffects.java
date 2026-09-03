@@ -32,6 +32,7 @@ public class SubzeroFalloutStatusEffects {
             healthMultiplier = 0.8f;
             damage = 0.215f;
             effect = Fx.burning;
+
         }};
         overload = new StatusEffect("overload"){{
             color = Pal.accent;

@@ -22,12 +22,40 @@ import static arc.math.Angles.*;
 import static mindustry.Vars.*;
 
 public class SubzeroFalloutFx {
+    public static final Rand rand = new Rand();
+    public static final Vec2 v = new Vec2();
+
     public static Effect
 
-            spearLaserShoot = new Effect(21f, e -> {
+    spearLaserShoot = new Effect(21f, e -> {
         color(Color.valueOf("8aa3f4"));
         for(int i : Mathf.signs){
             Drawf.tri(e.x, e.y, 4f * e.fout(), 29f, e.rotation + 90f * i);
+        }
+    }),
+
+    spearCharge = new Effect(1f, e -> {
+        color(Color.valueOf("8aa3f4"));
+        randLenVectors(e.id, 14, 1f + 20f * e.fout(), e.rotation, 120f, (x, y) -> {
+            lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 3f + 1f);
+        });
+    }),
+
+    scExplosion = new Effect(20f, 50f, e -> {
+        color(e.color);
+        stroke(e.fout() * 2f);
+        float circleRad = 6f + e.finpow() * 20f;
+        Lines.circle(e.x, e.y, circleRad);
+
+        rand.setSeed(e.id);
+        for(int i = 0; i < 8; i++){
+            float angle = rand.random(360f);
+            float lenRand = rand.random(0.5f, 1f);
+            Tmp.v1.trns(angle, circleRad);
+
+            for(int s : Mathf.signs){
+                Drawf.tri(e.x + Tmp.v1.x, e.y + Tmp.v1.y, e.foutpow() * 15f, e.fout() * 20f * lenRand + 6f, angle + 90f + s * 90f);
+            }
         }
     });
 }

@@ -34,11 +34,11 @@ public class SubzeroFalloutUnits {
     //TYR
     enkindle,
     //Rapid
-    flare, delta, sickle,
+    corona, delta, sickle,
     //Support
     nerve,
     //Specialist
-    haze,
+    haze, nox,
     //ALTECORIS
 
     //LEGION
@@ -124,7 +124,7 @@ public class SubzeroFalloutUnits {
         }});
     }};
 
-    flare = new TankUnitType("flare"){{
+    corona = new TankUnitType("corona"){{
         constructor = TankUnit::create;
         hitSize = 14f;
         range = 60f;
@@ -167,6 +167,7 @@ public class SubzeroFalloutUnits {
                 knockback = 1f;
                 pierceCap = 2;
                 timescaleDamage = true;
+                shootEffect = Fx.colorSparkBig;
                 colors = new Color[]{Color.valueOf("eb7abe").a(0.55f), Color.valueOf("e189f5").a(0.7f), Color.valueOf("907ef7").a(0.8f), Color.valueOf("91a4ff"), Color.white};
             }};
         }});
@@ -174,26 +175,40 @@ public class SubzeroFalloutUnits {
 
     delta = new UnitType("delta"){{
         constructor = MechUnit::create;
+        outlineColor = Pal.darkOutline;
         canBoost = true;
         boostMultiplier = 1.5f;
-        speed = 0.55f;
-        hitSize = 8f;
-        health = 120f;
-        armor = 1f;
+        speed = 0.65f;
+        hitSize = 10f;
+        health = 720f;
+        armor = 3f;
+
+        weapons.add(new Weapon("delta-weapon"){{
+            top = false;
+            reload = 13f;
+            recoil = 1f;
+            x = 4f;
+            ejectEffect = Fx.none;
+            shootSound = Sounds.shootPulsar;
+            bullet = new LightningBulletType(){{
+                lightningColor = hitColor = Color.valueOf("62d5f5");
+            }};
+        }});
     }};
 
     sickle = new UnitType("sickle"){{
         constructor = UnitWaterMove::create;
-        speed = 1.1f;
+        outlineColor = Pal.darkOutline;
+        speed = 1.4f;
         drag = 0.13f;
         hitSize = 10f;
-        health = 280;
+        health = 780;
         armor = 2f;
         accel = 0.4f;
         rotateSpeed = 3.3f;
         faceTarget = false;
         trailLength = 20;
-        waveTrailX = 4f;
+        waveTrailX = 3f;
         trailScl = 1.3f;
         moveSoundVolume = 0.4f;
         moveSound = Sounds.shipMove;
@@ -203,7 +218,7 @@ public class SubzeroFalloutUnits {
 
     nerve = new UnitType("nerve"){{
         constructor = UnitEntity::create;
-        //defaultCommand = ModUnitCommand.SupportAlly;
+        aiController = DefenderAI::new;
         flying = true;
         lowAltitude = false;
         outlineColor = Pal.darkOutline;
@@ -229,7 +244,7 @@ public class SubzeroFalloutUnits {
                 new UnitEngine(23 / 4f, -10 / 4f, 2.2f, 300f)
         );
 
-        float orbRad = 4f, partRad = 2f;
+        float orbRad = 3f, partRad = 2f;
         int parts = 10;
 
         abilities.add(new EnergyFieldAbility(20f, 100f, 40f){{
@@ -258,17 +273,52 @@ public class SubzeroFalloutUnits {
         health = 960f;
         armor = 7f;
         accel = 0.5f;
-        speed = 0.85f;
+        speed = 1.2f;
         rotateSpeed = 4f;
-        hitSize = 3.85f;
+        hitSize = 7.85f;
         faceTarget = false;
-        trailLength = 20;
-        waveTrailX = 2f;
-        trailScl = 1.3f;
         moveSoundVolume = 0.4f;
         moveSound = Sounds.shipMove;
 
         immunities = ObjectSet.with(StatusEffects.melting);
+    }};
+
+    nox = new UnitType("nox"){{
+        constructor = UnitEntity::create;
+        outlineColor = Pal.darkOutline;
+        health = 400f;
+        armor = 3f;
+        accel = 1f;
+        speed = 2.85f;
+        rotateSpeed = 8f;
+        hitSize = 7.85f;
+        engineOffset = 5.75f;
+        flying = true;
+        faceTarget = true;
+        moveSoundVolume = 0.4f;
+        moveSound = Sounds.loopHover;
+
+        weapons.add(new Weapon(){{
+            y = 1f;
+            x = 0f;
+            minShootVelocity = 2f;
+            shootCone = 10f;
+            reload = 80f;
+            shoot.shots = 3;
+            shoot.shotDelay = 3f;
+            ejectEffect = Fx.casing1;
+            mirror = false;
+            bullet = new ContinuousLaserBulletType(){{
+                damage = 35f;
+                inaccuracy = 4f;
+                width = 7f;
+                length = 180f;
+                lifetime = 32f;
+                hitEffect = Fx.hitBeam;
+                shootEffect = Fx.shootSmall;
+                ammoMultiplier = 2;
+            }};
+        }});
     }};
 
     proxy = new UnitType("proxy"){{

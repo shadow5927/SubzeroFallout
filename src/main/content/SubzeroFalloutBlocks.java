@@ -1,13 +1,13 @@
 package main.content;
 
 import arc.graphics.*;
-import arc.graphics.g2d.Lines;
+import arc.graphics.g2d.*;
 import arc.math.*;
+import arc.math.geom.*;
 import arc.struct.*;
 import mindustry.*;
 import mindustry.content.*;
 import mindustry.entities.*;
-import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
 import mindustry.entities.part.DrawPart.*;
@@ -17,7 +17,6 @@ import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
-import mindustry.type.unit.*;
 import mindustry.world.*;
 import mindustry.world.blocks.*;
 import mindustry.world.blocks.campaign.*;
@@ -95,7 +94,7 @@ public class SubzeroFalloutBlocks {
            hasLiquids = true;
            boostScale = 1f / 9f;
            itemCapacity = 0;
-           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 22f / 60f);
+           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 12f / 60f);
            consumePower(2.5f);
            liquidCapacity = 60f;
            ambientSound = Sounds.loopExtract;
@@ -104,7 +103,8 @@ public class SubzeroFalloutBlocks {
         }};
 
         ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
-            requirements(Category.crafting, with(Items.beryllium, 100, Items.graphite, 60));
+            requirements(Category.crafting, with(Items.beryllium, 200, Items.graphite, 60, Items.silicon, 100));
+            consumePower(5f);
             size = 4;
             itemCapacity = 10;
             heatRequirement = 5f;
@@ -114,8 +114,8 @@ public class SubzeroFalloutBlocks {
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
             ambientSoundVolume = 0.5f;
-            craftTime = 60f;
-            craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 9f);
+            craftTime = 75f;
+            craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 8f); new MultiEffect(Fx.massiveExplosion);
             drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawCrucibleFlame(), new DrawDefault(), new DrawHeatInput());
         }};
 
@@ -158,7 +158,7 @@ public class SubzeroFalloutBlocks {
             heatOutput = 2.5f;
             craftTime = 60f * 9f;
             ambientSound = Sounds.loopHum;
-            consumeLiquid(SubzeroFalloutLiquids.carbon, 4f / 60f);
+            consumeLiquid(SubzeroFalloutLiquids.carbon, 1.5f / 60f);
         }};
 
         //rapidAssembler = new UnitFactory("rapid-assembler"){{
@@ -229,7 +229,7 @@ public class SubzeroFalloutBlocks {
             consumePower(6f);
 
             shootType = new BasicBulletType(){{
-                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                chargeEffect = new MultiEffect(SubzeroFalloutFx.spearCharge, Fx.lancerLaserChargeBegin);
                 hitColor = Color.valueOf("8aa3f4");
                 hitSound = Sounds.explosionAfflict;
                 sprite = "large-orb";
@@ -237,6 +237,7 @@ public class SubzeroFalloutBlocks {
                 trailInterval = 3f;
                 trailParam = 3f;
                 buildingDamageMultiplier = 0.5f;
+                predictTarget = true;
                 fragOnHit = true;
                 speed = 5.6f;
                 damage = 50f;
@@ -339,7 +340,7 @@ public class SubzeroFalloutBlocks {
             range = 390f;
             ammo(
                 Items.graphite, new BasicBulletType(10f, 60, "shell"){{
-                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect() {{
+                    hitEffect = new MultiEffect(SubzeroFalloutFx.scExplosion, Fx.titanLightSmall, new WaveEffect() {{
                         lifetime = 8f;
                         strokeFrom = 1f;
                         sizeTo = 12f;
@@ -365,10 +366,10 @@ public class SubzeroFalloutBlocks {
                     trailWidth = 2f;
                 }},
                 Items.silicon, new BasicBulletType(10f, 125, "shell"){{
-                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect() {{
-                        lifetime = 8f;
-                        strokeFrom = 1f;
-                        sizeTo = 4f;
+                    hitEffect = new MultiEffect(Fx.titanLightSmall, Fx.shieldWave, new WaveEffect() {{
+                            lifetime = 8f;
+                            strokeFrom = 1f;
+                            sizeTo = 12f;
                     }});
                     despawnSound = hitSound = Sounds.explosionDull;
                     despawnEffect = Fx.hitBulletColor;
@@ -391,11 +392,31 @@ public class SubzeroFalloutBlocks {
                     trailWidth = 2f;
                 }},
                 Items.surgeAlloy, new BasicBulletType(10f, 160, "shell"){{
-                    hitEffect = new MultiEffect(Fx.titanExplosionFrag, Fx.titanLightSmall, new WaveEffect(){{
-                        lifetime = 8f;
-                        strokeFrom = 1f;
-                        sizeTo = 4f;
-                    }});
+                    float rad = 100f;
+                    hitEffect = new Effect(50f, 100f, e -> {
+                        e.scaled(7f, b -> {
+                            color(Pal.heal, b.fout());
+                            Fill.circle(e.x, e.y, rad);
+                        });
+
+                        color(Pal.surgeAmmoBack);
+                        stroke(e.fout() * 3f);
+                        Lines.circle(e.x, e.y, rad);
+
+                        int points = 10;
+                        float offset = Mathf.randomSeed(e.id, 360f);
+                        for(int i = 0; i < points; i++){
+                            float angle = i* 360f / points + offset;
+                            //for(int s : Mathf.zeroOne){
+                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 6f, 50f * e.fout(), angle/* + s*180f*/);
+                            //}
+                        }
+
+                        Fill.circle(e.x, e.y, 12f * e.fout());
+                        color();
+                        Fill.circle(e.x, e.y, 6f * e.fout());
+                        Drawf.light(e.x, e.y, rad * 1.6f, Pal.heal, e.fout());
+                    });
                     despawnSound = hitSound = Sounds.explosionDull;
                     despawnEffect = Fx.hitBulletColor;
                     width = 8f;
