@@ -183,14 +183,34 @@ public class SubzeroFalloutUnits {
         armor = 3f;
 
         weapons.add(new Weapon("delta-weapon"){{
+            layerOffset = 0.01f;
+            showStatSprite = true;
             top = false;
+            rotate = false;
             reload = 13f;
             recoil = 1f;
-            x = 4f;
+            x = 5f;
+            shootY = 4f;
+            shoot.shots = 3;
+            shoot.shotDelay = 0.5f;
             ejectEffect = Fx.none;
             shootSound = Sounds.shootPulsar;
             bullet = new LightningBulletType(){{
-                lightningColor = hitColor = Color.valueOf("62d5f5");
+                lightningColor = hitColor = Color.valueOf("5d92cf");
+                damage = 25f;
+                lightningLength = 9;
+                lightningLengthRand = 8;
+                lightningType = new BulletType(0.0001f, 0f){{
+                    lifetime = Fx.lightning.lifetime;
+                    hitEffect = Fx.hitLancer;
+                    despawnEffect = Fx.none;
+                    status = StatusEffects.shocked;
+                    statusDuration = 10f;
+                    hittable = false;
+                    collidesTeam = true;
+                    homingRange = 45f;
+                    homingPower = 0.04f;
+                }};
             }};
         }});
     }};
@@ -300,17 +320,12 @@ public class SubzeroFalloutUnits {
         weapons.add(new Weapon(){{
             y = 1f;
             x = 0f;
-            minShootVelocity = 2f;
             shootCone = 10f;
             reload = 80f;
-            shoot.shots = 3;
-            shoot.shotDelay = 3f;
-            ejectEffect = Fx.casing1;
             mirror = false;
             bullet = new ContinuousLaserBulletType(){{
                 damage = 35f;
-                inaccuracy = 4f;
-                width = 7f;
+                width = 3f;
                 length = 180f;
                 lifetime = 32f;
                 hitEffect = Fx.hitBeam;
