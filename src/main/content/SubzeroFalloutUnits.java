@@ -113,7 +113,6 @@ public class SubzeroFalloutUnits {
             drawBuildBeam = false;
 
             weapons.add(new BuildWeapon("subzerofallout-enkindle-weapon"){{
-                name = "enkindle-weapon";
                 rotate = true;
                 rotateSpeed = 7f;
                 x = 10/4f;
@@ -126,7 +125,7 @@ public class SubzeroFalloutUnits {
 
     corona = new TankUnitType("corona"){{
         constructor = TankUnit::create;
-        hitSize = 14f;
+        hitSize = 13f;
         range = 60f;
         health = 650;
         armor = 4f;
@@ -182,9 +181,8 @@ public class SubzeroFalloutUnits {
         health = 720f;
         armor = 3f;
 
-        weapons.add(new Weapon("delta-weapon"){{
+        weapons.add(new Weapon("subzerofallout-delta-weapon"){{
             layerOffset = 0.01f;
-            showStatSprite = true;
             top = false;
             rotate = false;
             reload = 13f;
@@ -200,6 +198,9 @@ public class SubzeroFalloutUnits {
                 damage = 25f;
                 lightningLength = 9;
                 lightningLengthRand = 8;
+                homingRange = 45f;
+                homingPower = 0.04f;
+                smokeEffect = Fx.colorSpark;
                 lightningType = new BulletType(0.0001f, 0f){{
                     lifetime = Fx.lightning.lifetime;
                     hitEffect = Fx.hitLancer;
@@ -208,8 +209,6 @@ public class SubzeroFalloutUnits {
                     statusDuration = 10f;
                     hittable = false;
                     collidesTeam = true;
-                    homingRange = 45f;
-                    homingPower = 0.04f;
                 }};
             }};
         }});
@@ -233,6 +232,32 @@ public class SubzeroFalloutUnits {
         moveSound = Sounds.shipMove;
 
         immunities = ObjectSet.with(StatusEffects.melting);
+
+        abilities.add(new StatusFieldAbility(StatusEffects.overclock, 60f * 4, 60f * 24f, 50f));
+
+        weapons.add(new Weapon("subzerofallout-sickle-weapon"){{
+            layerOffset = 0.01f;
+            top = true;
+            rotate = true;
+            reload = 48f;
+            recoil = 1f;
+            y = -1f;
+            shoot.shots = 3;
+            shoot.shotDelay = 3f;
+            shootSound = Sounds.shootMissile;
+            rotationLimit = 90f;
+            bullet = new BasicBulletType(4.3f, 20f){{
+                sprite = "missile";
+                backSprite = "missile-back";
+                lifetime = 60 * 0.496f;
+                splashDamageRadius = 35f;
+                splashDamage = 30f;
+                hitColor = backColor = trailColor = Color.valueOf("5d92cf");
+                trailWidth = 3f;
+                trailLength = 12;
+                hitEffect = despawnEffect = Fx.blastExplosion;
+            }};
+        }});
     }};
 
     nerve = new UnitType("nerve"){{
@@ -246,7 +271,7 @@ public class SubzeroFalloutUnits {
         drag = 0.06f;
         health = 400f;
         armor = 3f;
-        payloadCapacity = (2f * 2f) * tilePayload;
+        payloadCapacity = 2f * 2f * tilesize * tilesize;
         hitSize = 12.5f;
         itemCapacity = 10;
         targetPriority = -2f;
@@ -294,9 +319,13 @@ public class SubzeroFalloutUnits {
         accel = 0.5f;
         speed = 1.2f;
         rotateSpeed = 4f;
-        hitSize = 7.85f;
+        hitSize = 11f;
         faceTarget = false;
         moveSoundVolume = 0.4f;
+        trailLength = 20;
+        waveTrailX = 5f;
+        waveTrailY = -4f;
+        trailScl = 1.9f;
         moveSound = Sounds.shipMove;
 
         immunities = ObjectSet.with(StatusEffects.melting);
@@ -326,8 +355,10 @@ public class SubzeroFalloutUnits {
             bullet = new ContinuousLaserBulletType(){{
                 damage = 35f;
                 width = 3f;
-                length = 180f;
+                length = 90f;
                 lifetime = 32f;
+                continuous = true;
+                alwaysContinuous = true;
                 hitEffect = Fx.hitBeam;
                 shootEffect = Fx.shootSmall;
                 ammoMultiplier = 2;

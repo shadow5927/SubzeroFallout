@@ -8,11 +8,12 @@ import mindustry.entities.units.StatusEntry;
 import mindustry.gen.Unit;
 import mindustry.graphics.Pal;
 import mindustry.type.StatusEffect;
+import mindustry.world.meta.Stat;
 
 public class SubzeroFalloutStatusEffects {
     public static StatusEffect
             crippled, invulnerable,
-            scorched, overload
+            scorched, overload, overcharged
     ;
 
     public static void load(){
@@ -26,19 +27,24 @@ public class SubzeroFalloutStatusEffects {
             healthMultiplier = Float.POSITIVE_INFINITY;
             effect = Fx.shieldWave;
         }};
-
         scorched = new StatusEffect("scorched"){{
             color = Color.valueOf("f26f83");
             healthMultiplier = 0.8f;
             damage = 0.215f;
-            effect = Fx.burning;
-
+            effect = SubzeroFalloutFx.scorched;
         }};
         overload = new StatusEffect("overload"){{
             color = Pal.accent;
             speedMultiplier = 1.35f;
             damage = 0.159f;
             effect = Fx.overclocked;
+        }};
+        overcharged = new StatusEffect("overcharged"){{
+           color = Color.valueOf("62d5f5");
+           damageMultiplier = 1.25f;
+           reloadMultiplier = 1.1f;
+           speedMultiplier = 0.75f;
+           effect = Fx.hitBulletColor;
         }};
     }
 }
