@@ -84,7 +84,7 @@ public class SubzeroFalloutItems {
             cost = 1.3f;
             hardness = 8;
             healthScaling = 1.2f;
-            radioactivity = 0.9f;
+            radioactivity = 2f;
         }};
     }
 }

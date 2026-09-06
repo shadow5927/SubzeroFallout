@@ -18,6 +18,7 @@ public class SubzeroFalloutStatusEffects {
 
     public static void load(){
         crippled = new StatusEffect("crippled"){{
+            show = true;
             speedMultiplier = 0.15f;
             healthMultiplier = 0.75f;
             disarm = true;
@@ -29,20 +30,23 @@ public class SubzeroFalloutStatusEffects {
         }};
         scorched = new StatusEffect("scorched"){{
             color = Color.valueOf("f26f83");
+            show = true;
             healthMultiplier = 0.8f;
             damage = 0.215f;
             effect = SubzeroFalloutFx.scorched;
         }};
         overload = new StatusEffect("overload"){{
             color = Pal.accent;
+            show = true;
             speedMultiplier = 1.35f;
             damage = 0.159f;
             effect = Fx.overclocked;
         }};
         overcharged = new StatusEffect("overcharged"){{
            color = Color.valueOf("62d5f5");
+           show = true;
            damageMultiplier = 1.25f;
-           reloadMultiplier = 1.1f;
+           reloadMultiplier = 1.25f;
            speedMultiplier = 0.75f;
            effect = Fx.hitBulletColor;
         }};

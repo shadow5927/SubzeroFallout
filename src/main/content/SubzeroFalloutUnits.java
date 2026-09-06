@@ -176,16 +176,15 @@ public class SubzeroFalloutUnits {
         outlineColor = Pal.darkOutline;
         canBoost = true;
         boostMultiplier = 1.5f;
-        speed = 0.65f;
+        speed = 0.85f;
         hitSize = 10f;
         health = 720f;
         armor = 3f;
 
         weapons.add(new Weapon("subzerofallout-delta-weapon"){{
-            layerOffset = 0.01f;
             top = false;
             rotate = false;
-            reload = 13f;
+            reload = 18f;
             recoil = 1f;
             x = 5f;
             shootY = 4f;
@@ -200,11 +199,15 @@ public class SubzeroFalloutUnits {
                 lightningLengthRand = 8;
                 homingRange = 45f;
                 homingPower = 0.04f;
-                smokeEffect = Fx.colorSpark;
+                followAimSpeed = 5f;
+                shootEffect = Fx.colorSpark;
                 lightningType = new BulletType(0.0001f, 0f){{
                     lifetime = Fx.lightning.lifetime;
                     hitEffect = Fx.hitLancer;
                     despawnEffect = Fx.none;
+                    homingRange = 45f;
+                    homingPower = 0.08f;
+                    followAimSpeed = 5f;
                     status = StatusEffects.shocked;
                     statusDuration = 10f;
                     hittable = false;
@@ -233,14 +236,16 @@ public class SubzeroFalloutUnits {
 
         immunities = ObjectSet.with(StatusEffects.melting);
 
-        abilities.add(new StatusFieldAbility(StatusEffects.overclock, 60f * 4, 60f * 24f, 50f));
+        abilities.add(new StatusFieldAbility(SubzeroFalloutStatusEffects.overcharged, 60f * 4, 60f * 12f, 50f));
 
         weapons.add(new Weapon("subzerofallout-sickle-weapon"){{
             layerOffset = 0.01f;
             top = true;
+            mirror = false;
             rotate = true;
             reload = 48f;
             recoil = 1f;
+            x = 0f;
             y = -1f;
             shoot.shots = 3;
             shoot.shotDelay = 3f;
@@ -252,9 +257,13 @@ public class SubzeroFalloutUnits {
                 lifetime = 60 * 0.496f;
                 splashDamageRadius = 35f;
                 splashDamage = 30f;
+                followAimSpeed = 5f;
+                weaveScale = 9f;
+                weaveMag = 1f;
                 hitColor = backColor = trailColor = Color.valueOf("5d92cf");
-                trailWidth = 3f;
+                trailWidth = 1f;
                 trailLength = 12;
+                despawnSound = hitSound = Sounds.explosion;
                 hitEffect = despawnEffect = Fx.blastExplosion;
             }};
         }});
@@ -357,6 +366,7 @@ public class SubzeroFalloutUnits {
                 width = 3f;
                 length = 90f;
                 lifetime = 32f;
+                incendChance = 0f;
                 continuous = true;
                 alwaysContinuous = true;
                 hitEffect = Fx.hitBeam;

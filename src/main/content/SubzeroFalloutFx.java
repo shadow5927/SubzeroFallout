@@ -42,7 +42,7 @@ public class SubzeroFalloutFx {
     }),
 
     scorched = new Effect(35f, e -> {
-        color(Color.valueOf("f26f83"), Color.valueOf("83222c"), e.fin());
+        color(Color.valueOf("f0a3b0"), Color.valueOf("83222c"), e.fin());
 
         randLenVectors(e.id, 3, 2f + e.fin() * 7f, (x, y) -> {
             Fill.circle(e.x + x, e.y + y, 0.1f + e.fout() * 1.4f);

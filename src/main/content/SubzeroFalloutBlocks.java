@@ -17,6 +17,7 @@ import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import mindustry.type.unit.*;
 import mindustry.world.*;
 import mindustry.world.blocks.*;
 import mindustry.world.blocks.campaign.*;
@@ -48,7 +49,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Cores
     coreRampart,
         //Tyr Crafting
-    carbonicExtractor, ferrumSmelter,
+    carbonicExtractor, ferrumSmelter, compressedElectrolyzer, reactionChamber,
         //Tyr Production
         //Tyr Transport
     //bulkDriver,
@@ -57,7 +58,7 @@ public class SubzeroFalloutBlocks {
         //Tyr Heat
     carbonHeater,
         //Tyr Units
-    //rapidAssembler, supportAssembler, specialistAssembler,
+    //rapidAssembler, supportAssembler, specialistAssembler, deltaPad
         //Tyr Payload
         //Tyr Defense
         //Tyr Walls
@@ -94,29 +95,65 @@ public class SubzeroFalloutBlocks {
            hasLiquids = true;
            boostScale = 1f / 9f;
            itemCapacity = 0;
-           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 12f / 60f);
+            liquidCapacity = 60f;
            consumePower(2.5f);
-           liquidCapacity = 60f;
+           outputLiquid = new LiquidStack(SubzeroFalloutLiquids.carbon, 12f / 60f);
            ambientSound = Sounds.loopExtract;
            ambientSoundVolume = 0.2f;
-           drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(SubzeroFalloutLiquids.carbon, 4.1f), new DrawDefault());
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(SubzeroFalloutLiquids.carbon, 4.1f), new DrawDefault(), new DrawHeatInput());
         }};
 
         ferrumSmelter = new HeatCrafter("ferrum-smelter"){{
             requirements(Category.crafting, with(Items.beryllium, 200, Items.graphite, 60, Items.silicon, 100));
-            consumePower(5f);
             size = 4;
             itemCapacity = 10;
             heatRequirement = 5f;
             maxEfficiency = 1f;
+            consumePower(4f);
             consumeItem(SubzeroFalloutItems.haematite, 4);
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
-            ambientSoundVolume = 0.5f;
+            ambientSoundVolume = 0.2f;
             craftTime = 75f;
             craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 8f); new MultiEffect(Fx.massiveExplosion);
             drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawCrucibleFlame(), new DrawDefault(), new DrawHeatInput());
+        }};
+
+        compressedElectrolyzer = new GenericCrafter("compressed-electrolyzer"){{
+            requirements(Category.crafting, with(Items.beryllium, 200, Items.graphite, 60, Items.silicon, 100));
+            group = BlockGroup.liquids;
+            size = 2;
+            rotate = true;
+            invertFlip = true;
+            itemCapacity = 0;
+            liquidCapacity = 50f;
+            consumePower(0.75f);
+            consumeLiquid(Liquids.water, 10f / 60f);
+            ambientSound = Sounds.loopElectricHum;
+            ambientSoundVolume = 0.08f;
+            regionRotated1 = 3;
+            outputLiquids = LiquidStack.with(Liquids.ozone, 2f / 60, Liquids.hydrogen, 3f / 60);
+            liquidOutputDirections = new int[]{1, 2};
+
+        }};
+
+        reactionChamber = new HeatProducer("reaction-chamber"){{
+            requirements(Category.crafting, with(SubzeroFalloutItems.iron, 300, SubzeroFalloutItems.obsidianShard, 80, Items.graphite, 80, Items.silicon, 150));
+            size = 4;
+            outputItem = new ItemStack(Items.oxide, 2);
+            researchCostMultiplier = 1.1f;
+            consumeLiquid(Liquids.ozone, 8f / 60f);
+            consumeItem(Items.beryllium);
+            consumePower(2f);
+            rotateDraw = false;
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidRegion(), new DrawDefault(), new DrawHeatOutput());
+            ambientSound = Sounds.loopExtract;
+            ambientSoundVolume = 0.08f;
+            regionRotated1 = 2;
+            craftTime = 60f * 2f;
+            liquidCapacity = 100f;
+            heatOutput = 10f;
         }};
 
         //bulkDriver = new MassDriver("bulk-driver"){{
@@ -191,14 +228,14 @@ public class SubzeroFalloutBlocks {
 
         ironWall = new Wall("iron-wall"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 8));
-            health = 150 * 4;
+            health = 175 * 4;
             armor = 8f;
             researchCostMultiplier = 0.1f;
         }};
 
         ironWallLarge = new Wall("iron-wall-large"){{
             requirements(Category.defense, with(SubzeroFalloutItems.iron, 32));
-            health = 150 * 4 * 4;
+            health = 175 * 4 * 4;
             armor = 8f;
             size = 2;
             researchCostMultiplier = 0.1f;
