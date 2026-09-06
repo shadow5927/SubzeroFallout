@@ -141,6 +141,7 @@ public class SubzeroFalloutBlocks {
         reactionChamber = new HeatProducer("reaction-chamber"){{
             requirements(Category.crafting, with(SubzeroFalloutItems.iron, 300, SubzeroFalloutItems.obsidianShard, 80, Items.graphite, 80, Items.silicon, 150));
             size = 4;
+            hasLiquids = true;
             outputItem = new ItemStack(Items.oxide, 2);
             researchCostMultiplier = 1.1f;
             consumeLiquid(Liquids.ozone, 8f / 60f);
