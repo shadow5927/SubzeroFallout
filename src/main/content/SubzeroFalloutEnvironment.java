@@ -1,5 +1,6 @@
 package main.content;
 
+import mindustry.content.Items;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.Block;
 import mindustry.world.blocks.environment.*;
@@ -38,7 +39,7 @@ public class SubzeroFalloutEnvironment {
     //blackIceWall,
     //fortressWall, ruinedFortressWall, tyrianPanelWall, forceWall
     //Ores
-    oreHaematite, wallOreHaematite, oreNickel
+    oreHaematite, wallOreHaematite, oreRutile, wallOreRutile, oreNickel
     ;
     public static void load(){
         hearthStone = new Floor("hearth-stone"){{
@@ -127,6 +128,12 @@ public class SubzeroFalloutEnvironment {
         oreHaematite = new OreBlock("ore-haematite", SubzeroFalloutItems.haematite);
 
         wallOreHaematite = new OreBlock("ore-wall-haematite", SubzeroFalloutItems.haematite){{
+            wallOre = true;
+        }};
+
+        oreRutile = new OreBlock("rutile-cluster", SubzeroFalloutItems.rutileCluster);
+
+        wallOreRutile = new OreBlock("wall-rutile-cluster", SubzeroFalloutItems.rutileCluster){{
             wallOre = true;
         }};
 

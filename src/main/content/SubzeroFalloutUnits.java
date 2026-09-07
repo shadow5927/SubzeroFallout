@@ -36,7 +36,7 @@ public class SubzeroFalloutUnits {
     //Rapid
     corona, delta, sickle,
     //Support
-    nerve,
+    nerve, trident,
     //Specialist
     haze, nox,
     //ALTECORIS
@@ -52,7 +52,6 @@ public class SubzeroFalloutUnits {
         isEnemy = false;
         envDisabled = 0;
         outlineColor = Pal.darkOutline;
-
         range = 60f;
         faceTarget = true;
         targetPriority = -2;
@@ -115,8 +114,8 @@ public class SubzeroFalloutUnits {
             weapons.add(new BuildWeapon("subzerofallout-enkindle-weapon"){{
                 rotate = true;
                 rotateSpeed = 7f;
-                x = 10/4f;
-                y = 10/4f;
+                x = 2f;
+                y = 1f;
                 layerOffset = -0.001f;
                 shootY = 3f;
             }});
@@ -128,7 +127,7 @@ public class SubzeroFalloutUnits {
         hitSize = 13f;
         range = 60f;
         health = 650;
-        armor = 4f;
+        armor = 5f;
         itemCapacity = 0;
         rotateSpeed = 3.5f;
         rotateMoveFirst = true;
@@ -179,7 +178,7 @@ public class SubzeroFalloutUnits {
         speed = 0.85f;
         hitSize = 10f;
         health = 720f;
-        armor = 3f;
+        armor = 4f;
 
         weapons.add(new Weapon("subzerofallout-delta-weapon"){{
             top = false;
@@ -194,19 +193,15 @@ public class SubzeroFalloutUnits {
             shootSound = Sounds.shootPulsar;
             bullet = new LightningBulletType(){{
                 lightningColor = hitColor = Color.valueOf("5d92cf");
-                damage = 25f;
+                damage = 20f;
                 lightningLength = 9;
                 lightningLengthRand = 8;
-                homingRange = 45f;
-                homingPower = 0.04f;
-                followAimSpeed = 5f;
+                followAimSpeed = 9f;
                 shootEffect = Fx.colorSpark;
                 lightningType = new BulletType(0.0001f, 0f){{
                     lifetime = Fx.lightning.lifetime;
                     hitEffect = Fx.hitLancer;
                     despawnEffect = Fx.none;
-                    homingRange = 45f;
-                    homingPower = 0.08f;
                     followAimSpeed = 5f;
                     status = StatusEffects.shocked;
                     statusDuration = 10f;
@@ -223,8 +218,8 @@ public class SubzeroFalloutUnits {
         speed = 1.4f;
         drag = 0.13f;
         hitSize = 10f;
-        health = 780;
-        armor = 2f;
+        health = 780f;
+        armor = 3f;
         accel = 0.4f;
         rotateSpeed = 3.3f;
         faceTarget = false;
@@ -248,12 +243,14 @@ public class SubzeroFalloutUnits {
             x = 0f;
             y = -1f;
             shoot.shots = 3;
-            shoot.shotDelay = 3f;
+            shoot.shotDelay = 6f;
             shootSound = Sounds.shootMissile;
-            rotationLimit = 90f;
+            rotationLimit = 120f;
             bullet = new BasicBulletType(4.3f, 20f){{
                 sprite = "missile";
                 backSprite = "missile-back";
+                width = 8f;
+                height = 16f;
                 lifetime = 60 * 0.496f;
                 splashDamageRadius = 35f;
                 splashDamage = 30f;
@@ -278,7 +275,7 @@ public class SubzeroFalloutUnits {
         speed = 2.7f;
         accel = 0.08f;
         drag = 0.06f;
-        health = 400f;
+        health = 550f;
         armor = 3f;
         payloadCapacity = 2f * 2f * tilesize * tilesize;
         hitSize = 12.5f;
@@ -300,13 +297,13 @@ public class SubzeroFalloutUnits {
         float orbRad = 3f, partRad = 2f;
         int parts = 10;
 
-        abilities.add(new EnergyFieldAbility(20f, 100f, 40f){{
+        abilities.add(new EnergyFieldAbility(25f, 100f, 40f){{
             sectorRad = 0.1f;
             sectors = 3;
             effectRadius = 0f;
             statusDuration = 60f * 6f;
             maxTargets = 6;
-            healPercent = 1.5f;
+            healPercent = 1.75f;
             sameTypeHealMult = 0.5f;
         }});
 
@@ -317,6 +314,66 @@ public class SubzeroFalloutUnits {
             y = -1f;
             particles = parts;
             active = false;
+        }});
+    }};
+
+    trident = new UnitType("trident"){{
+        constructor = UnitEntity::create;
+        defaultCommand = UnitCommand.rebuildCommand;
+        outlineColor = Pal.darkOutline;
+        itemCapacity = 30;
+        health = 790f;
+        armor = 2f;
+        mineTier = 2;
+        buildSpeed = 2.5f;
+        speed = 3.15f;
+        accel = 0.1f;
+        drag = 0.034f;
+        flying = true;
+        faceTarget = false;
+        moveSoundVolume = 0.4f;
+        moveSound = Sounds.loopHover;
+        hitSize = 7.85f;
+        engineOffset = 5.75f;
+        weapons.add(new Weapon("bomber"){{
+            reload = 25f;
+            shoot.shotDelay = 1f;
+            shoot.shots = 2;
+            alternate = true;
+            ejectEffect = Fx.none;
+            velocityRnd = 1f;
+            inaccuracy = 20f;
+            ignoreRotation = true;
+            bullet = new BombBulletType(10f, 25f, "shell") {{
+                x = 10f;
+                y = 14f;
+                hitColor = backColor = trailColor = Color.valueOf("a0b380");
+                frontColor = Color.valueOf("e4ffd6");
+                status = StatusEffects.corroded;
+                statusDuration = 60f * 8f;
+                hitEffect = despawnEffect = Fx.vapor;
+                shootEffect = Fx.none;
+                smokeEffect = Fx.none;
+                shootSound = Sounds.shootPayload;
+                fragBullets = 1;
+                fragBullet = new EmptyBulletType(){{
+                    damage = 0f;
+                    lifetime = 60f * 2.5f;
+                    bulletInterval = 20f;
+                    hitEffect = despawnEffect = Fx.none;
+                    intervalBullet = new EmptyBulletType(){{
+                        splashDamage = 15f;
+                        collidesGround = true;
+                        collidesAir = false;
+                        collides = false;
+                        hitEffect = despawnEffect = Fx.none;
+                        pierce = true;
+                        instantDisappear = true;
+                        splashDamageRadius = 15f;
+                        buildingDamageMultiplier = 0f;
+                    }};
+                }};
+            }};
         }});
     }};
 
@@ -363,7 +420,7 @@ public class SubzeroFalloutUnits {
             mirror = false;
             bullet = new ContinuousLaserBulletType(){{
                 damage = 35f;
-                width = 3f;
+                width = 2f;
                 length = 90f;
                 lifetime = 32f;
                 incendChance = 0f;
@@ -372,6 +429,7 @@ public class SubzeroFalloutUnits {
                 hitEffect = Fx.hitBeam;
                 shootEffect = Fx.shootSmall;
                 ammoMultiplier = 2;
+                colors = new Color[]{Pal.sapBullet.cpy().a(.2f), Pal.sapBullet.cpy().a(.5f), Pal.sapBullet.cpy().mul(1.2f), Color.white};
             }};
         }});
     }};
@@ -404,7 +462,7 @@ public class SubzeroFalloutUnits {
                 smokeEffect = Fx.shootBigSmoke;
                 shootEffect = Fx.shootBigColor;
                 splashDamageRadius = 35f;
-                splashDamage = 15f;
+                splashDamage = 20f;
                 width = 6f;
                 height = 9f;
                 lifetime = 32f;
@@ -463,7 +521,7 @@ public class SubzeroFalloutUnits {
             layerOffset = -0.001f;
             cooldownTime = 42f;
 
-            bullet = new BasicBulletType(6f, 85){{
+            bullet = new BasicBulletType(6f, 75){{
                 sprite = "shell";
                 backSprite = "shell-back";
                 smokeEffect = Fx.shootBigSmoke;

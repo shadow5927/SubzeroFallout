@@ -9,7 +9,7 @@ public class SubzeroFalloutItems {
     //TYR
     haematite, iron, obsidianShard, arsenic, heavyPlating, ignisGlass,
     //ALTECORIS
-    nickel, bauxite, coltan, quartz, aluminum, nitride, sodium, tantalum, niobium, uranium
+    nickel, bauxite, coltan, quartz, rutileCluster, aluminum, nitride, sodium, tantalum, niobium, uranium
     //LEGION
 
     ;
@@ -32,6 +32,10 @@ public class SubzeroFalloutItems {
             cost = 0.5f;
             hardness = 4;
             healthScaling = 0.25f;
+        }};
+        rutileCluster = new Item("rutile-cluster", Color.valueOf("ae9b89")){{
+            hardness = 5;
+            buildable = false;
         }};
         iron = new Item("iron", Color.valueOf("ae9b89")){{
             cost = 1f;

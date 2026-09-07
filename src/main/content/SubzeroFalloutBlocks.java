@@ -51,10 +51,11 @@ public class SubzeroFalloutBlocks {
         //Tyr Crafting
     carbonicExtractor, ferrumSmelter, compressedElectrolyzer, reactionChamber,
         //Tyr Production
+    incisionBore,
         //Tyr Transport
     //bulkDriver,
         //Tyr Power
-    //windmill, capacitor, thermalSiphon,
+    capacitor, //thermalSiphon,
         //Tyr Heat
     carbonHeater,
         //Tyr Units
@@ -114,7 +115,7 @@ public class SubzeroFalloutBlocks {
             consumeLiquid(SubzeroFalloutLiquids.carbon, 3f / 60f);
             outputItem = new ItemStack(SubzeroFalloutItems.iron, 2);
             ambientSound = Sounds.loopSmelter;
-            ambientSoundVolume = 0.2f;
+            ambientSoundVolume = 0.3f;
             craftTime = 75f;
             craftEffect = new RadialEffect(Fx.surgeCruciSmoke, 4, 90f, 8f); new MultiEffect(Fx.massiveExplosion);
             drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawCrucibleFlame(), new DrawDefault(), new DrawHeatInput());
@@ -128,8 +129,8 @@ public class SubzeroFalloutBlocks {
             invertFlip = true;
             itemCapacity = 0;
             liquidCapacity = 50f;
-            consumePower(0.75f);
-            consumeLiquid(Liquids.water, 10f / 60f);
+            consumePower(0.5f);
+            consumeLiquid(Liquids.water, 5f / 60f);
             ambientSound = Sounds.loopElectricHum;
             ambientSoundVolume = 0.08f;
             regionRotated1 = 3;
@@ -157,6 +158,18 @@ public class SubzeroFalloutBlocks {
             heatOutput = 10f;
         }};
 
+        incisionBore = new BeamDrill("incision-bore"){{
+            requirements(Category.production, with(SubzeroFalloutItems.iron, 100, Items.beryllium, 50, Items.silicon, 50, Items.oxide, 25));
+            size = 3;
+            tier = 5;
+            range = 4;
+            laserWidth = 0.7f;
+            itemCapacity = 20;
+            drillTime = 120f;
+            consumePower(0.5f);
+
+        }};
+
         //bulkDriver = new MassDriver("bulk-driver"){{
         //    requirements(Category.distribution, with(Items.graphite, 50));
         //    size = 2;
@@ -166,19 +179,13 @@ public class SubzeroFalloutBlocks {
         //    consumePower(1.5f);
         //}};
 
-        //windmill = new SolarGenerator("windmill"){{
-        //    requirements(Category.power, with(Items.graphite, 50));
-        //    size = 2;
-        //    powerProduction = 1.5f / 6f;
-        //}};
-
-        //capacitor = new Battery("capacitor"){{
-        //    requirements(Category.power, with(Items.graphite, 50));
-        //    size = 2;
-        //    consumePowerBuffered(7500f);
-        //    consumePower(0.5f);
-        //    baseExplosiveness = 2.5f;
-        //}};
+        capacitor = new Battery("capacitor"){{
+            requirements(Category.power, with(SubzeroFalloutItems.iron, 45, Items.graphite, 70, Items.silicon, 70));
+            size = 2;
+            consumePowerBuffered(7500f);
+            consumePower(0.5f);
+            baseExplosiveness = 2.5f;
+        }};
 
         //thermalSiphon = new ThermalGenerator("thermal-siphon"){{
         //    requirements(Category.power, with(Items.graphite, 50));
