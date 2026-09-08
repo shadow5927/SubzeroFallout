@@ -331,6 +331,8 @@ public class SubzeroFalloutUnits {
         drag = 0.034f;
         flying = true;
         faceTarget = false;
+        circleTarget = true;
+        circleTargetRadius = 80f;
         moveSoundVolume = 0.4f;
         moveSound = Sounds.loopHover;
         hitSize = 8.85f;
@@ -343,6 +345,7 @@ public class SubzeroFalloutUnits {
             shoot.shots = 4;
             alternate = true;
             ejectEffect = Fx.none;
+            shootSound = Sounds.shootPayload;
             velocityRnd = 1f;
             inaccuracy = 20f;
             ignoreRotation = true;
@@ -356,7 +359,6 @@ public class SubzeroFalloutUnits {
                 hitEffect = despawnEffect = new MultiEffect(Fx.vapor, Fx.flakExplosion);
                 shootEffect = Fx.none;
                 smokeEffect = Fx.none;
-                shootSound = Sounds.shootPayload;
                 fragBullets = 1;
                 fragBullet = new EmptyBulletType(){{
                     damage = 0f;
