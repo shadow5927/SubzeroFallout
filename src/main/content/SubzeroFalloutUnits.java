@@ -340,13 +340,13 @@ public class SubzeroFalloutUnits {
             y = -2f;
             reload = 15f;
             shoot.shotDelay = 3f;
-            shoot.shots = 2;
+            shoot.shots = 4;
             alternate = true;
             ejectEffect = Fx.none;
             velocityRnd = 1f;
             inaccuracy = 20f;
             ignoreRotation = true;
-            bullet = new BombBulletType(40f, 25f, "shell") {{
+            bullet = new BombBulletType(45f, 25f, "shell") {{
                 width = 10f;
                 height = 14f;
                 hitColor = backColor = trailColor = Color.valueOf("a0b380");
