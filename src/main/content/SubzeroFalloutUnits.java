@@ -337,9 +337,9 @@ public class SubzeroFalloutUnits {
         engineOffset = 5.75f;
         weapons.add(new Weapon("bomber"){{
             x = 2f;
-            y = 0f;
-            reload = 25f;
-            shoot.shotDelay = 1f;
+            y = -2f;
+            reload = 15f;
+            shoot.shotDelay = 3f;
             shoot.shots = 2;
             alternate = true;
             ejectEffect = Fx.none;
@@ -360,7 +360,7 @@ public class SubzeroFalloutUnits {
                 fragBullets = 1;
                 fragBullet = new EmptyBulletType(){{
                     damage = 0f;
-                    lifetime = 60f * 2.5f;
+                    lifetime = 60f * 1.5f;
                     bulletInterval = 20f;
                     hitEffect = despawnEffect = Fx.none;
                     intervalBullet = new EmptyBulletType(){{
