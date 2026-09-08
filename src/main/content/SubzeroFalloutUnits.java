@@ -258,7 +258,7 @@ public class SubzeroFalloutUnits {
                 weaveScale = 9f;
                 weaveMag = 1f;
                 hitColor = backColor = trailColor = Color.valueOf("5d92cf");
-                trailWidth = 1f;
+                trailWidth = 2f;
                 trailLength = 12;
                 despawnSound = hitSound = Sounds.explosion;
                 hitEffect = despawnEffect = Fx.blastExplosion;
@@ -333,9 +333,11 @@ public class SubzeroFalloutUnits {
         faceTarget = false;
         moveSoundVolume = 0.4f;
         moveSound = Sounds.loopHover;
-        hitSize = 7.85f;
+        hitSize = 8.85f;
         engineOffset = 5.75f;
         weapons.add(new Weapon("bomber"){{
+            x = 2f;
+            y = 0f;
             reload = 25f;
             shoot.shotDelay = 1f;
             shoot.shots = 2;
@@ -345,8 +347,8 @@ public class SubzeroFalloutUnits {
             inaccuracy = 20f;
             ignoreRotation = true;
             bullet = new BombBulletType(10f, 25f, "shell") {{
-                x = 10f;
-                y = 14f;
+                width = 10f;
+                height = 14f;
                 hitColor = backColor = trailColor = Color.valueOf("a0b380");
                 frontColor = Color.valueOf("e4ffd6");
                 status = StatusEffects.corroded;
