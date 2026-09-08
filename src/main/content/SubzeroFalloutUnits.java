@@ -346,14 +346,14 @@ public class SubzeroFalloutUnits {
             velocityRnd = 1f;
             inaccuracy = 20f;
             ignoreRotation = true;
-            bullet = new BombBulletType(10f, 25f, "shell") {{
+            bullet = new BombBulletType(40f, 25f, "shell") {{
                 width = 10f;
                 height = 14f;
                 hitColor = backColor = trailColor = Color.valueOf("a0b380");
                 frontColor = Color.valueOf("e4ffd6");
                 status = StatusEffects.corroded;
                 statusDuration = 60f * 8f;
-                hitEffect = despawnEffect = Fx.vapor;
+                hitEffect = despawnEffect = new MultiEffect(Fx.vapor, Fx.flakExplosion);
                 shootEffect = Fx.none;
                 smokeEffect = Fx.none;
                 shootSound = Sounds.shootPayload;
@@ -364,7 +364,7 @@ public class SubzeroFalloutUnits {
                     bulletInterval = 20f;
                     hitEffect = despawnEffect = Fx.none;
                     intervalBullet = new EmptyBulletType(){{
-                        splashDamage = 15f;
+                        splashDamage = 20f;
                         collidesGround = true;
                         collidesAir = false;
                         collides = false;
