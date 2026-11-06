@@ -1,10 +1,10 @@
 {
-    "name": "mod-template",
-    "displayName": "Mod Template",
-    "description": "Mindustry Java mod template, complete with EntityAnno integration.",
-    "version": "1.0.0",
+    "name": "subzerofallout",
+    "displayName": "SubzeroFallout",
+    "description": "A signal appears on a distant planet. It's atmosphere plagued with the frozen aftermath of a disastrous war. Will you take the plunge into the abyss ahead, and discover something truly unforgettable? ..",
+    "version": "0.1A",
     "minGameVersion": "160",
-    "author": "You",
+    "author": "Fractured_Shadow",
     "java": true,
-    "main": "template.ModTemplate"
+    "main": "altecoris.SubzeroFallout"
 }

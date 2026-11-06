@@ -1,0 +1,50 @@
+package main.content;
+
+import arc.graphics.Color;
+import mindustry.content.Fx;
+import arc.math.Interp;
+import arc.math.Mathf;
+import mindustry.entities.units.StatusEntry;
+import mindustry.gen.Unit;
+import mindustry.graphics.Pal;
+import mindustry.type.StatusEffect;
+import mindustry.world.meta.Stat;
+
+public class SubzeroFalloutStatusEffects {
+    public static StatusEffect
+            crippled, invulnerable,
+            scorched, overload, overcharged
+    ;
+
+    public static void load(){
+        crippled = new StatusEffect("crippled"){{
+            speedMultiplier = 0.15f;
+            healthMultiplier = 0.75f;
+            disarm = true;
+        }};
+        invulnerable = new StatusEffect("invulnerable"){{
+            color = Pal.accent;
+            show = false;
+            healthMultiplier = Float.POSITIVE_INFINITY;
+            effect = Fx.shieldWave;
+        }};
+        scorched = new StatusEffect("scorched"){{
+            color = Color.valueOf("f26f83");
+            healthMultiplier = 0.8f;
+            damage = 0.215f;
+            effect = SubzeroFalloutFx.scorched;
+        }};
+        overload = new StatusEffect("overload"){{
+            color = Pal.accent;
+            speedMultiplier = 1.35f;
+            damage = 0.159f;
+            effect = Fx.overclocked;
+        }};
+        overcharged = new StatusEffect("overcharged"){{
+           color = Color.valueOf("62d5f5");
+           reloadMultiplier = 0.85f;
+           speedMultiplier = 1.25f;
+           effect = Fx.hitBulletColor;
+        }};
+    }
+}
